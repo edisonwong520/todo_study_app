@@ -1,9 +1,9 @@
 //
-//  DCClockSettingViewController.swift
-//  Demo_Clock
+//  DBManager.swift
+//  Todo
 //
-//  Created by luxiaoming on 16/1/20.
-//  Copyright © 2016年 luxiaoming. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import UIKit
@@ -109,7 +109,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
             title = "修改闹钟"
         }
 
-        test()
+        
 
         setupDefault()
     }
@@ -137,10 +137,10 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 // MARK: - PrivateMethod
 
 extension DCClockSettingViewController {
-    func test() {
-        let version = kLXMSystemVersion
-        NSLog("version is \(version)")
-    }
+//    func test() {
+//        let version = kLXMSystemVersion
+//        NSLog("version is \(version)")
+//    }
 
     func setupDefault() {
         if let alarm = self.targetAlarm {
@@ -201,9 +201,9 @@ extension DCClockSettingViewController {
             todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
             strDate = dateFormatter.string(from: todo.date as Date)
 
-            //update todoitem error
+            //update todoitem
             var sql = "UPDATE TodoDB SET title='\(todo.title)',date='\(strDate)',note='\(todo.note)',priority=\(todo.priority) ,repeatday='\(todo.repeatday)' WHERE id=\(current_index);"
-            NSLog(sql)
+            NSLog("update todoitem"+sql)
             var flag_bool = DBManager.shareManager().execute_sql(sql: sql)
             if !flag_bool {
                 NSLog("update todoitem error")
@@ -213,7 +213,7 @@ extension DCClockSettingViewController {
             //update alarm error
             let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
             sql = "UPDATE TodoDB SET date='\(strDate)',repeatday='\(str_repeatday)' WHERE id=\(current_index);"
-            NSLog(sql)
+            NSLog("update alarm"+sql)
             flag_bool = DBManager.shareManager().execute_sql(sql: sql)
             if !flag_bool {
                 NSLog("update alarm error")
@@ -237,6 +237,9 @@ extension DCClockSettingViewController {
             alarm.descriptionText = String(format: "%02x", selectedButtonTag)
             alarm.alarmOn = true
             alarm.identifier = dateFormatter.string(from: todo!.date as Date)
+            
+            let current_id = DBManager.shareManager().find_id(date: alarm.identifier, title: (todo?.title)!)
+            alarm.id = Int(current_id)
             DCAlarmManager.sharedInstance.alarmArray.append(alarm)
         }
         handleCancelButtonTapped(UIButton())

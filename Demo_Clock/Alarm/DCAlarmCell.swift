@@ -1,9 +1,9 @@
 //
-//  DCAlarmCell.swift
-//  Demo_Clock
+//  DBManager.swift
+//  Todo
 //
-//  Created by luxiaoming on 16/1/21.
-//  Copyright © 2016年 luxiaoming. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import UIKit
@@ -51,13 +51,18 @@ class DCAlarmCell: UITableViewCell {
     @IBAction func handleSwitchTapped(_ sender: UISwitch) {
         if let tempAlarm = self.alarm {
             if sender.isOn {
-                tempAlarm.turnOnAlarm()
+                tempAlarm.turnOnAlarm(alarm_instance: self.alarm!)
+                NSLog("turn on alarm")
             } else {
-                tempAlarm.turnOffAlarm()
+                tempAlarm.turnOffAlarm(alarm_instance: self.alarm!)
+                NSLog("turn off alarm")
             }
-//            DCAlarmManager.sharedInstance.save()
+            
         }
         
+        
+    }
+    func judge_operate(){
         
     }
     
