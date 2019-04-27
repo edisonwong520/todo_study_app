@@ -19,7 +19,7 @@ class DCHomeViewController: LXMBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "闹钟"
+        title = "Todo"
 
         setupTableView()
         setupNavigationBar()
@@ -84,7 +84,7 @@ extension DCHomeViewController: UITableViewDataSource {
             dataArray.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
-            DCAlarmManager.sharedInstance.save()
+//            DCAlarmManager.sharedInstance.save()
         }
     }
 }
@@ -116,7 +116,7 @@ extension DCHomeViewController: UITableViewDelegate {
         
         let alarm_instance = DCAlarmManager.sharedInstance.alarmArray.remove(at: (sourceIndexPath as NSIndexPath).row)
         DCAlarmManager.sharedInstance.alarmArray.insert(alarm_instance, at: (destinationIndexPath as NSIndexPath).row)
-        DCAlarmManager.sharedInstance.save()
+//        DCAlarmManager.sharedInstance.save()
     }
     
 //    // Delete the cell

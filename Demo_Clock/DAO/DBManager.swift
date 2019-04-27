@@ -96,7 +96,7 @@ public class DBManager {
                 sqlite3_bind_text(statement, 3, cDate!, -1, nil)
                 sqlite3_bind_int(statement, 4, Int32(cPriority))
                 sqlite3_bind_text(statement, 5, crepeatday!, -1, nil)
-                sqlite3_bind_int(statement, 4, Int32(cbool))
+                sqlite3_bind_int(statement, 6, Int32(cbool))
 
                 // 执行插入
                 if sqlite3_step(statement) != SQLITE_DONE {
@@ -167,22 +167,50 @@ public class DBManager {
         return listData
     }
 
-//    public func find_all_alarm()-> NSMutableArray {
-//        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
-//        let listData = NSMutableArray()
-//        if sqlite3_open(cpath!, &db) != SQLITE_OK {
-//            NSLog("db open failed")
-//            return listData
-//        } else {
-//            let sql = "SELECT title,note,date,priority,repeatday,alarmOn FROM TodoDB"
-//            let cSql = sql.cString(using: String.Encoding.utf8)
-//
-//            // 语句对象
-//            var statement: OpaquePointer?
-//        }
-//
-//    }
-    
+    public func find_all_alarm() -> NSMutableArray {
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        let listData = NSMutableArray()
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            return listData
+        } else {
+            let sql = "SELECT id,date,repeatday,alarmOn FROM TodoDB"
+            let cSql = sql.cString(using: String.Encoding.utf8)
+
+            // 语句对象
+            var statement: OpaquePointer?
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    let alarmitem = DCAlarm()
+                    if let strId = getColumnValue(index: 0, stmt: statement!) {
+                        alarmitem.id = Int(strId)!
+                    }
+                    if let strDate = getColumnValue(index: 1, stmt: statement!) {
+                        let date: Date = dateFormatter.date(from: strDate)!
+                        alarmitem.alarmDate = date
+                    }
+                    if let strrepeatday = getColumnValue(index: 2, stmt: statement!) {
+                        alarmitem.selectedDay = Int(strrepeatday, radix: 2)!
+                    }
+                    if let strnum = getColumnValue(index: 3, stmt: statement!) {
+                        let aa = get_alarm_bool(num: Int(strnum)!)
+                        alarmitem.alarmOn = aa
+                    }
+                    let strDate1 = getColumnValue(index: 1, stmt: statement!)
+                    alarmitem.descriptionText = String(format: "%02x", alarmitem.selectedDay)
+                    alarmitem.identifier = strDate1!
+                    listData.add(alarmitem)
+                }
+                sqlite3_finalize(statement)
+                sqlite3_close(db)
+                return listData
+            } else {
+                NSLog("execute sql failed")
+            }
+        }
+        return listData
+    }
+
     // excute a sql
     public func execute_sql(sql: String) -> Bool {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
@@ -244,61 +272,60 @@ public class DBManager {
         }
         return -1
     }
-    
-    public func switch_id(todo1:ToDoItem,todo2:ToDoItem){
+
+    public func switch_id(todo1: ToDoItem, todo2: ToDoItem) {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("db open failed")
-            
+
         } else {
-            //id1
+            // id1
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let strdate1 = dateFormatter.string(from: todo1.date)
             let strtitle1 = todo1.title
-            let id1=find_id(date: strdate1, title: strtitle1)
-            
-            //id2
+            let id1 = find_id(date: strdate1, title: strtitle1)
+
+            // id2
             let strdate2 = dateFormatter.string(from: todo2.date)
             let strtitle2 = todo2.title
-            let id2=find_id(date: strdate2, title: strtitle2)
-            
+            let id2 = find_id(date: strdate2, title: strtitle2)
+
             var sql = "UPDATE TodoDB set id=-1 WHERE id=\(id1);"
             var cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("set id=1 failed")
             }
-            
-            sql="UPDATE TodoDB set id=\(id1) WHERE id=\(id2);"
+
+            sql = "UPDATE TodoDB set id=\(id1) WHERE id=\(id2);"
             cSql = sql.cString(using: String.Encoding.utf8)
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("switch id failed")
             }
-            
-            sql="UPDATE TodoDB set id=\(id2) WHERE id=-1;"
+
+            sql = "UPDATE TodoDB set id=\(id2) WHERE id=-1;"
             cSql = sql.cString(using: String.Encoding.utf8)
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("switch id failed")
             }
         }
     }
-    
-    public func drop_table(){
+
+    public func drop_table() {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("db open failed")
-            
+
         } else {
             let sql = "drop table 'TodoDB' ;"
             let cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")
             }
         }
     }
-
 
     // 获得字段数据
     private func getColumnValue(index: CInt, stmt: OpaquePointer) -> String? {
@@ -309,21 +336,25 @@ public class DBManager {
         }
         return nil
     }
-    
+
     //
-    func get_alarm_bool(num:Int)->Bool{
-        if num==1{
+    func get_alarm_bool(num: Int) -> Bool {
+        if num == 1 {
             return true
-        }else{
+        } else {
             return false
         }
     }
-    
-    func get_alarm_int(bf:Bool)->Int{
-        if bf{
+
+    func get_alarm_int(bf: Bool) -> Int {
+        if bf {
             return 1
-        }else{
+        } else {
             return 0
         }
     }
+
+//    func get_seleted_int(str: String) -> Int {
+//        return Int(str, radix: 2)!
+//    }
 }

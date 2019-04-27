@@ -167,25 +167,26 @@ extension DCClockSettingViewController {
     }
 
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
-        if let alarm = self.targetAlarm {
-            alarm.alarmDate = datePicker.date
-            alarm.selectedDay = selectedButtonTag
-            alarm.descriptionText = String(format: "%02x", selectedButtonTag)
-            alarm.alarmOn = false
-            alarm.identifier = alarm.alarmDate?.description
-            
-            NSLog(String(format: "%02x", selectedButtonTag))
-            NSLog(alarm.identifier!)
-            if isAddingAlarm {
-                DCAlarmManager.sharedInstance.alarmArray.append(alarm)
-            }
-
-            DCAlarmManager.sharedInstance.save()
-
-            handleCancelButtonTapped(UIButton())
-        } else {
-            NSLog("there is something wrong")
-        }
+//        // add alarm item
+//        if let alarm = self.targetAlarm {
+//            alarm.alarmDate = datePicker.date
+//            alarm.selectedDay = selectedButtonTag
+//            alarm.descriptionText = String(format: "%02x", selectedButtonTag)
+//            alarm.alarmOn = false
+//            alarm.identifier = alarm.alarmDate?.description
+//
+        ////            NSLog(String(format: "%02x", selectedButtonTag))
+        ////            NSLog(alarm.identifier!)
+//            if isAddingAlarm {
+//                DCAlarmManager.sharedInstance.alarmArray.append(alarm)
+//            }
+//
+        ////            DCAlarmManager.sharedInstance.save()
+//
+//            handleCancelButtonTapped(UIButton())
+//        } else {
+//            NSLog("there is something wrong")
+//        }
 
         // add todo item------------------------
         let dateFormatter = DateFormatter()
@@ -200,11 +201,22 @@ extension DCClockSettingViewController {
             todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
             strDate = dateFormatter.string(from: todo.date as Date)
 
-            let sql = "UPDATE TodoDB SET title='\(todo.title)',date='\(strDate)',note='\(todo.note)',priority=\(todo.priority) ,repeatday='\(todo.repeatday)' WHERE id=\(current_index);"
+            //update todoitem error
+            var sql = "UPDATE TodoDB SET title='\(todo.title)',date='\(strDate)',note='\(todo.note)',priority=\(todo.priority) ,repeatday='\(todo.repeatday)' WHERE id=\(current_index);"
             NSLog(sql)
-            let flag_bool = DBManager.shareManager().execute_sql(sql: sql)
+            var flag_bool = DBManager.shareManager().execute_sql(sql: sql)
             if !flag_bool {
-                NSLog("update error")
+                NSLog("update todoitem error")
+            }
+            
+            
+            //update alarm error
+            let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
+            sql = "UPDATE TodoDB SET date='\(strDate)',repeatday='\(str_repeatday)' WHERE id=\(current_index);"
+            NSLog(sql)
+            flag_bool = DBManager.shareManager().execute_sql(sql: sql)
+            if !flag_bool {
+                NSLog("update alarm error")
             }
 
         } else {
@@ -213,14 +225,21 @@ extension DCClockSettingViewController {
             let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
 
             priority_index = priorityPicker.selectedRow(inComponent: 0) + 1
-            todo = ToDoItem(title: todoTitleLabel.text!, note: todoNote.text, date: datePicker.date, priority: priority_index, repeatday: str_repeatday)
+            todo = ToDoItem(title: todoTitleLabel.text!, note: todoNote.text, date: datePicker.date, priority: priority_index, repeatday: str_repeatday, alarmOn: true)
 
             todos_list.append(todo!)
             DBManager.shareManager().insert(todoitem: todo!)
 
-            //                self.handleCancelButtonTapped(UIButton())
+            // add alarm
+            let alarm = DCAlarm()
+            alarm.alarmDate = datePicker.date
+            alarm.selectedDay = selectedButtonTag
+            alarm.descriptionText = String(format: "%02x", selectedButtonTag)
+            alarm.alarmOn = true
+            alarm.identifier = dateFormatter.string(from: todo!.date as Date)
+            DCAlarmManager.sharedInstance.alarmArray.append(alarm)
         }
-
+        handleCancelButtonTapped(UIButton())
         _ = navigationController?.popToRootViewController(animated: true)
     }
 

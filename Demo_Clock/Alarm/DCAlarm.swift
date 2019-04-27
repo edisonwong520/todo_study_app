@@ -8,33 +8,49 @@
 
 import UIKit
 
-class DCAlarm: NSObject, NSCoding {
+class DCAlarm: NSObject {
     var alarmDate: Date?
-    var descriptionText: String?
-    var identifier: String?
-    var selectedDay: Int = 0
-    var alarmOn: Bool = false
+    var descriptionText: String
+    var identifier: String
+    var selectedDay: Int
+    var alarmOn: Bool
+    var id:Int 
     
     override init() {
-        super.init()
+        self.id = -1
+        self.identifier = ""
+        self.alarmDate = Date()
+        self.descriptionText = ""
+        self.selectedDay = 0
+        self.alarmOn = true
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init()
-        alarmDate = aDecoder.decodeObject(forKey: "alarmDate") as? Date
-        descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as? String
-        identifier = aDecoder.decodeObject(forKey: "identifier") as? String
-        selectedDay = aDecoder.decodeInteger(forKey: "selectedDay")
-        alarmOn = aDecoder.decodeBool(forKey: "alarmOn") as Bool
+    public init(id: Int, alarmDate: Date, descriptionText: String, identifier: String, selectedDay: Int, alarmOn: Bool) {
+        //        self.id=id
+        self.id = id
+        self.identifier = identifier
+        self.alarmDate = alarmDate
+        self.descriptionText = descriptionText
+        self.selectedDay = selectedDay
+        self.alarmOn = alarmOn
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(alarmDate, forKey: "alarmDate")
-        aCoder.encode(descriptionText, forKey: "descriptionText")
-        aCoder.encode(identifier, forKey: "identifier")
-        aCoder.encode(selectedDay, forKey: "selectedDay")
-        aCoder.encode(alarmOn, forKey: "alarmOn")
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init()
+//        alarmDate = aDecoder.decodeObject(forKey: "alarmDate") as? Date
+//        descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as? String
+//        identifier = aDecoder.decodeObject(forKey: "identifier") as? String
+//        selectedDay = aDecoder.decodeInteger(forKey: "selectedDay")
+//        alarmOn = aDecoder.decodeBool(forKey: "alarmOn") as Bool
+//    }
+//
+//    func encode(with aCoder: NSCoder) {
+//        aCoder.encode(alarmDate, forKey: "alarmDate")
+//        aCoder.encode(descriptionText, forKey: "descriptionText")
+//        aCoder.encode(identifier, forKey: "identifier")
+//        aCoder.encode(selectedDay, forKey: "selectedDay")
+//        aCoder.encode(alarmOn, forKey: "alarmOn")
+//    }
     
     
     func turnOnAlarm() {
@@ -64,7 +80,7 @@ class DCAlarm: NSObject, NSCoding {
             for tempNotification in tempArray {
                 print("it is \(tempNotification.userInfo!["identifier"])")
                 if let identfier = tempNotification.userInfo!["identifier"] as? String {
-                    if identfier == self.identifier! {
+                    if identfier == self.identifier {
                         UIApplication.shared.cancelLocalNotification(tempNotification)
                     }
                     
@@ -102,7 +118,7 @@ fileprivate extension DCAlarm {
         localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.alertBody = "本地推送内容"
         localNotification.userInfo = [
-            "identifier" : self.identifier!, //注意，这里不同日子同一时刻的通知公用一个identifier
+            "identifier" : self.identifier, //注意，这里不同日子同一时刻的通知公用一个identifier
             "fireDay" : fireDate!]
         UIApplication.shared.scheduleLocalNotification(localNotification)
     }

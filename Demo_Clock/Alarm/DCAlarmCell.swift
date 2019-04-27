@@ -55,7 +55,7 @@ class DCAlarmCell: UITableViewCell {
             } else {
                 tempAlarm.turnOffAlarm()
             }
-            DCAlarmManager.sharedInstance.save()
+//            DCAlarmManager.sharedInstance.save()
         }
         
         
