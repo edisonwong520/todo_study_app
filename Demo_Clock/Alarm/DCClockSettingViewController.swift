@@ -173,6 +173,9 @@ extension DCClockSettingViewController {
             alarm.descriptionText = String(format: "%02x", selectedButtonTag)
             alarm.alarmOn = false
             alarm.identifier = alarm.alarmDate?.description
+            
+            NSLog(String(format: "%02x", selectedButtonTag))
+            NSLog(alarm.identifier!)
             if isAddingAlarm {
                 DCAlarmManager.sharedInstance.alarmArray.append(alarm)
             }

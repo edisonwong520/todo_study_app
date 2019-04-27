@@ -15,14 +15,16 @@ public class ToDoItem: NSObject {
     var date: Date
     var priority: Int
     var repeatday: String
+    var alarmOn: Bool
 
-    public init(title: String, note: String, date: Date, priority: Int, repeatday: String) {
+    public init(title: String, note: String, date: Date, priority: Int, repeatday: String, alarmOn: Bool) {
 //        self.id=id
         self.title = title
         self.note = note
         self.date = date
         self.priority = priority
         self.repeatday = repeatday
+        self.alarmOn = alarmOn
     }
 
     public override init() {
@@ -35,5 +37,6 @@ public class ToDoItem: NSObject {
         date = now
         priority = 3
         repeatday = "0"
+        alarmOn = false
     }
 }

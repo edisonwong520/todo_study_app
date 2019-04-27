@@ -51,7 +51,7 @@ public class DBManager {
             NSLog("open db failed")
         } else {
 //            NSLog("open db success")
-            let sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10))"
+            let sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
             let cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
@@ -75,7 +75,7 @@ public class DBManager {
             NSLog("db open failed")
             return
         } else {
-            let sql = "INSERT OR REPLACE INTO TodoDB (title,note,date,priority,repeatday) VALUES (?,?,?,?,?)"
+            let sql = "INSERT OR REPLACE INTO TodoDB (title,note,date,priority,repeatday,alarmOn) VALUES (?,?,?,?,?,?)"
             let cSql = sql.cString(using: String.Encoding.utf8)
             // 语句对象
             var statement: OpaquePointer?
@@ -87,6 +87,7 @@ public class DBManager {
                 let crepeatday = todoitem.repeatday.cString(using: String.Encoding.utf8)
                 let cDate = strDate.cString(using: String.Encoding.utf8)
                 let cPriority = todoitem.priority
+                let cbool = get_alarm_int(bf: todoitem.alarmOn)
 //                let cId = todoitem.id
                 // 绑定参数开始
 //                sqlite3_bind_int(statement, 1, Int32(cId))
@@ -95,6 +96,7 @@ public class DBManager {
                 sqlite3_bind_text(statement, 3, cDate!, -1, nil)
                 sqlite3_bind_int(statement, 4, Int32(cPriority))
                 sqlite3_bind_text(statement, 5, crepeatday!, -1, nil)
+                sqlite3_bind_int(statement, 4, Int32(cbool))
 
                 // 执行插入
                 if sqlite3_step(statement) != SQLITE_DONE {
@@ -117,7 +119,7 @@ public class DBManager {
             NSLog("db open failed")
             return listData
         } else {
-            let sql = "SELECT title,note,date,priority,repeatday FROM TodoDB"
+            let sql = "SELECT title,note,date,priority,repeatday,alarmOn FROM TodoDB"
             let cSql = sql.cString(using: String.Encoding.utf8)
 
             // 语句对象
@@ -146,6 +148,10 @@ public class DBManager {
                     if let strrepeatday = getColumnValue(index: 4, stmt: statement!) {
                         todoitem.note = strrepeatday
                     }
+                    if let strBool = getColumnValue(index: 5, stmt: statement!) {
+                        let strnum = get_alarm_bool(num: Int(strBool)!)
+                        todoitem.alarmOn = strnum
+                    }
                     listData.add(todoitem)
                 }
 
@@ -161,6 +167,22 @@ public class DBManager {
         return listData
     }
 
+//    public func find_all_alarm()-> NSMutableArray {
+//        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+//        let listData = NSMutableArray()
+//        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+//            NSLog("db open failed")
+//            return listData
+//        } else {
+//            let sql = "SELECT title,note,date,priority,repeatday,alarmOn FROM TodoDB"
+//            let cSql = sql.cString(using: String.Encoding.utf8)
+//
+//            // 语句对象
+//            var statement: OpaquePointer?
+//        }
+//
+//    }
+    
     // excute a sql
     public func execute_sql(sql: String) -> Bool {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
@@ -286,5 +308,22 @@ public class DBManager {
             return txt
         }
         return nil
+    }
+    
+    //
+    func get_alarm_bool(num:Int)->Bool{
+        if num==1{
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func get_alarm_int(bf:Bool)->Int{
+        if bf{
+            return 1
+        }else{
+            return 0
+        }
     }
 }
