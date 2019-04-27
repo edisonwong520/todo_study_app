@@ -81,7 +81,16 @@ extension DCHomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let item = dataArray[indexPath.row]
         if let index = self.dataArray.index(of: item) {
+            let id_get = dataArray[index].id
             dataArray.remove(at: index)
+            
+            let sql = "DELETE FROM TodoDB WHERE id=\(id_get);"
+            let boolflag = DBManager.shareManager().execute_sql(sql: sql)
+            if boolflag{
+                NSLog("delete from db success, ")
+            }else{
+                NSLog("delete from db failed, ")
+            }
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
 //            DCAlarmManager.sharedInstance.save()
@@ -119,7 +128,8 @@ extension DCHomeViewController: UITableViewDelegate {
 //        DCAlarmManager.sharedInstance.save()
     }
     
-//    // Delete the cell
+    
+    // Delete the cell
 //    func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == UITableViewCell.EditingStyle.delete {
 //            let rm_index = (indexPath as NSIndexPath).row
