@@ -104,9 +104,9 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         todoNote.layer.cornerRadius = 5
 
         if isAddingAlarm {
-            title = "添加闹钟"
+            title = "添加"
         } else {
-            title = "修改闹钟"
+            title = "修改"
         }
 
         
