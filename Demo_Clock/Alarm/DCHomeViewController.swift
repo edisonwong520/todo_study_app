@@ -15,7 +15,7 @@ var todos_list: [ToDoItem] = []
 class DCHomeViewController: LXMBaseViewController {
     @IBOutlet var tableView: UITableView!
 
-    var dataArray = [DCAlarm]()
+//    var dataArray = [DCAlarm]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class DCHomeViewController: LXMBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        dataArray = DCAlarmManager.sharedInstance.alarmArray // swift的数组是struct，是值类型，写的时候要特别注意
+//        dataArray = DCAlarmManager.sharedInstance.alarmArray // swift的数组是struct，是值类型，写的时候要特别注意
         tableView.reloadData()
     }
 }
@@ -68,21 +68,22 @@ extension DCHomeViewController {
 
 extension DCHomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return dataArray.count
+        return DCAlarmManager.sharedInstance.alarmArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DCAlarmCellIdentifier) as! DCAlarmCell
-        let alarm = dataArray[indexPath.row]
+        let alarm = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
         cell.configWithAlarm(alarm, indexPath: indexPath)
         return cell
     }
 
+    //delete the cell
     func tableView(_ tableView: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let item = dataArray[indexPath.row]
-        if let index = self.dataArray.index(of: item) {
-            let id_get = dataArray[index].id
-            dataArray.remove(at: index)
+        let item = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
+        if let index = DCAlarmManager.sharedInstance.alarmArray.index(of: item) {
+            let id_get = DCAlarmManager.sharedInstance.alarmArray[index].id
+            DCAlarmManager.sharedInstance.alarmArray.remove(at: index)
             
             let sql = "DELETE FROM TodoDB WHERE id=\(id_get);"
             let boolflag = DBManager.shareManager().execute_sql(sql: sql)
@@ -100,7 +101,7 @@ extension DCHomeViewController: UITableViewDataSource {
 
 extension DCHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alarm = dataArray[indexPath.row]
+        let alarm = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
         let clockSettingViewController = DCClockSettingViewController.loadFromStroyboardWithTargetAlarm(alarm)
         clockSettingViewController.hidesBottomBarWhenPushed = true
         navigationController?.present(clockSettingViewController, animated: true, completion: { () -> Void in
@@ -123,9 +124,11 @@ extension DCHomeViewController: UITableViewDelegate {
         let todo = todos_list.remove(at: (sourceIndexPath as NSIndexPath).row)
         todos_list.insert(todo, at: (destinationIndexPath as NSIndexPath).row)
         
-        let alarm_instance = DCAlarmManager.sharedInstance.alarmArray.remove(at: (sourceIndexPath as NSIndexPath).row)
+        var alarm_instance = DCAlarmManager.sharedInstance.alarmArray.remove(at: (sourceIndexPath as NSIndexPath).row)
         DCAlarmManager.sharedInstance.alarmArray.insert(alarm_instance, at: (destinationIndexPath as NSIndexPath).row)
 //        DCAlarmManager.sharedInstance.save()
+        
+        
     }
     
     
