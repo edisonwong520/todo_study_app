@@ -303,9 +303,12 @@
                         <outlet property="datePicker" destination="6Ut-Ac-AVe" id="NLZ-VZ-rWg"/>
                         <outlet property="fridayButton" destination="Kxo-fK-bvf" id="loc-iD-poU"/>
                         <outlet property="mondayButton" destination="CHj-rH-6BH" id="KQA-RG-LkC"/>
+                        <outlet property="priorityPicker" destination="vwv-1Y-jYR" id="oZV-KO-A6a"/>
                         <outlet property="saturdayButton" destination="r3A-Vd-sfz" id="4er-HL-bLx"/>
                         <outlet property="sundayButton" destination="RMs-YB-dVw" id="IEO-ij-j8a"/>
                         <outlet property="thursdayButton" destination="BCB-OX-w4R" id="2X8-E1-3sr"/>
+                        <outlet property="todoNote" destination="9FR-eb-tfQ" id="H1d-QH-9X8"/>
+                        <outlet property="todoTitleLabel" destination="Thl-vb-kLE" id="gob-8S-fXh"/>
                         <outlet property="tuesdayButton" destination="Ps0-W8-t5O" id="o05-Ib-yVx"/>
                         <outlet property="wednesdayButton" destination="keG-vj-Rci" id="PDz-3P-Ixt"/>
                     </connections>

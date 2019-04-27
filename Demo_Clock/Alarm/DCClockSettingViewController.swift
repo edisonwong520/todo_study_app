@@ -8,13 +8,15 @@
 
 import UIKit
 
-class DCClockSettingViewController: LXMBaseViewController {
+class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     @IBOutlet var datePicker: UIDatePicker!
-
+    @IBOutlet var todoTitleLabel: UITextField!
     @IBOutlet var cancelButton: UIButton!
 
     @IBOutlet var confirmButton: UIButton!
 
+    @IBOutlet var priorityPicker: UIPickerView!
+    @IBOutlet var todoNote: UITextView!
     // button的tag为1-7，在xib中设置
     @IBOutlet var mondayButton: UIButton!
 
@@ -40,6 +42,39 @@ class DCClockSettingViewController: LXMBaseViewController {
 
     /// 从右向左依次是1-7，每一位表示一个button有没有选中，0x1111111表示全选，0x0000000表示一个都没选
     var selectedButtonTag = 0
+    var priority_count = 1
+    var priority_array = ["最高", "重要", "一般", "不重要"]
+    //    var priority_dict:[String:Int] = ["最高":1,"重要":2,"一般":3,"不重要":4]
+    var priority_index = 3
+
+    // overwrite
+    func numberOfComponents(in _: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_: UIPickerView, numberOfRowsInComponent _: Int) -> Int {
+        return priority_array.count
+    }
+
+    func pickerView(_: UIPickerView, titleForRow row: Int, forComponent _: Int) -> String? {
+        return priority_array[row]
+    }
+
+    var todo: ToDoItem?
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = " Please input note..."
+            textView.textColor = UIColor.lightGray
+        }
+    }
 
     class func loadFromStroyboardWithTargetAlarm(_ alarm: DCAlarm?) -> DCClockSettingViewController {
         let viewController = DCClockSettingViewController.swift_loadFromStoryboard("Main")
@@ -55,6 +90,19 @@ class DCClockSettingViewController: LXMBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        priorityPicker.delegate = self
+        priorityPicker.dataSource = self
+
+        todoNote.delegate = self
+
+        todoNote.text = " Please input note..."
+        todoNote.textColor = UIColor.lightGray
+
+        let borderGray = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        todoNote.layer.borderColor = borderGray.cgColor
+        todoNote.layer.borderWidth = 0.5
+        todoNote.layer.cornerRadius = 5
+
         if isAddingAlarm {
             title = "添加闹钟"
         } else {
@@ -69,6 +117,20 @@ class DCClockSettingViewController: LXMBaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func get_b_repeatday(repeatday: Int) -> String {
+        var repeatday1 = repeatday
+        var re = ""
+        for _ in 1 ... 7 {
+            if repeatday1 % 2 == 0 {
+                re += "0"
+            } else {
+                re += "1"
+            }
+            repeatday1 /= 2
+        }
+        return re
     }
 }
 
@@ -119,8 +181,44 @@ extension DCClockSettingViewController {
 
             handleCancelButtonTapped(UIButton())
         } else {
-            NSLog("there is something wrong, 理论上alarm不会为空的")
+            NSLog("there is something wrong")
         }
+
+        // add todo item------------------------
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        if let todo = todo {
+            var strDate = dateFormatter.string(from: todo.date as Date)
+            let current_index = DBManager.shareManager().find_id(date: strDate, title: todo.title)
+
+            todo.date = datePicker.date
+            todo.note = todoNote.text!
+            todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
+            strDate = dateFormatter.string(from: todo.date as Date)
+
+            let sql = "UPDATE TodoDB SET title='\(todo.title)',date='\(strDate)',note='\(todo.note)',priority=\(todo.priority) ,repeatday='\(todo.repeatday)' WHERE id=\(current_index);"
+            NSLog(sql)
+            let flag_bool = DBManager.shareManager().execute_sql(sql: sql)
+            if !flag_bool {
+                NSLog("update error")
+            }
+
+        } else {
+            //tag
+
+            let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
+
+            priority_index = priorityPicker.selectedRow(inComponent: 0) + 1
+            todo = ToDoItem(title: todoTitleLabel.text!, note: todoNote.text, date: datePicker.date, priority: priority_index, repeatday: str_repeatday)
+
+            todos_list.append(todo!)
+            DBManager.shareManager().insert(todoitem: todo!)
+
+            //                self.handleCancelButtonTapped(UIButton())
+        }
+
+        _ = navigationController?.popToRootViewController(animated: true)
     }
 
     @IBAction func handleDayButtonTapped(_ sender: UIButton) {

@@ -24,6 +24,9 @@
 		433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A26FB1C5121E200251D82 /* DCAlarmManager.swift */; };
 		4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358B97E1C5071950081E3A5 /* DCAlarm.swift */; };
 		436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */; };
+		B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */; };
+		B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABC227456EF00C59E95 /* DBManager.swift */; };
+		B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,10 @@
 		433A26FB1C5121E200251D82 /* DCAlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarmManager.swift; sourceTree = "<group>"; };
 		4358B97E1C5071950081E3A5 /* DCAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarm.swift; sourceTree = "<group>"; };
 		436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMConfigExtentsion.swift; sourceTree = "<group>"; };
+		B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		B7BF6ABC227456EF00C59E95 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +109,7 @@
 				430DA29E1C4F81BC00C4E60C /* Demo_ClockTests */,
 				430DA2A91C4F81BC00C4E60C /* Demo_ClockUITests */,
 				430DA2881C4F81BB00C4E60C /* Products */,
+				B7BF6AC0227459C600C59E95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +126,7 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				B7BF6ABA227456EF00C59E95 /* DAO */,
 				430DA2C11C4F848100C4E60C /* Alarm */,
 				430DA2B81C4F820900C4E60C /* LXMKit */,
 				430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */,
@@ -169,6 +179,24 @@
 				433A26FB1C5121E200251D82 /* DCAlarmManager.swift */,
 			);
 			path = Alarm;
+			sourceTree = "<group>";
+		};
+		B7BF6ABA227456EF00C59E95 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */,
+				B7BF6ABC227456EF00C59E95 /* DBManager.swift */,
+				B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		B7BF6AC0227459C600C59E95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +268,7 @@
 				TargetAttributes = {
 					430DA2861C4F81BB00C4E60C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 39Y84BAFQJ;
 						LastSwiftMigration = 0820;
 					};
 					430DA29A1C4F81BC00C4E60C = {
@@ -315,9 +344,11 @@
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
 				433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */,
 				433A26EB1C50DC6300251D82 /* LXMBaseView.swift in Sources */,
+				B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */,
 				430DA2BF1C4F820900C4E60C /* LXMMacro.swift in Sources */,
 				430DA28B1C4F81BC00C4E60C /* AppDelegate.swift in Sources */,
 				430DA2C01C4F820900C4E60C /* LXMToolFunction.swift in Sources */,
+				B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,12 +494,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 39Y84BAFQJ;
 				INFOPLIST_FILE = Demo_Clock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ouj.Demo-Clock";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EDC.Demo-Clock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Demo_Clock/DAO/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -477,11 +510,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 39Y84BAFQJ;
 				INFOPLIST_FILE = Demo_Clock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ouj.Demo-Clock";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.EDC.Demo-Clock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Demo_Clock/DAO/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
