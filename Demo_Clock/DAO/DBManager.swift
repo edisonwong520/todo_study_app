@@ -332,7 +332,35 @@ public class DBManager {
             }
         }
     }
-
+    
+    //获取字段
+    public func get_value_byid(find:String,id:Int)-> String{
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            
+        } else {
+            let sql = "SELECT \(find) FROM TodoDB WHERE id=\(id);"
+            NSLog("get value by id sql:\(sql)")
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            // 预处理过程
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                // 执行查询
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    if let strValue = getColumnValue(index: 0, stmt: statement!) {
+                        sqlite3_close(db)
+                        sqlite3_finalize(statement)
+                        return strValue
+                    }
+                }
+                sqlite3_close(db)
+                sqlite3_finalize(statement)
+            }
+        }
+        return ""
+    }
+    
     // 获得字段数据
     private func getColumnValue(index: CInt, stmt: OpaquePointer) -> String? {
         if let ptr = UnsafeRawPointer(sqlite3_column_text(stmt, index)) {

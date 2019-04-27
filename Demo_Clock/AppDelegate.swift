@@ -51,9 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("didReceiveLocalNotification : \(notification)")
         if application.applicationState == .active {
             if let dict = notification.userInfo {
-                let identifier = dict["identifier"] as! String
+                let title = dict["title"] as! String
 
-                let alert = UIAlertView(title: "闹钟", message: "是时候看看闹钟了" + identifier, delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "提醒", message: "您设定的 '" + title + "' 时间到了", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             }
         }
