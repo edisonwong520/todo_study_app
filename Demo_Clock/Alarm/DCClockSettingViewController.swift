@@ -90,7 +90,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedButtonTag = getWeekday()    
+        selectedButtonTag = getWeekday()
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
 
@@ -190,26 +190,7 @@ extension DCClockSettingViewController {
     }
 
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
-//        // add alarm item
-//        if let alarm = self.targetAlarm {
-//            alarm.alarmDate = datePicker.date
-//            alarm.selectedDay = selectedButtonTag
-//            alarm.descriptionText = String(format: "%02x", selectedButtonTag)
-//            alarm.alarmOn = false
-//            alarm.identifier = alarm.alarmDate?.description
-//
-        ////            NSLog(String(format: "%02x", selectedButtonTag))
-        ////            NSLog(alarm.identifier!)
-//            if isAddingAlarm {
-//                DCAlarmManager.sharedInstance.alarmArray.append(alarm)
-//            }
-//
-        ////            DCAlarmManager.sharedInstance.save()
-//
-//            handleCancelButtonTapped(UIButton())
-//        } else {
-//            NSLog("there is something wrong")
-//        }
+
 
         // add todo item------------------------
         let dateFormatter = DateFormatter()

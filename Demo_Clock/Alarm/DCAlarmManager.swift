@@ -18,9 +18,5 @@ class DCAlarmManager {
         alarmArray = DBManager.shareManager().find_all_alarm() as! [DCAlarm]
     }
 
-//    func save() {
-//        let alarmArrayData = NSKeyedArchiver.archivedData(withRootObject: alarmArray)
-//        kLXMUserDefaults.set(alarmArrayData, forKey: kDCAlarmArraySavedKey)
-//        kLXMUserDefaults.synchronize()
-//    }
+
 }

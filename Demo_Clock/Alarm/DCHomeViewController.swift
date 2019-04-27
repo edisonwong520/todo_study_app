@@ -131,31 +131,4 @@ extension DCHomeViewController: UITableViewDelegate {
         
     }
     
-    
-    // Delete the cell
-//    func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            let rm_index = (indexPath as NSIndexPath).row
-//            NSLog("delete index:\(rm_index)")
-//            let rmtitle = todos_list[rm_index].title
-//            let rmdate = todos_list[rm_index].date
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//            let strdate = dateFormatter.string(from: rmdate)
-//            todos_list.remove(at: (indexPath as NSIndexPath).row)
-//
-//            let index = DBManager.shareManager().find_id(date: strdate, title: rmtitle)
-//            let sql = "DELETE FROM TodoDB WHERE id=\(index);"
-//            NSLog("delete sql:\(sql)")
-//            //starat to delete
-//            let find_bool = DBManager.shareManager().execute_sql(sql: sql)
-//            if !find_bool {
-//                NSLog("delete failed")
-//            }
-//            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-//            _ = DCAlarmManager.sharedInstance.alarmArray.remove(at: indexPath.row)
-//            NSLog("delete alarm success" )
-//            DCAlarmManager.sharedInstance.save()
-//        }
-//    }
 }
