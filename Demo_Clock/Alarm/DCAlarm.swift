@@ -51,27 +51,46 @@ class DCAlarm: NSObject {
 //        aCoder.encode(selectedDay, forKey: "selectedDay")
 //        aCoder.encode(alarmOn, forKey: "alarmOn")
 //    }
+    func getWeekday() -> Int {
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: Date())
+
+        let dayweek = Int(comps.weekday! - 1)
+        var re = 1
+        if dayweek == 0 {
+            re = 1
+        } else {
+            for _ in 1 ..< dayweek {
+                re = re * 2
+            }
+        }
+        return re
+    }
 
     func turnOnAlarm(alarm_instance: DCAlarm) {
-        if alarm_instance.alarmOn == true {
-            return
-        }
-        
+//        if alarm_instance.alarmOn == true {
+//            return
+//        }
+
         let sql = "UPDATE TodoDB SET alarmOn=1 WHERE id=\(alarm_instance.id)"
         let flagbool = DBManager.shareManager().execute_sql(sql: sql)
-        if flagbool{
+        if flagbool {
             NSLog("open alarm from db success")
-        }else{
+        } else {
             NSLog("open alarm from db failed")
         }
-        
+
         if alarm_instance.selectedDay == 0 {
-            addLocalNotificationForDate(alarm_instance.alarmDate!, selectedDay: 0)
-        } else {
-            for i in 1 ... 7 {
-                if ((1 << (i - 1)) & alarm_instance.selectedDay) != 0 {
-                    addLocalNotificationForDate(alarm_instance.alarmDate!, selectedDay: i)
-                }
+            alarm_instance.selectedDay = getWeekday()
+        }
+
+        NSLog("alarm_instance.selectedDay is \(alarm_instance.selectedDay)")
+        NSLog("alarm_instance.alarmDate is \(alarm_instance.alarmDate)")
+
+        for i in 1 ... 7 {
+            if ((1 << (i - 1)) & alarm_instance.selectedDay) != 0 {
+                addLocalNotificationForDate(alarm_instance.alarmDate!, selectedDay: i)
             }
         }
 
@@ -81,18 +100,18 @@ class DCAlarm: NSObject {
     }
 
     func turnOffAlarm(alarm_instance: DCAlarm) {
-        if alarm_instance.alarmOn == false {
-            return
-        }
+//        if alarm_instance.alarmOn == false {
+//            return
+//        }
         alarm_instance.alarmOn = false
         let sql = "UPDATE TodoDB SET alarmOn=0 WHERE id=\(alarm_instance.id)"
         let flagbool = DBManager.shareManager().execute_sql(sql: sql)
-        if flagbool{
+        if flagbool {
             NSLog("cancel alarm from db success")
-        }else{
+        } else {
             NSLog("cancel alarm from db failed")
         }
-        
+
         if let tempArray = UIApplication.shared.scheduledLocalNotifications {
             for tempNotification in tempArray {
 //                NSLog("it is \(tempNotification.userInfo!["identifier"])")

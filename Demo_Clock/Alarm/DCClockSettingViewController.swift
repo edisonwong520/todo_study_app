@@ -90,6 +90,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedButtonTag = getWeekday()    
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
 
@@ -108,8 +109,6 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         } else {
             title = "修改"
         }
-
-        
 
         setupDefault()
     }
@@ -132,9 +131,30 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
         return re
     }
+    
+    func getWeekday() -> Int {
+        
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year,.month,.day, .weekday, .hour, .minute,.second], from: Date())
+        
+        let dayweek = Int(comps.weekday! - 1)
+        var re = 1
+        if dayweek==0{
+            re = 1
+        }else{
+            for _ in 1..<dayweek{
+                re = re*2
+            }
+        }
+        return re
+    }
 }
 
 // MARK: - PrivateMethod
+
+
+//---
 
 extension DCClockSettingViewController {
 //    func test() {
@@ -160,6 +180,9 @@ extension DCClockSettingViewController {
 
 // MARK: - Action
 
+
+
+//----
 extension DCClockSettingViewController {
     @IBAction func handleCancelButtonTapped(_: UIButton) {
         dismiss(animated: true) { () -> Void in
@@ -201,19 +224,18 @@ extension DCClockSettingViewController {
             todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
             strDate = dateFormatter.string(from: todo.date as Date)
 
-            //update todoitem
+            // update todoitem
             var sql = "UPDATE TodoDB SET title='\(todo.title)',date='\(strDate)',note='\(todo.note)',priority=\(todo.priority) ,repeatday='\(todo.repeatday)' WHERE id=\(current_index);"
-            NSLog("update todoitem"+sql)
+            NSLog("update todoitem" + sql)
             var flag_bool = DBManager.shareManager().execute_sql(sql: sql)
             if !flag_bool {
                 NSLog("update todoitem error")
             }
-            
-            
-            //update alarm error
+
+            // update alarm error
             let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
             sql = "UPDATE TodoDB SET date='\(strDate)',repeatday='\(str_repeatday)' WHERE id=\(current_index);"
-            NSLog("update alarm"+sql)
+            NSLog("update alarm" + sql)
             flag_bool = DBManager.shareManager().execute_sql(sql: sql)
             if !flag_bool {
                 NSLog("update alarm error")
@@ -237,10 +259,13 @@ extension DCClockSettingViewController {
             alarm.descriptionText = String(format: "%02x", selectedButtonTag)
             alarm.alarmOn = true
             alarm.identifier = dateFormatter.string(from: todo!.date as Date)
-            
+
             let current_id = DBManager.shareManager().find_id(date: alarm.identifier, title: (todo?.title)!)
             alarm.id = Int(current_id)
             DCAlarmManager.sharedInstance.alarmArray.append(alarm)
+            NSLog("start to turn on alarm first time")
+            let temp = alarm
+            temp.turnOnAlarm(alarm_instance: alarm)
         }
         handleCancelButtonTapped(UIButton())
         _ = navigationController?.popToRootViewController(animated: true)
@@ -256,7 +281,7 @@ extension DCClockSettingViewController {
         }
         selectedButtonTag = resultTag
 
-        let aaa = String(format: "%02x", resultTag)
-        NSLog("self.selectedButtonTag is \(aaa)")
+//        let aaa = String(format: "%02x", resultTag)
+//        NSLog("self.selectedButtonTag is \(aaa)")
     }
 }

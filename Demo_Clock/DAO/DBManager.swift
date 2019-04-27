@@ -80,6 +80,9 @@ public class DBManager {
             // 语句对象
             var statement: OpaquePointer?
             // 预处理过程
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 let cTitle = todoitem.title.cString(using: String.Encoding.utf8)
                 let strDate = dateFormatter.string(from: todoitem.date as Date)
@@ -125,6 +128,8 @@ public class DBManager {
             // 语句对象
             var statement: OpaquePointer?
             // 预处理过程
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 // 执行查询
                 while sqlite3_step(statement) == SQLITE_ROW {
@@ -179,6 +184,7 @@ public class DBManager {
 
             // 语句对象
             var statement: OpaquePointer?
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 while sqlite3_step(statement) == SQLITE_ROW {
                     let alarmitem = DCAlarm()
