@@ -35,22 +35,6 @@ class DCAlarm: NSObject {
         self.alarmOn = alarmOn
     }
 
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init()
-//        alarmDate = aDecoder.decodeObject(forKey: "alarmDate") as? Date
-//        descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as? String
-//        identifier = aDecoder.decodeObject(forKey: "identifier") as? String
-//        selectedDay = aDecoder.decodeInteger(forKey: "selectedDay")
-//        alarmOn = aDecoder.decodeBool(forKey: "alarmOn") as Bool
-//    }
-//
-//    func encode(with aCoder: NSCoder) {
-//        aCoder.encode(alarmDate, forKey: "alarmDate")
-//        aCoder.encode(descriptionText, forKey: "descriptionText")
-//        aCoder.encode(identifier, forKey: "identifier")
-//        aCoder.encode(selectedDay, forKey: "selectedDay")
-//        aCoder.encode(alarmOn, forKey: "alarmOn")
-//    }
     func getWeekday() -> Int {
         let calendar: Calendar = Calendar(identifier: .gregorian)
         var comps: DateComponents = DateComponents()
@@ -59,7 +43,7 @@ class DCAlarm: NSObject {
         let dayweek = Int(comps.weekday! - 1)
         var re = 1
         if dayweek == 0 {
-            re = 1
+            re = 64
         } else {
             for _ in 1 ..< dayweek {
                 re = re * 2
@@ -90,7 +74,7 @@ class DCAlarm: NSObject {
 
         for i in 1 ... 7 {
             if ((1 << (i - 1)) & alarm_instance.selectedDay) != 0 {
-                addLocalNotificationForDate(alarm_instance.alarmDate!, selectedDay: i,alarm_instance: alarm_instance)
+                addLocalNotificationForDate(alarm_instance.alarmDate!, selectedDay: i, alarm_instance: alarm_instance)
             }
         }
 
@@ -129,7 +113,7 @@ class DCAlarm: NSObject {
 // MARK: - PrivateMethod
 
 fileprivate extension DCAlarm {
-    fileprivate func addLocalNotificationForDate(_ date: Date, selectedDay: NSInteger,alarm_instance: DCAlarm) {
+    fileprivate func addLocalNotificationForDate(_ date: Date, selectedDay: NSInteger, alarm_instance: DCAlarm) {
         // selectedDay == 0则认为是只响一次的闹钟
         let calendar = Calendar.current
         let type: NSCalendar.Unit = [NSCalendar.Unit.year, NSCalendar.Unit.month, NSCalendar.Unit.day, NSCalendar.Unit.hour, NSCalendar.Unit.minute, NSCalendar.Unit.second, NSCalendar.Unit.weekday]
@@ -150,12 +134,12 @@ fileprivate extension DCAlarm {
         localNotification.timeZone = TimeZone.current
         localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.alertBody = "本地推送内容"
-        
+
         let title = DBManager.shareManager().get_value_byid(find: "title", id: alarm_instance.id)
         localNotification.userInfo = [
             "identifier": self.identifier, // 注意，这里不同日子同一时刻的通知公用一个identifier
             "fireDay": fireDate!,
-            "title" : title,
+            "title": title,
         ]
         UIApplication.shared.scheduleLocalNotification(localNotification)
     }
