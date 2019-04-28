@@ -131,50 +131,48 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
         return re
     }
-    
+
     func getWeekday() -> Int {
-        
         let calendar: Calendar = Calendar(identifier: .gregorian)
         var comps: DateComponents = DateComponents()
-        comps = calendar.dateComponents([.year,.month,.day, .weekday, .hour, .minute,.second], from: Date())
-        
+        comps = calendar.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: Date())
+
         let dayweek = Int(comps.weekday! - 1)
         var re = 1
-        if dayweek==0{
+        if dayweek == 0 {
             re = 1
-        }else{
-            for _ in 1..<dayweek{
-                re = re*2
+        } else {
+            for _ in 1 ..< dayweek {
+                re = re * 2
             }
         }
         return re
     }
-    
-    public func show_conflict(date:String) -> String{
+
+    public func show_conflict(date: String) -> String {
         var confict = [Int]()
         confict = DBManager.shareManager().find_confilt(strdate: date)
-        
-        if confict.count == 0{
-            
+
+        if confict.count == 0 {
             return ""
-        }else{
+        } else {
             var title_list = [String]()
-            for id in confict{
-                title_list.append("'"+DBManager.shareManager().get_value_byid(find: "title", id: id)+"'")
+            for id in confict {
+                title_list.append("'" + DBManager.shareManager().get_value_byid(find: "title", id: id) + "'")
             }
             let context = title_list.joined(separator: ",")
-            
+
             return context
         }
     }
-    
+
 //    public func date_confilt_alarm(date:String) -> Bool{
 //        let date_list = DBManager.shareManager().find_confilt(strdate: date)
 //        if date_list.count==0{
 //            return false
 //        }else{
-////            let sql = "SELECT title FROM TodoDB WHERE date='\(date)';"
-////            let title_list = DBManager.shareManager().get_result_by_sql(sql: sql)
+    ////            let sql = "SELECT title FROM TodoDB WHERE date='\(date)';"
+    ////            let title_list = DBManager.shareManager().get_result_by_sql(sql: sql)
 //            var title_list = [String]()
 //            for id in date_list{
 //                title_list.append("'"+DBManager.shareManager().get_value_byid(find: "title", id: id)+"'")
@@ -189,8 +187,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
 // MARK: - PrivateMethod
 
-
-//---
+// ---
 
 extension DCClockSettingViewController {
 //    func test() {
@@ -216,9 +213,7 @@ extension DCClockSettingViewController {
 
 // MARK: - Action
 
-
-
-//----
+// ----
 extension DCClockSettingViewController {
     @IBAction func handleCancelButtonTapped(_: UIButton) {
         dismiss(animated: true) { () -> Void in
@@ -230,22 +225,20 @@ extension DCClockSettingViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
         let conflict_context = show_conflict(date: dateFormatter.string(from: datePicker.date))
-        
-        //find conlict and show
-        if conflict_context != ""{
+
+        // find conlict and show
+        if conflict_context != "" {
             let alert = UIAlertView(title: "提醒", message: "当前设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             return
         }
-        
-        
+
         // add todo item------------------------
         if let todo = todo {
-            
             todo.date = datePicker.date
             var strDate = dateFormatter.string(from: todo.date as Date)
             let current_index = DBManager.shareManager().find_id(date: strDate, title: todo.title)
-    
+
             todo.note = todoNote.text!
             todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
             strDate = dateFormatter.string(from: todo.date as Date)
