@@ -227,12 +227,12 @@ extension DCClockSettingViewController {
 
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
         let conflict_context = show_conflict(date: dateFormatter.string(from: datePicker.date))
-        //find conlict
+        //find conlict and sho
         if conflict_context != ""{
-            let alert = UIAlertView(title: "提醒", message: "您设定的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "提醒", message: "设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             return
         }

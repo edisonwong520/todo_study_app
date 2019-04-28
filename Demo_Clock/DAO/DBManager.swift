@@ -24,7 +24,7 @@ public class DBManager {
         // 初始化沙箱目录中属性列表文件路径
         instance.plistFilePath = instance.applicationDocumentsDirectoryFile()
         // 初始化DateFormatter
-        instance.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        instance.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         // 初始化属性列表文件
         instance.createEditableCopyOfDatabaseIfNeeded()
         return instance
@@ -69,7 +69,7 @@ public class DBManager {
             var statement: OpaquePointer?
             // 预处理过程
 
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 let cTitle = todoitem.title.cString(using: String.Encoding.utf8)
@@ -117,7 +117,7 @@ public class DBManager {
             var statement: OpaquePointer?
             // 预处理过程
 
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 // 执行查询
                 while sqlite3_step(statement) == SQLITE_ROW {
@@ -172,7 +172,7 @@ public class DBManager {
 
             // 语句对象
             var statement: OpaquePointer?
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 while sqlite3_step(statement) == SQLITE_ROW {
                     let alarmitem = DCAlarm()
@@ -315,7 +315,7 @@ public class DBManager {
         } else {
             // id1
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             let strdate1 = dateFormatter.string(from: todo1.date)
             let strtitle1 = todo1.title
             let id1 = find_id(date: strdate1, title: strtitle1)
@@ -378,12 +378,14 @@ public class DBManager {
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 // 执行查询
                 while sqlite3_step(statement) == SQLITE_ROW {
-                    let strid = getColumnValue(index: 1, stmt: statement!)
+                    
+                    let strid = getColumnValue(index: 0, stmt: statement!)
                     id_list.append(Int(strid!)!)
 
-                    sqlite3_close(db)
-                    sqlite3_finalize(statement)
+                    
                 }
+                sqlite3_close(db)
+                sqlite3_finalize(statement)
                 return id_list
             }
         }
