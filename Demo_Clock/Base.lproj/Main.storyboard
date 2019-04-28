@@ -48,49 +48,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ic-oz-V5o">
-                                                    <rect key="frame" x="48" y="36" width="253" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-H7-c3v">
-                                                    <rect key="frame" x="311" y="14.333333333333336" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="handleSwitchTapped:" destination="ObN-cV-T9M" eventType="valueChanged" id="2FN-rY-IuM"/>
-                                                    </connections>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swm-Ja-wyl">
-                                                    <rect key="frame" x="15" y="22.333333333333332" width="25" height="14.999999999999996"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="12：00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34C-AO-38d">
-                                                    <rect key="frame" x="48" y="8" width="253" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ic-oz-V5o">
+                                                    <rect key="frame" x="15" y="11" width="51" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-H7-c3v">
+                                                    <rect key="frame" x="311" y="14.333333333333336" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="handleSwitchTapped:" destination="ObN-cV-T9M" eventType="valueChanged" id="2FN-rY-IuM"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="12：00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34C-AO-38d">
+                                                    <rect key="frame" x="15" y="33" width="44" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="xdR-H7-c3v" firstAttribute="leading" secondItem="34C-AO-38d" secondAttribute="trailing" constant="10" id="Bub-cb-sN5"/>
-                                                <constraint firstItem="xdR-H7-c3v" firstAttribute="leading" secondItem="0ic-oz-V5o" secondAttribute="trailing" constant="10" id="M3V-4t-yrR"/>
-                                                <constraint firstItem="Swm-Ja-wyl" firstAttribute="centerY" secondItem="25t-es-Dc2" secondAttribute="centerY" id="bKM-w9-aqm"/>
-                                                <constraint firstItem="0ic-oz-V5o" firstAttribute="top" secondItem="34C-AO-38d" secondAttribute="bottom" constant="4" id="cRP-uR-NeB"/>
-                                                <constraint firstItem="34C-AO-38d" firstAttribute="top" secondItem="25t-es-Dc2" secondAttribute="top" constant="8" id="dVR-lV-8US"/>
-                                                <constraint firstItem="Swm-Ja-wyl" firstAttribute="leading" secondItem="25t-es-Dc2" secondAttribute="leading" constant="15" id="f9O-bW-bnC"/>
-                                                <constraint firstItem="34C-AO-38d" firstAttribute="leading" secondItem="Swm-Ja-wyl" secondAttribute="trailing" constant="8" id="mVd-Mt-Zch"/>
-                                                <constraint firstAttribute="trailing" secondItem="xdR-H7-c3v" secondAttribute="trailing" constant="15" id="pZ2-9e-kso"/>
-                                                <constraint firstItem="xdR-H7-c3v" firstAttribute="centerY" secondItem="25t-es-Dc2" secondAttribute="centerY" id="sIg-pF-hOT"/>
-                                                <constraint firstItem="0ic-oz-V5o" firstAttribute="leading" secondItem="34C-AO-38d" secondAttribute="leading" id="tHV-tB-zlW"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="alarmSwith" destination="xdR-H7-c3v" id="bmF-0d-GCa"/>
                                             <outlet property="dateLabel" destination="34C-AO-38d" id="r3V-7g-Aqg"/>
                                             <outlet property="descriptionLabel" destination="0ic-oz-V5o" id="3dh-JZ-WhX"/>
-                                            <outlet property="tipLabel" destination="Swm-Ja-wyl" id="1UH-Eg-xS3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -115,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54.399999999999999" y="114.24287856071965"/>
+            <point key="canvasLocation" x="53.600000000000001" y="113.79310344827587"/>
         </scene>
         <!--Clock Setting View Controller-->
         <scene sceneID="Xin-VA-mhN">

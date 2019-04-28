@@ -1,9 +1,9 @@
 //
 //  LXMConfigExtentsion.swift
-//  Instagram_ouj
+//  Todo
 //
-//  Created by luxiaoming on 16/2/1.
-//  Copyright © 2016年 com.ouj. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,9 @@
 //
 //  LXMBaseViewController.swift
-//  S_ojia
+//  Todo
 //
-//  Created by luxiaoming on 15/12/15.
-//  Copyright © 2015年 luxiaoming. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 let kDefaultNumberOfTouchesRequired = 2

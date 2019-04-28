@@ -1,5 +1,5 @@
 //
-//  DBManager.swift
+//  DCAlarmCell.swift
 //  Todo
 //
 //  Created by edison on 2019/4/25.
@@ -43,8 +43,8 @@ class DCAlarmCell: UITableViewCell {
         if let date = alarm.alarmDate {
             self.dateLabel.text = dateFormatter.string(from: date as Date)
         }
-        
-        self.descriptionLabel.text = alarm.descriptionText
+        let title = DBManager.shareManager().get_value_byid(find: "title", id: alarm.id)
+        self.descriptionLabel.text = title
         self.alarmSwith.isOn = alarm.alarmOn
     }
     //open and close 

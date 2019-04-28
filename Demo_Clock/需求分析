@@ -1,7 +1,7 @@
 需求分析
 CRUD   ☑️
 SQLite存储    ☑️
-时间到了提醒
+时间到了提醒   ☑️
 时间冲突解决（提建议）
 记录学习进度
 生成学习曲线（比如一天学了多少小时）
@@ -11,32 +11,28 @@ SQLite存储    ☑️
 
 
 数据库设计
-	id
-    var title: String
+todo item
+	var title: String
     var note: String
     var date: Date
     var priority: Int
     var repeatday: String
+    var alarmOn: Bool
 
+DCAlarm
     var alarmDate: Date?
-    var descriptionText: String?
-    var identifier: String?
-    var selectedDay: Int = 0
-    var alarmOn: Bool = false
-
-
-    id
-    var title: String
-    var note: String
-    var date: Date
-    var priority: Int
-    var repeatday: String
-    var alarmOn: Bool = false
+    var descriptionText: String
+    var identifier: String
+    var selectedDay: Int
+    var alarmOn: Bool
+    var id: Int
     
+table
+id INTEGER PRIMARY KEY AUTOINCREMENT
+title VARCHAR
+note TEXT
+date DATETIME
+priority INTEGER
+repeatday VARCHAR(10)
+alarmOn INTEGER
 
-
-
-CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY , title VARCHAR,note TEXT,date DATETIME,priority INTEGER
-
-
-/Users/edison/Library/Developer/CoreSimulator/Devices/E3EEE923-7B86-4B03-A9F8-A75CFC9AE48E/data/Containers/Data/Application/DD7E6F07-46C9-461C-B842-6351F08C057B/Documents/tododb.sqlite3
