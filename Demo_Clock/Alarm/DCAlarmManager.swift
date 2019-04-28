@@ -17,6 +17,4 @@ class DCAlarmManager {
     fileprivate init() {
         alarmArray = DBManager.shareManager().find_all_alarm() as! [DCAlarm]
     }
-
-
 }

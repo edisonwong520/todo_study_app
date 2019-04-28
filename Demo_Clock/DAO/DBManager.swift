@@ -238,21 +238,21 @@ public class DBManager {
 
         return false
     }
-    
+
     // excute a sql and get result
     public func get_result_by_sql(sql: String) -> [String] {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
-        
+
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("db open failed")
             return []
         } else {
             let cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             // 语句对象
             var statement: OpaquePointer?
             // 预处理过程
-            
+
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 if sqlite3_step(statement) != SQLITE_DONE {
                     // error output
@@ -273,9 +273,8 @@ public class DBManager {
                     return result_list
                 }
             }
-            
         }
-        
+
         return []
     }
 
@@ -345,7 +344,6 @@ public class DBManager {
             }
         }
     }
-    
 
     public func drop_table() {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
@@ -378,11 +376,8 @@ public class DBManager {
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 // 执行查询
                 while sqlite3_step(statement) == SQLITE_ROW {
-                    
                     let strid = getColumnValue(index: 0, stmt: statement!)
                     id_list.append(Int(strid!)!)
-
-                    
                 }
                 sqlite3_close(db)
                 sqlite3_finalize(statement)
@@ -446,6 +441,4 @@ public class DBManager {
             return 0
         }
     }
-
-
 }

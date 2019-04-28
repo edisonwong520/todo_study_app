@@ -11,19 +11,17 @@ import UIKit
 let DCAlarmCellIdentifier = "DCAlarmCell"
 let kDCAlarmCellHeight = 60
 
-
 class DCAlarmCell: UITableViewCell {
+    @IBOutlet var tipLabel: UILabel!
 
-    @IBOutlet weak var tipLabel: UILabel!
-    
-    @IBOutlet weak var dateLabel: UILabel!
-    
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
-    @IBOutlet weak var alarmSwith: UISwitch!
-    
+    @IBOutlet var dateLabel: UILabel!
+
+    @IBOutlet var descriptionLabel: UILabel!
+
+    @IBOutlet var alarmSwith: UISwitch!
+
     fileprivate var alarm: DCAlarm?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,35 +33,30 @@ class DCAlarmCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
-    func configWithAlarm(_ alarm: DCAlarm, indexPath: IndexPath) {
+    func configWithAlarm(_ alarm: DCAlarm, indexPath _: IndexPath) {
         self.alarm = alarm
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         if let date = alarm.alarmDate {
-            self.dateLabel.text = dateFormatter.string(from: date as Date)
+            dateLabel.text = dateFormatter.string(from: date as Date)
         }
         let title = DBManager.shareManager().get_value_byid(find: "title", id: alarm.id)
-        self.descriptionLabel.text = title
-        self.alarmSwith.isOn = alarm.alarmOn
+        descriptionLabel.text = title
+        alarmSwith.isOn = alarm.alarmOn
     }
-    //open and close 
+
+    // open and close
     @IBAction func handleSwitchTapped(_ sender: UISwitch) {
         if let tempAlarm = self.alarm {
             if sender.isOn {
-                tempAlarm.turnOnAlarm(alarm_instance: self.alarm!)
+                tempAlarm.turnOnAlarm(alarm_instance: alarm!)
                 NSLog("turn on alarm")
             } else {
-                tempAlarm.turnOffAlarm(alarm_instance: self.alarm!)
+                tempAlarm.turnOffAlarm(alarm_instance: alarm!)
                 NSLog("turn off alarm")
             }
-            
         }
-        
-        
     }
-    func judge_operate(){
-        
-    }
-    
+
+    func judge_operate() {}
 }

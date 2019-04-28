@@ -6,7 +6,6 @@
 //  Copyright © 2019年 EDC. All rights reserved.
 //
 
-import UIKit
 import SQLite3
 import UIKit
 //todos_list record current list
@@ -45,11 +44,12 @@ fileprivate extension DCHomeViewController {
     func setupTableView() {
         tableView.tableFooterView = UIView()
     }
+
     //top button
     func setupNavigationBar() {
         let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(DCHomeViewController.handleAddItemTapped(_:)))
         navigationItem.rightBarButtonItem = addItem
-        
+
         navigationItem.leftBarButtonItem = editButtonItem
     }
 }
@@ -78,18 +78,18 @@ extension DCHomeViewController: UITableViewDataSource {
         return cell
     }
 
-    //delete the cell
+    // delete the cell
     func tableView(_ tableView: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let item = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
         if let index = DCAlarmManager.sharedInstance.alarmArray.index(of: item) {
             let id_get = DCAlarmManager.sharedInstance.alarmArray[index].id
             DCAlarmManager.sharedInstance.alarmArray.remove(at: index)
-            
+
             let sql = "DELETE FROM TodoDB WHERE id=\(id_get);"
             let boolflag = DBManager.shareManager().execute_sql(sql: sql)
-            if boolflag{
+            if boolflag {
                 NSLog("delete from db success, ")
-            }else{
+            } else {
                 NSLog("delete from db failed, ")
             }
             tableView.deleteRows(at: [indexPath], with: .left)
@@ -108,27 +108,24 @@ extension DCHomeViewController: UITableViewDelegate {
 
         })
     }
-     //Edit mode
+
+    // Edit mode
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: true)
     }
-    
+
     // Move the cell
     func tableView(_: UITableView, canMoveRowAt _: IndexPath) -> Bool {
         return isEditing
     }
-    
-    
+
     func tableView(_: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let todo = todos_list.remove(at: (sourceIndexPath as NSIndexPath).row)
         todos_list.insert(todo, at: (destinationIndexPath as NSIndexPath).row)
-        
+
         var alarm_instance = DCAlarmManager.sharedInstance.alarmArray.remove(at: (sourceIndexPath as NSIndexPath).row)
         DCAlarmManager.sharedInstance.alarmArray.insert(alarm_instance, at: (destinationIndexPath as NSIndexPath).row)
 //        DCAlarmManager.sharedInstance.save()
-        
-        
     }
-    
 }
