@@ -230,9 +230,10 @@ extension DCClockSettingViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
         let conflict_context = show_conflict(date: dateFormatter.string(from: datePicker.date))
-        //find conlict and sho
+        
+        //find conlict and show
         if conflict_context != ""{
-            let alert = UIAlertView(title: "提醒", message: "设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "提醒", message: "当前设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             return
         }
