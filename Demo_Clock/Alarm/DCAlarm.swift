@@ -133,9 +133,10 @@ fileprivate extension DCAlarm {
         localNotification.repeatInterval = selectedDay == 0 ? NSCalendar.Unit(rawValue: 0) : repeateInterval
         localNotification.timeZone = TimeZone.current
         localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.alertBody = "本地推送内容"
-
         let title = DBManager.shareManager().get_value_byid(find: "title", id: alarm_instance.id)
+        localNotification.alertBody = "您设定的 '\(title)' 时间到了"
+
+        
         localNotification.userInfo = [
             "identifier": self.identifier, // 注意，这里不同日子同一时刻的通知公用一个identifier
             "fireDay": fireDate!,

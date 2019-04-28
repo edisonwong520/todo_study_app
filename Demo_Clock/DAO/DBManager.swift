@@ -18,18 +18,6 @@ public class DBManager {
     // 私有沙箱目录中属性列表文件路径
     private var plistFilePath: String!
 
-//    public static let sharedInstance: DBManager = {
-//        let instance = DBManager()
-//
-//        //初始化沙箱目录中属性列表文件路径
-//        instance.plistFilePath = instance.applicationDocumentsDirectoryFile()
-//        //初始化DateFormatter
-//        instance.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        //初始化属性列表文件
-//        instance.createEditableCopyOfDatabaseIfNeeded()
-//
-//        return instance
-//    }()
     private static let instance: DBManager = DBManager()
     // 单例
     class func shareManager() -> DBManager {
@@ -80,9 +68,9 @@ public class DBManager {
             // 语句对象
             var statement: OpaquePointer?
             // 预处理过程
-            
+
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
+
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 let cTitle = todoitem.title.cString(using: String.Encoding.utf8)
                 let strDate = dateFormatter.string(from: todoitem.date as Date)
@@ -128,7 +116,7 @@ public class DBManager {
             // 语句对象
             var statement: OpaquePointer?
             // 预处理过程
-            
+
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 // 执行查询
@@ -250,6 +238,46 @@ public class DBManager {
 
         return false
     }
+    
+    // excute a sql and get result
+    public func get_result_by_sql(sql: String) -> [String] {
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            return []
+        } else {
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            
+            // 语句对象
+            var statement: OpaquePointer?
+            // 预处理过程
+            
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                if sqlite3_step(statement) != SQLITE_DONE {
+                    // error output
+                    if let error = String(validatingUTF8: sqlite3_errmsg(db)) {
+                        NSLog("wrong sql:\(sql)")
+                        NSLog(error)
+                    }
+                    return []
+                } else {
+                    var result_list = [String]()
+                    while sqlite3_step(statement) == SQLITE_ROW {
+                        if let str = getColumnValue(index: 0, stmt: statement!) {
+                            result_list.append(str)
+                        }
+                    }
+                    sqlite3_close(db)
+                    sqlite3_finalize(statement)
+                    return result_list
+                }
+            }
+            
+        }
+        
+        return []
+    }
 
     // find id
     public func find_id(date: String, title: String) -> Int {
@@ -317,6 +345,7 @@ public class DBManager {
             }
         }
     }
+    
 
     public func drop_table() {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
@@ -332,13 +361,41 @@ public class DBManager {
             }
         }
     }
-    
-    //获取字段
-    public func get_value_byid(find:String,id:Int)-> String{
+
+    // find conflict
+    public func find_confilt(strdate: String) -> [Int] {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("db open failed")
-            
+
+        } else {
+            var id_list = [Int]()
+
+            let sql = "SELECT id,date FROM TodoDB WHERE date='\(strdate)';"
+            NSLog("find confilt sql:\(sql)")
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                // 执行查询
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    let strid = getColumnValue(index: 1, stmt: statement!)
+                    id_list.append(Int(strid!)!)
+
+                    sqlite3_close(db)
+                    sqlite3_finalize(statement)
+                }
+                return id_list
+            }
+        }
+        return []
+    }
+
+    // 获取字段
+    public func get_value_byid(find: String, id: Int) -> String {
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+
         } else {
             let sql = "SELECT \(find) FROM TodoDB WHERE id=\(id);"
             NSLog("get value by id sql:\(sql)")
@@ -360,7 +417,7 @@ public class DBManager {
         }
         return ""
     }
-    
+
     // 获得字段数据
     private func getColumnValue(index: CInt, stmt: OpaquePointer) -> String? {
         if let ptr = UnsafeRawPointer(sqlite3_column_text(stmt, index)) {
@@ -388,7 +445,5 @@ public class DBManager {
         }
     }
 
-//    func get_seleted_int(str: String) -> Int {
-//        return Int(str, radix: 2)!
-//    }
+
 }

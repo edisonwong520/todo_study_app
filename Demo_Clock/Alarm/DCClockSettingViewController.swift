@@ -149,6 +149,42 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
         return re
     }
+    
+    public func show_conflict(date:String) -> String{
+        var confict = [Int]()
+        confict = DBManager.shareManager().find_confilt(strdate: date)
+        
+        if confict.count == 0{
+            
+            return ""
+        }else{
+            var title_list = [String]()
+            for id in confict{
+                title_list.append("'"+DBManager.shareManager().get_value_byid(find: "title", id: id)+"'")
+            }
+            let context = title_list.joined(separator: ",")
+            
+            return context
+        }
+    }
+    
+//    public func date_confilt_alarm(date:String) -> Bool{
+//        let date_list = DBManager.shareManager().find_confilt(strdate: date)
+//        if date_list.count==0{
+//            return false
+//        }else{
+////            let sql = "SELECT title FROM TodoDB WHERE date='\(date)';"
+////            let title_list = DBManager.shareManager().get_result_by_sql(sql: sql)
+//            var title_list = [String]()
+//            for id in date_list{
+//                title_list.append("'"+DBManager.shareManager().get_value_byid(find: "title", id: id)+"'")
+//            }
+//            let context = title_list.joined(separator: ",")
+//            let alert = UIAlertView(title: "提醒", message: "您设定的 " + context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
+//            alert.show()
+//            return true
+//        }
+//    }
 }
 
 // MARK: - PrivateMethod
@@ -190,17 +226,25 @@ extension DCClockSettingViewController {
     }
 
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
-
-
-        // add todo item------------------------
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
+        let conflict_context = show_conflict(date: dateFormatter.string(from: datePicker.date))
+        //find conlict
+        if conflict_context != ""{
+            let alert = UIAlertView(title: "提醒", message: "您设定的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+            return
+        }
+        
+        
+        // add todo item------------------------
         if let todo = todo {
+            
+            todo.date = datePicker.date
             var strDate = dateFormatter.string(from: todo.date as Date)
             let current_index = DBManager.shareManager().find_id(date: strDate, title: todo.title)
-
-            todo.date = datePicker.date
+    
             todo.note = todoNote.text!
             todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
             strDate = dateFormatter.string(from: todo.date as Date)
