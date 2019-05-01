@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import RichEditorView
 
 class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     @IBOutlet var datePicker: UIDatePicker!
+    
+    @IBOutlet var editorView: RichEditorView!
+    
     @IBOutlet var todoTitleLabel: UITextField!
+    
     @IBOutlet var cancelButton: UIButton!
 
     @IBOutlet var confirmButton: UIButton!
 
     @IBOutlet var priorityPicker: UIPickerView!
+    
     @IBOutlet var todoNote: UITextView!
     // button的tag为1-7，在xib中设置
     @IBOutlet var mondayButton: UIButton!
@@ -36,6 +42,12 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
     fileprivate var targetAlarm: DCAlarm!
 
+    lazy var toolbar: RichEditorToolbar = {
+        let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
+        toolbar.options = RichEditorDefaultOption.all
+        return toolbar
+    }()
+    
     fileprivate var buttonArray: [UIButton] {
         return [mondayButton, tuesdayButton, wednesdayButton, thursdayButton, fridayButton, saturdayButton, sundayButton]
     }
@@ -90,6 +102,24 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editorView.delegate = self
+        editorView.inputAccessoryView = toolbar
+        editorView.placeholder = "Type some text..."
+        
+        toolbar.delegate = self
+        toolbar.editor = editorView
+        
+        let item = RichEditorOptionItem(image: nil, title: "Clear") { toolbar in
+            toolbar.editor?.html = ""
+        }
+        
+        var options = toolbar.options
+        options.append(item)
+        toolbar.options = options
+    }
+    
+        //----
         selectedButtonTag = getWeekday()
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
@@ -302,5 +332,44 @@ extension DCClockSettingViewController {
 
 //        let aaa = String(format: "%02x", resultTag)
 //        NSLog("self.selectedButtonTag is \(aaa)")
+    }
+}
+
+
+extension ViewController: RichEditorToolbarDelegate {
+    
+    fileprivate func randomColor() -> UIColor {
+        let colors: [UIColor] = [
+            .red,
+            .orange,
+            .yellow,
+            .green,
+            .blue,
+            .purple
+        ]
+        
+        let color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
+        return color
+    }
+    
+    func richEditorToolbarChangeTextColor(_ toolbar: RichEditorToolbar) {
+        let color = randomColor()
+        toolbar.editor?.setTextColor(color)
+    }
+    
+    func richEditorToolbarChangeBackgroundColor(_ toolbar: RichEditorToolbar) {
+        let color = randomColor()
+        toolbar.editor?.setTextBackgroundColor(color)
+    }
+    
+    func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
+        toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
+    }
+    
+    func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {
+        // Can only add links to selected text, so make sure there is a range selection first
+        if toolbar.editor?.hasRangeSelection == true {
+            toolbar.editor?.insertLink("http://github.com/cjwirth/RichEditorView", title: "Github Link")
+        }
     }
 }

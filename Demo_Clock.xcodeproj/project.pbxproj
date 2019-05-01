@@ -24,6 +24,7 @@
 		433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A26FB1C5121E200251D82 /* DCAlarmManager.swift */; };
 		4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358B97E1C5071950081E3A5 /* DCAlarm.swift */; };
 		436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */; };
+		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */; };
 		B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABC227456EF00C59E95 /* DBManager.swift */; };
 		B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */; };
@@ -70,6 +71,7 @@
 		433A26FB1C5121E200251D82 /* DCAlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarmManager.swift; sourceTree = "<group>"; };
 		4358B97E1C5071950081E3A5 /* DCAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarm.swift; sourceTree = "<group>"; };
 		436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMConfigExtentsion.swift; sourceTree = "<group>"; };
+		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		B7BF6ABC227456EF00C59E95 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */,
 				B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */,
+				B765AE252279AEFE0024CAE7 /* RichEditorView.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,6 +213,7 @@
 				430DA2831C4F81BB00C4E60C /* Sources */,
 				430DA2841C4F81BB00C4E60C /* Frameworks */,
 				430DA2851C4F81BB00C4E60C /* Resources */,
+				B765AE272279AF1B0024CAE7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -329,6 +334,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B765AE272279AF1B0024CAE7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RichEditorView.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RichEditorView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		430DA2831C4F81BB00C4E60C /* Sources */ = {
@@ -495,6 +522,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 39Y84BAFQJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo_Clock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -511,6 +542,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 39Y84BAFQJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo_Clock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
