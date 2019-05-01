@@ -129,8 +129,9 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				B765AE332279BF450024CAE7 /* Note */,
 				B7BF6ABA227456EF00C59E95 /* DAO */,
-				430DA2C11C4F848100C4E60C /* Alarm */,
+				430DA2C11C4F848100C4E60C /* Todo */,
 				430DA2B81C4F820900C4E60C /* LXMKit */,
 				430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */,
 				430DA28E1C4F81BC00C4E60C /* Main.storyboard */,
@@ -172,7 +173,7 @@
 			path = LXMKit;
 			sourceTree = "<group>";
 		};
-		430DA2C11C4F848100C4E60C /* Alarm */ = {
+		430DA2C11C4F848100C4E60C /* Todo */ = {
 			isa = PBXGroup;
 			children = (
 				430DA2C21C4F84EB00C4E60C /* DCHomeViewController.swift */,
@@ -181,7 +182,14 @@
 				433A26F91C51094B00251D82 /* DCAlarmCell.swift */,
 				433A26FB1C5121E200251D82 /* DCAlarmManager.swift */,
 			);
-			path = Alarm;
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		B765AE332279BF450024CAE7 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Note;
 			sourceTree = "<group>";
 		};
 		B7BF6ABA227456EF00C59E95 /* DAO */ = {
