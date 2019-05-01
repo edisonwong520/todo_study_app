@@ -176,6 +176,7 @@
 		430DA2C11C4F848100C4E60C /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */,
 				430DA2C21C4F84EB00C4E60C /* DCHomeViewController.swift */,
 				430DA2C41C4F858B00C4E60C /* DCClockSettingViewController.swift */,
 				4358B97E1C5071950081E3A5 /* DCAlarm.swift */,
@@ -195,7 +196,6 @@
 		B7BF6ABA227456EF00C59E95 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */,
 				B7BF6ABC227456EF00C59E95 /* DBManager.swift */,
 				B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */,
 			);
