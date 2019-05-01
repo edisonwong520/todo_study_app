@@ -8,18 +8,11 @@
 
 import UIKit
 
-let TDAlarmCellIdentifier = "TDAlarmCell"
+let NoteCellIdentifier = "NoteCell"
 let kTDAlarmCellHeight = 60
 
 class NoteCell: UITableViewCell {
-    @IBOutlet var tipLabel: UILabel!
-
-    @IBOutlet var dateLabel: UILabel!
-
-    @IBOutlet var descriptionLabel: UILabel!
-
-    @IBOutlet var alarmSwith: UISwitch!
-
+    @IBOutlet var title: UILabel!
 //    fileprivate var alarm: TDAlarm?
 
     override func awakeFromNib() {
@@ -33,30 +26,10 @@ class NoteCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-//    func configWithAlarm(_ alarm: TDAlarm, indexPath _: IndexPath) {
-//        self.alarm = alarm
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "HH:mm"
-//        if let date = alarm.alarmDate {
-//            dateLabel.text = dateFormatter.string(from: date as Date)
-//        }
-//        let title = DBManager.shareManager().get_value_byid(find: "title", id: alarm.id)
-//        descriptionLabel.text = title
-//        alarmSwith.isOn = alarm.alarmOn
-//    }
-//
-//    // open and close
-//    @IBAction func handleSwitchTapped(_ sender: UISwitch) {
-//        if let tempAlarm = self.alarm {
-//            if sender.isOn {
-//                tempAlarm.turnOnAlarm(alarm_instance: alarm!)
-//                NSLog("turn on alarm")
-//            } else {
-//                tempAlarm.turnOffAlarm(alarm_instance: alarm!)
-//                NSLog("turn off alarm")
-//            }
-//        }
-//    }
 
     func judge_operate() {}
+    
+    func configWithNote(_ note: NoteItem, indexPath _: IndexPath) {
+        
+    }
 }

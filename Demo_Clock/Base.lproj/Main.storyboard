@@ -45,35 +45,6 @@
             </objects>
             <point key="canvasLocation" x="-1943" y="-318"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="CCz-yM-GJB">
-            <objects>
-                <tableViewController id="x3e-Bd-u3e" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xgg-W7-3rh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cMF-ys-8Mh">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cMF-ys-8Mh" id="KhD-b8-oXb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="x3e-Bd-u3e" id="fgH-v0-Fbf"/>
-                            <outlet property="delegate" destination="x3e-Bd-u3e" id="Nvr-zy-QTF"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="4dE-q4-P7q"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2JO-io-oCN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="191" y="-714"/>
-        </scene>
         <!--Item-->
         <scene sceneID="ZQZ-18-VPK">
             <objects>
@@ -83,9 +54,6 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="x3e-Bd-u3e" kind="relationship" relationship="rootViewController" id="OwM-iD-pfX"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhN-DH-UVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,7 +338,7 @@
         <!--Note Setting View Controller-->
         <scene sceneID="hVn-AE-acN">
             <objects>
-                <viewController storyboardIdentifier="DCClockSettingViewController" id="4Kq-xT-NLL" customClass="NoteSettingViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteSettingViewController" id="4Kq-xT-NLL" customClass="NoteSettingViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0U0-jv-cot"/>
                         <viewControllerLayoutGuide type="bottom" id="gQz-jH-4r2"/>
@@ -402,6 +370,7 @@
                     <connections>
                         <outlet property="done" destination="0yS-C1-ZG0" id="xt1-Tw-xlR"/>
                         <outlet property="editor" destination="Nhc-X2-OuR" id="Mzq-3w-fPP"/>
+                        <outlet property="editorView" destination="Nhc-X2-OuR" id="Yfu-vc-TDY"/>
                         <outlet property="notetitle" destination="ZkL-ZF-prv" id="xjJ-Cn-vbE"/>
                         <outlet property="title" destination="ZkL-ZF-prv" id="D9q-cp-Trl"/>
                         <outlet property="todoTitleLabel" destination="ZkL-ZF-prv" id="tGW-KJ-qts"/>
@@ -410,6 +379,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UV1-pW-zrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1050.4000000000001" y="-715.27093596059115"/>
+        </scene>
+        <!--Note Home View Controller-->
+        <scene sceneID="s1b-0m-Rpo">
+            <objects>
+                <viewController storyboardIdentifier="NoteHomeViewController" id="m4y-2O-IK7" customClass="NoteHomeViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OzM-9b-0li"/>
+                        <viewControllerLayoutGuide type="bottom" id="oIg-FF-89C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hrn-fb-RiA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="811-zH-Ygt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DCAlarmCell" rowHeight="60" id="m7Z-Ok-5C3" customClass="NoteCell" customModule="Demo_Clock" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m7Z-Ok-5C3" id="K3X-sX-o5B">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AS-IM-bMh">
+                                                    <rect key="frame" x="15" y="11" width="98" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="5AS-IM-bMh" id="oZA-Gq-0OX"/>
+                                            <outlet property="title" destination="5AS-IM-bMh" id="MjU-uj-gem"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="m4y-2O-IK7" id="sdC-G8-gSS"/>
+                                    <outlet property="delegate" destination="m4y-2O-IK7" id="vuZ-JM-5sG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="811-zH-Ygt" firstAttribute="top" secondItem="hrn-fb-RiA" secondAttribute="top" id="AVG-GG-cPA"/>
+                            <constraint firstAttribute="trailing" secondItem="811-zH-Ygt" secondAttribute="trailing" id="EGI-KQ-QLi"/>
+                            <constraint firstItem="811-zH-Ygt" firstAttribute="leading" secondItem="hrn-fb-RiA" secondAttribute="leading" id="Tgh-KE-Kdr"/>
+                            <constraint firstItem="oIg-FF-89C" firstAttribute="top" secondItem="811-zH-Ygt" secondAttribute="bottom" id="lrg-TS-YGz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QiG-IT-blD"/>
+                    <connections>
+                        <outlet property="tableView" destination="811-zH-Ygt" id="CDz-aj-QlW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXX-KR-OYB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="-715.27093596059115"/>
         </scene>
     </scenes>
 </document>

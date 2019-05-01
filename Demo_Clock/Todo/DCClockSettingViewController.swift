@@ -101,23 +101,6 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        editorView.delegate = self as? RichEditorDelegate
-        editorView.inputAccessoryView = toolbar
-        editorView.placeholder = "Type some text..."
-        
-        toolbar.delegate = self
-        toolbar.editor = editorView
-        
-        // We will create a custom action that clears all the input text when it is pressed
-        let item = RichEditorOptionItem(image: nil, title: "Clear") { toolbar in
-            toolbar.editor?.html = ""
-        }
-        
-        var options = toolbar.options
-        options.append(item)
-        toolbar.options = options
-    
-        
         //----
         selectedButtonTag = getWeekday()
         priorityPicker.delegate = self

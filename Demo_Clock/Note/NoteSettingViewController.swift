@@ -64,6 +64,12 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    class func loadFromStroyboardWithTargetAlarm(_ alarm: NoteItem?) -> NoteSettingViewController {
+        let viewController = NoteSettingViewController.swift_loadFromStoryboard("Main")
+        
+        return viewController
+    }
 }
 
 

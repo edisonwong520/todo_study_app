@@ -58,9 +58,9 @@ fileprivate extension NoteHomeViewController {
 
 extension NoteHomeViewController {
     func handleAddItemTapped(_: UIBarButtonItem) {
-        let clockSettingViewController = TDClockSettingViewController.loadFromStroyboardWithTargetAlarm(nil)
-        clockSettingViewController.hidesBottomBarWhenPushed = true
-        navigationController?.present(clockSettingViewController, animated: true, completion: { () -> Void in
+        let noteSettingViewController = NoteSettingViewController.loadFromStroyboardWithTargetAlarm(nil)
+        noteSettingViewController.hidesBottomBarWhenPushed = true
+        navigationController?.present(noteSettingViewController, animated: true, completion: { () -> Void in
 
         })
     }
@@ -73,9 +73,10 @@ extension NoteHomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TDAlarmCellIdentifier) as! TDAlarmCell
-        let alarm = NoteManager.sharedInstance.noteArray[indexPath.row]
-        cell.configWithAlarm(alarm, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NoteCellIdentifier) as! NoteCell
+        let note = NoteManager.sharedInstance.noteArray[indexPath.row]
+        //set defualt config
+        cell.configWithNote(note, indexPath: indexPath)
         return cell
     }
 
@@ -86,12 +87,12 @@ extension NoteHomeViewController: UITableViewDataSource {
             let id_get = NoteManager.sharedInstance.noteArray[index].id
             NoteManager.sharedInstance.noteArray.remove(at: index)
 
-            let sql = "DELETE FROM TodoDB WHERE id=\(id_get);"
+            let sql = "DELETE FROM NoteDB WHERE id=\(id_get);"
             let boolflag = DBManager.shareManager().execute_sql(sql: sql)
             if boolflag {
-                NSLog("delete from db success, ")
+                NSLog("delete from notedb success, ")
             } else {
-                NSLog("delete from db failed, ")
+                NSLog("delete from notedb failed, ")
             }
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.reloadData()
@@ -102,10 +103,10 @@ extension NoteHomeViewController: UITableViewDataSource {
 
 extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alarm = NoteManager.sharedInstance.noteArray[indexPath.row]
-        let clockSettingViewController = TDClockSettingViewController.loadFromStroyboardWithTargetAlarm(alarm)
-        clockSettingViewController.hidesBottomBarWhenPushed = true
-        navigationController?.present(clockSettingViewController, animated: true, completion: { () -> Void in
+        let note = NoteManager.sharedInstance.noteArray[indexPath.row]
+        let noteSettingViewController = NoteSettingViewController.loadFromStroyboardWithTargetAlarm(note)
+        noteSettingViewController.hidesBottomBarWhenPushed = true
+        navigationController?.present(noteSettingViewController, animated: true, completion: { () -> Void in
 
         })
     }
