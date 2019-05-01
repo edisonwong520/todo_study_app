@@ -38,13 +38,21 @@ public class DBManager {
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("open db failed")
         } else {
-//            NSLog("open db success")
-            let sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
-            let cSql = sql.cString(using: String.Encoding.utf8)
+
+            var sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
+            var cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create table failed")
+                NSLog("create todo table failed")
             }
+            // create note db
+            sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+            
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create note table failed")
+            }
+            
         }
         sqlite3_close(db)
     }

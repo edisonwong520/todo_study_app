@@ -344,11 +344,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m92-cR-KJ7" customClass="RichEditorView" customModule="RichEditorView">
-                                <rect key="frame" x="21" y="64" width="332" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -356,7 +351,6 @@
                         <outlet property="cancelButton" destination="FGC-2q-Ajn" id="zCN-RR-IbV"/>
                         <outlet property="confirmButton" destination="fml-wL-NZd" id="a1d-W7-zY3"/>
                         <outlet property="datePicker" destination="6Ut-Ac-AVe" id="NLZ-VZ-rWg"/>
-                        <outlet property="editorView" destination="m92-cR-KJ7" id="poR-gy-6nN"/>
                         <outlet property="fridayButton" destination="Kxo-fK-bvf" id="loc-iD-poU"/>
                         <outlet property="mondayButton" destination="CHj-rH-6BH" id="KQA-RG-LkC"/>
                         <outlet property="priorityPicker" destination="vwv-1Y-jYR" id="oZV-KO-A6a"/>
@@ -372,6 +366,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p3A-Ej-mOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844" y="113.79310344827587"/>
+        </scene>
+        <!--Note Setting View Controller-->
+        <scene sceneID="hVn-AE-acN">
+            <objects>
+                <viewController storyboardIdentifier="DCClockSettingViewController" id="4Kq-xT-NLL" customClass="NoteSettingViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0U0-jv-cot"/>
+                        <viewControllerLayoutGuide type="bottom" id="gQz-jH-4r2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IAS-G7-gxv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Please input title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkL-ZF-prv">
+                                <rect key="frame" x="8" y="154" width="359" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yS-C1-ZG0">
+                                <rect key="frame" x="169" y="561" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhc-X2-OuR" customClass="RichEditorView" customModule="RichEditorView">
+                                <rect key="frame" x="16" y="243" width="343" height="255"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="done" destination="0yS-C1-ZG0" id="xt1-Tw-xlR"/>
+                        <outlet property="editor" destination="Nhc-X2-OuR" id="Mzq-3w-fPP"/>
+                        <outlet property="notetitle" destination="ZkL-ZF-prv" id="xjJ-Cn-vbE"/>
+                        <outlet property="title" destination="ZkL-ZF-prv" id="D9q-cp-Trl"/>
+                        <outlet property="todoTitleLabel" destination="ZkL-ZF-prv" id="tGW-KJ-qts"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UV1-pW-zrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050.4000000000001" y="-715.27093596059115"/>
         </scene>
     </scenes>
 </document>

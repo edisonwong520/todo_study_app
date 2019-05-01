@@ -11,8 +11,6 @@ import RichEditorView
 class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     @IBOutlet var datePicker: UIDatePicker!
     
-    @IBOutlet var editorView: RichEditorView!
-    
     @IBOutlet var todoTitleLabel: UITextField!
     
     @IBOutlet var cancelButton: UIButton!
