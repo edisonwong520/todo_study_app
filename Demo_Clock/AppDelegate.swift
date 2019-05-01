@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications(matching: [UIRemoteNotificationType.sound, UIRemoteNotificationType.alert, UIRemoteNotificationType.badge])
         }
 
+        
+
+        
         return true
     }
 
