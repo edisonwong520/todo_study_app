@@ -25,6 +25,12 @@
 		4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358B97E1C5071950081E3A5 /* DCAlarm.swift */; };
 		436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
+		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
+		B765AE4C2279C17C0024CAE7 /* NoteClockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteClockSettingViewController.swift */; };
+		B765AE4D2279C17C0024CAE7 /* NoteHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE482279C17C0024CAE7 /* NoteHomeViewController.swift */; };
+		B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE492279C17C0024CAE7 /* NoteManager.swift */; };
+		B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE4A2279C17C0024CAE7 /* NoteItem.swift */; };
+		B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE502279C49B0024CAE7 /* NoteDBManager.swift */; };
 		B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */; };
 		B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABC227456EF00C59E95 /* DBManager.swift */; };
 		B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */; };
@@ -72,6 +78,12 @@
 		4358B97E1C5071950081E3A5 /* DCAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarm.swift; sourceTree = "<group>"; };
 		436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMConfigExtentsion.swift; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
+		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		B765AE472279C17B0024CAE7 /* NoteClockSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteClockSettingViewController.swift; sourceTree = "<group>"; };
+		B765AE482279C17C0024CAE7 /* NoteHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteHomeViewController.swift; sourceTree = "<group>"; };
+		B765AE492279C17C0024CAE7 /* NoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
+		B765AE4A2279C17C0024CAE7 /* NoteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
+		B765AE502279C49B0024CAE7 /* NoteDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDBManager.swift; sourceTree = "<group>"; };
 		B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		B7BF6ABC227456EF00C59E95 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -189,6 +201,11 @@
 		B765AE332279BF450024CAE7 /* Note */ = {
 			isa = PBXGroup;
 			children = (
+				B765AE4A2279C17C0024CAE7 /* NoteItem.swift */,
+				B765AE462279C17B0024CAE7 /* NoteCell.swift */,
+				B765AE492279C17C0024CAE7 /* NoteManager.swift */,
+				B765AE472279C17B0024CAE7 /* NoteClockSettingViewController.swift */,
+				B765AE482279C17C0024CAE7 /* NoteHomeViewController.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -196,6 +213,7 @@
 		B7BF6ABA227456EF00C59E95 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
+				B765AE502279C49B0024CAE7 /* NoteDBManager.swift */,
 				B7BF6ABC227456EF00C59E95 /* DBManager.swift */,
 				B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */,
 			);
@@ -370,19 +388,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */,
+				B765AE4D2279C17C0024CAE7 /* NoteHomeViewController.swift in Sources */,
 				436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */,
 				430DA2C31C4F84EB00C4E60C /* DCHomeViewController.swift in Sources */,
 				433A26FA1C51094B00251D82 /* DCAlarmCell.swift in Sources */,
+				B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */,
 				430DA2C51C4F858B00C4E60C /* DCClockSettingViewController.swift in Sources */,
 				430DA2BE1C4F820900C4E60C /* LXMConsoleViewController.swift in Sources */,
 				430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */,
+				B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */,
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
 				433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */,
 				433A26EB1C50DC6300251D82 /* LXMBaseView.swift in Sources */,
 				B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */,
+				B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */,
 				430DA2BF1C4F820900C4E60C /* LXMMacro.swift in Sources */,
 				430DA28B1C4F81BC00C4E60C /* AppDelegate.swift in Sources */,
 				430DA2C01C4F820900C4E60C /* LXMToolFunction.swift in Sources */,
+				B765AE4C2279C17C0024CAE7 /* NoteClockSettingViewController.swift in Sources */,
 				B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

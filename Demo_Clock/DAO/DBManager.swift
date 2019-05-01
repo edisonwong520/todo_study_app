@@ -11,12 +11,12 @@ import Foundation
 let DBFILE_NAME = "tododb.sqlite3"
 
 public class DBManager {
-    private var db: OpaquePointer?
+    public var db: OpaquePointer?
 
     // 私有DateFormatter属性
-    private var dateFormatter = DateFormatter()
+    public var dateFormatter = DateFormatter()
     // 私有沙箱目录中属性列表文件路径
-    private var plistFilePath: String!
+    public var plistFilePath: String!
 
     private static let instance: DBManager = DBManager()
     // 单例
@@ -416,7 +416,7 @@ public class DBManager {
     }
 
     // 获得字段数据
-    private func getColumnValue(index: CInt, stmt: OpaquePointer) -> String? {
+    public func getColumnValue(index: CInt, stmt: OpaquePointer) -> String? {
         if let ptr = UnsafeRawPointer(sqlite3_column_text(stmt, index)) {
             let uptr = ptr.bindMemory(to: CChar.self, capacity: 0)
             let txt = String(validatingUTF8: uptr)
