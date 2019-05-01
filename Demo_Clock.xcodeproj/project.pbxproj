@@ -24,6 +24,7 @@
 		433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A26FB1C5121E200251D82 /* DCAlarmManager.swift */; };
 		4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358B97E1C5071950081E3A5 /* DCAlarm.swift */; };
 		436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */; };
+		B7250D8A2279DE2A00460F4B /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7250D892279DE2A00460F4B /* CustomTabBarController.swift */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -77,6 +78,7 @@
 		433A26FB1C5121E200251D82 /* DCAlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarmManager.swift; sourceTree = "<group>"; };
 		4358B97E1C5071950081E3A5 /* DCAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarm.swift; sourceTree = "<group>"; };
 		436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMConfigExtentsion.swift; sourceTree = "<group>"; };
+		B7250D892279DE2A00460F4B /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				B7250D892279DE2A00460F4B /* CustomTabBarController.swift */,
 				B765AE332279BF450024CAE7 /* Note */,
 				B7BF6ABA227456EF00C59E95 /* DAO */,
 				430DA2C11C4F848100C4E60C /* Todo */,
@@ -396,6 +399,7 @@
 				B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */,
 				430DA2C51C4F858B00C4E60C /* DCClockSettingViewController.swift in Sources */,
 				430DA2BE1C4F820900C4E60C /* LXMConsoleViewController.swift in Sources */,
+				B7250D8A2279DE2A00460F4B /* CustomTabBarController.swift in Sources */,
 				430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */,
 				B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */,
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
