@@ -33,7 +33,7 @@ class NoteHomeViewController: LXMBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//        dataArray = NoteManager.sharedInstance.noteArray // swift的数组是struct，是值类型，写的时候要特别注意
+//        dataArray = notes_list // swift的数组是struct，是值类型，写的时候要特别注意
         tableView.reloadData()
     }
 }
@@ -68,12 +68,12 @@ extension NoteHomeViewController {
 
 extension NoteHomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return NoteManager.sharedInstance.noteArray.count
+        return notes_list.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteCellIdentifier) as! NoteCell
-        let note = NoteManager.sharedInstance.noteArray[indexPath.row]
+        let note = notes_list[indexPath.row]
         // set defualt config
         cell.configWithNote(note, indexPath: indexPath)
         return cell
@@ -81,10 +81,10 @@ extension NoteHomeViewController: UITableViewDataSource {
 
     // delete the cell
     func tableView(_ tableView: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let item = NoteManager.sharedInstance.noteArray[indexPath.row]
-        if let index = NoteManager.sharedInstance.noteArray.index(of: item) {
-            let id_get = NoteManager.sharedInstance.noteArray[index].id
-            NoteManager.sharedInstance.noteArray.remove(at: index)
+        let item = notes_list[indexPath.row]
+        if let index = notes_list.index(of: item) {
+            let id_get = notes_list[index].id
+            notes_list.remove(at: index)
 
             let sql = "DELETE FROM NoteDB WHERE id=\(id_get);"
             let boolflag = DBManager.shareManager().execute_sql(sql: sql)
@@ -103,7 +103,7 @@ extension NoteHomeViewController: UITableViewDataSource {
 
 extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let note = NoteManager.sharedInstance.noteArray[indexPath.row]
+        let note = notes_list[indexPath.row]
         let noteSettingViewController = NoteSettingViewController.loadFromStroyboardWithTargetAlarm(note)
         noteSettingViewController.hidesBottomBarWhenPushed = true
         navigationController?.present(noteSettingViewController, animated: true, completion: { () -> Void in
@@ -126,7 +126,5 @@ extension NoteHomeViewController: UITableViewDelegate {
         let note = notes_list.remove(at: (sourceIndexPath as NSIndexPath).row)
         notes_list.insert(note, at: (destinationIndexPath as NSIndexPath).row)
 
-        var note_instance = NoteManager.sharedInstance.noteArray.remove(at: (sourceIndexPath as NSIndexPath).row)
-        NoteManager.sharedInstance.noteArray.insert(note_instance, at: (destinationIndexPath as NSIndexPath).row)
     }
 }

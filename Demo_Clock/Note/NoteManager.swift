@@ -10,12 +10,12 @@
 import UIKit
 
 class NoteManager {
-    var noteArray: [NoteItem]
+//    var noteArray: [NoteItem]
     static let sharedInstance = NoteManager()
 
     private let kTDAlarmArraySavedKey = "kTDAlarmArraySavedKey"
 
     fileprivate init() {
-        noteArray = DBManager.shareManager().find_all_notes() as! [NoteItem]
+//        noteArray = DBManager.shareManager().find_all_notes() as! [NoteItem]
     }
 }
