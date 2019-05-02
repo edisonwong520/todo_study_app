@@ -38,7 +38,6 @@ public class DBManager {
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("open db failed")
         } else {
-
             var sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
             var cSql = sql.cString(using: String.Encoding.utf8)
 
@@ -48,11 +47,10 @@ public class DBManager {
             // create note db
             sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME)"
             cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("create note table failed")
             }
-            
         }
         sqlite3_close(db)
     }
@@ -359,8 +357,14 @@ public class DBManager {
             NSLog("db open failed")
 
         } else {
-            let sql = "drop table 'TodoDB' ;"
-            let cSql = sql.cString(using: String.Encoding.utf8)
+            var sql = "drop table 'TodoDB' ;"
+            var cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("drop table failed")
+            }
+            sql = "drop table 'NoteDB' ;"
+            cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")

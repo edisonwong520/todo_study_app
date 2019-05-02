@@ -179,23 +179,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
     }
     
-    //    public func date_confilt_alarm(date:String) -> Bool{
-    //        let date_list = DBManager.shareManager().find_confilt(strdate: date)
-    //        if date_list.count==0{
-    //            return false
-    //        }else{
-    ////            let sql = "SELECT title FROM TodoDB WHERE date='\(date)';"
-    ////            let title_list = DBManager.shareManager().get_result_by_sql(sql: sql)
-    //            var title_list = [String]()
-    //            for id in date_list{
-    //                title_list.append("'"+DBManager.shareManager().get_value_byid(find: "title", id: id)+"'")
-    //            }
-    //            let context = title_list.joined(separator: ",")
-    //            let alert = UIAlertView(title: "提醒", message: "您设定的 " + context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
-    //            alert.show()
-    //            return true
-    //        }
-    //    }
+    
 }
 
 // MARK: - PrivateMethod
@@ -232,6 +216,7 @@ extension DCClockSettingViewController {
         dismiss(animated: true) { () -> Void in
         }
     }
+    
     
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
         let dateFormatter = DateFormatter()

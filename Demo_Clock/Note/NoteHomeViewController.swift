@@ -8,12 +8,12 @@
 
 import SQLite3
 import UIKit
-//notes_list record current list
+// notes_list record current list
 var notes_list: [NoteItem] = []
 
 class NoteHomeViewController: LXMBaseViewController {
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet var tableView: UITableView!
+
 //    var dataArray = [TDAlarm]()
 
     override func viewDidLoad() {
@@ -69,13 +69,12 @@ extension NoteHomeViewController {
 extension NoteHomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return NoteManager.sharedInstance.noteArray.count
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteCellIdentifier) as! NoteCell
         let note = NoteManager.sharedInstance.noteArray[indexPath.row]
-        //set defualt config
+        // set defualt config
         cell.configWithNote(note, indexPath: indexPath)
         return cell
     }
@@ -89,6 +88,7 @@ extension NoteHomeViewController: UITableViewDataSource {
 
             let sql = "DELETE FROM NoteDB WHERE id=\(id_get);"
             let boolflag = DBManager.shareManager().execute_sql(sql: sql)
+            NSLog("delete sql:\(sql)")
             if boolflag {
                 NSLog("delete from notedb success, ")
             } else {
@@ -125,10 +125,8 @@ extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let note = notes_list.remove(at: (sourceIndexPath as NSIndexPath).row)
         notes_list.insert(note, at: (destinationIndexPath as NSIndexPath).row)
-        
 
         var note_instance = NoteManager.sharedInstance.noteArray.remove(at: (sourceIndexPath as NSIndexPath).row)
         NoteManager.sharedInstance.noteArray.insert(note_instance, at: (destinationIndexPath as NSIndexPath).row)
-//        NoteManager.sharedInstance.save()
     }
 }

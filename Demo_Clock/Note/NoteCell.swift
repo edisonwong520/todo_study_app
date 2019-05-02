@@ -15,6 +15,8 @@ class NoteCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var datelabel: UILabel!
+    
     fileprivate var note: NoteItem?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,5 +34,9 @@ class NoteCell: UITableViewCell {
     
     func configWithNote(_ note: NoteItem, indexPath _: IndexPath) {
         self.note = note
+        title.text = note.title
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        datelabel.text = dateFormatter.string(from: note.createDate as! Date)
     }
 }

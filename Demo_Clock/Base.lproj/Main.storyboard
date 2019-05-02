@@ -82,7 +82,7 @@
                                                     </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="12：00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34C-AO-38d">
-                                                    <rect key="frame" x="15" y="33" width="44" height="16"/>
+                                                    <rect key="frame" x="15" y="33" width="72" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -339,20 +339,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yS-C1-ZG0">
-                                <rect key="frame" x="169" y="561" width="37" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-BO-o6J">
+                                <rect key="frame" x="193" y="506" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="handleCancelButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="Quh-x0-k4n"/>
+                                    <action selector="handleConfirmButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="wsu-JX-ZQ4"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhc-X2-OuR" customClass="RichEditorView" customModule="RichEditorView">
                                 <rect key="frame" x="16" y="243" width="343" height="255"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yS-C1-ZG0">
+                                <rect key="frame" x="104" y="506" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="handleConfirmButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="xDL-Vq-S9u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="cancel" destination="3wK-BO-o6J" id="1gg-ro-Wxm"/>
                         <outlet property="done" destination="0yS-C1-ZG0" id="xt1-Tw-xlR"/>
                         <outlet property="editorView" destination="Nhc-X2-OuR" id="Yfu-vc-TDY"/>
                         <outlet property="notetitle" destination="ZkL-ZF-prv" id="xjJ-Cn-vbE"/>
@@ -386,15 +399,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AS-IM-bMh">
-                                                    <rect key="frame" x="15" y="11" width="98" height="38"/>
+                                                    <rect key="frame" x="15" y="0.0" width="98" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="12：00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYT-7d-G2C">
+                                                    <rect key="frame" x="15" y="33" width="179" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="datelabel" destination="XYT-7d-G2C" id="gdz-I0-KqD"/>
                                             <outlet property="title" destination="5AS-IM-bMh" id="XYS-l3-S75"/>
                                         </connections>
                                     </tableViewCell>
@@ -420,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXX-KR-OYB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="-733"/>
+            <point key="canvasLocation" x="141.59999999999999" y="-604.43349753694588"/>
         </scene>
         <!--Note-->
         <scene sceneID="xld-EN-4us">
