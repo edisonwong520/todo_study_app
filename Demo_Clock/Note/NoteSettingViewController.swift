@@ -40,7 +40,7 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        editorView.delegate = self as! RichEditorDelegate
+        editorView.delegate = self as? RichEditorDelegate
         editorView.inputAccessoryView = toolbar
         editorView.placeholder = "Type some text..."
 
