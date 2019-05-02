@@ -345,7 +345,6 @@
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="handleCancelButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="Quh-x0-k4n"/>
-                                    <action selector="handleConfirmButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="wsu-JX-ZQ4"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhc-X2-OuR" customClass="RichEditorView" customModule="RichEditorView">

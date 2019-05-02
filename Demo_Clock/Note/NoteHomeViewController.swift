@@ -11,6 +11,7 @@ import UIKit
 // notes_list record current list
 var notes_list: [NoteItem] = []
 
+
 class NoteHomeViewController: LXMBaseViewController {
     @IBOutlet var tableView: UITableView!
 
@@ -103,6 +104,8 @@ extension NoteHomeViewController: UITableViewDataSource {
 
 extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        current_selected_row = indexPath.row
+        add_item_flag = false
         let note = notes_list[indexPath.row]
         let noteSettingViewController = NoteSettingViewController.loadFromStroyboardWithTargetAlarm(note)
         noteSettingViewController.hidesBottomBarWhenPushed = true

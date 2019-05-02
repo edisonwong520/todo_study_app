@@ -21,7 +21,7 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
     var htmlcontext = ""
 
     lazy var toolbar: RichEditorToolbar = {
-        let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
+        let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 100))
         toolbar.options = RichEditorDefaultOption.all
         return toolbar
     }()
@@ -58,8 +58,19 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
         var options = toolbar.options
         options.append(item)
         toolbar.options = options
-
+        setupDefault()
+        
         // ----
+    }
+    //present the old data
+    func setupDefault() {
+        
+        if add_item_flag == false {
+            notetitle.text = notes_list[current_selected_row].title
+//            todoNote.text = notes_list[current_selected_row].note
+            editorView.html = notes_list[current_selected_row].context
+            add_item_flag = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

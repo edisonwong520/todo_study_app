@@ -6,85 +6,85 @@
 //  Copyright © 2019年 EDC. All rights reserved.
 //
 
-import UIKit
 import RichEditorView
+import UIKit
 class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     @IBOutlet var datePicker: UIDatePicker!
-    
+
     @IBOutlet var todoTitleLabel: UITextField!
-    
+
     @IBOutlet var cancelButton: UIButton!
-    
+
     @IBOutlet var confirmButton: UIButton!
-    
+
     @IBOutlet var priorityPicker: UIPickerView!
-    
+
     @IBOutlet var todoNote: UITextView!
     // button的tag为1-7，在xib中设置
     @IBOutlet var mondayButton: UIButton!
-    
+
     @IBOutlet var tuesdayButton: UIButton!
-    
+
     @IBOutlet var wednesdayButton: UIButton!
-    
+
     @IBOutlet var thursdayButton: UIButton!
-    
+
     @IBOutlet var fridayButton: UIButton!
-    
+
     @IBOutlet var saturdayButton: UIButton!
-    
+
     @IBOutlet var sundayButton: UIButton!
-    
+
     fileprivate var isAddingAlarm: Bool = false
-    
+
     fileprivate var targetAlarm: DCAlarm!
-    
+
     fileprivate var buttonArray: [UIButton] {
         return [mondayButton, tuesdayButton, wednesdayButton, thursdayButton, fridayButton, saturdayButton, sundayButton]
     }
-    
+
     /// 从右向左依次是1-7，每一位表示一个button有没有选中，0x1111111表示全选，0x0000000表示一个都没选
     var selectedButtonTag = 0
     var priority_count = 1
     var priority_array = ["最高", "重要", "一般", "不重要"]
     //    var priority_dict:[String:Int] = ["最高":1,"重要":2,"一般":3,"不重要":4]
     var priority_index = 3
-    
+
     // overwrite
     func numberOfComponents(in _: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_: UIPickerView, numberOfRowsInComponent _: Int) -> Int {
         return priority_array.count
     }
-    
+
     func pickerView(_: UIPickerView, titleForRow row: Int, forComponent _: Int) -> String? {
         return priority_array[row]
     }
-    
+
     lazy var toolbar: RichEditorToolbar = {
         let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
         toolbar.options = RichEditorDefaultOption.all
         return toolbar
     }()
-    
+
     var todo: ToDoItem?
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = " Please input note..."
             textView.textColor = UIColor.lightGray
         }
     }
-    
+
     class func loadFromStroyboardWithTargetAlarm(_ alarm: DCAlarm?) -> DCClockSettingViewController {
         let viewController = DCClockSettingViewController.swift_loadFromStoryboard("Main")
         if alarm == nil {
@@ -96,41 +96,39 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
         return viewController
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //----
+
+        // ----
         selectedButtonTag = getWeekday()
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
-        
+
         todoNote.delegate = self
-        
+
         todoNote.text = " Please input note..."
         todoNote.textColor = UIColor.lightGray
-        
+
         let borderGray = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         todoNote.layer.borderColor = borderGray.cgColor
         todoNote.layer.borderWidth = 0.5
         todoNote.layer.cornerRadius = 5
-        
+
         if isAddingAlarm {
             title = "添加"
         } else {
             title = "修改"
         }
-        
+
         setupDefault()
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func get_b_repeatday(repeatday: Int) -> String {
         var repeatday1 = repeatday
         var re = ""
@@ -144,12 +142,12 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
         return re
     }
-    
+
     func getWeekday() -> Int {
         let calendar: Calendar = Calendar(identifier: .gregorian)
         var comps: DateComponents = DateComponents()
         comps = calendar.dateComponents([.year, .month, .day, .weekday, .hour, .minute, .second], from: Date())
-        
+
         let dayweek = Int(comps.weekday! - 1)
         var re = 1
         if dayweek == 0 {
@@ -161,11 +159,11 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         }
         return re
     }
-    
+
     public func show_conflict(date: String) -> String {
         var confict = [Int]()
         confict = DBManager.shareManager().find_confilt(strdate: date)
-        
+
         if confict.count == 0 {
             return ""
         } else {
@@ -174,12 +172,10 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
                 title_list.append("'" + DBManager.shareManager().get_value_byid(find: "title", id: id) + "'")
             }
             let context = title_list.joined(separator: ",")
-            
+
             return context
         }
     }
-    
-    
 }
 
 // MARK: - PrivateMethod
@@ -191,7 +187,7 @@ extension DCClockSettingViewController {
     //        let version = kLXMSystemVersion
     //        NSLog("version is \(version)")
     //    }
-    
+
     func setupDefault() {
         if let alarm = self.targetAlarm {
             if let date = alarm.alarmDate {
@@ -205,6 +201,14 @@ extension DCClockSettingViewController {
                 button.isSelected = (alarm.selectedDay & selected) != 0
             }
         }
+        // present the old data on the screen
+        if add_item_flag == false {
+            todoTitleLabel.text = todos_list[current_selected_row].title
+            todoNote.text = todos_list[current_selected_row].note
+            let priority_num = todos_list[current_selected_row].priority
+            priorityPicker.selectRow(priority_num, inComponent: 0, animated: true)
+            add_item_flag = true
+        }
     }
 }
 
@@ -216,31 +220,30 @@ extension DCClockSettingViewController {
         dismiss(animated: true) { () -> Void in
         }
     }
-    
-    
+
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
+
         let conflict_context = show_conflict(date: dateFormatter.string(from: datePicker.date))
-        
+
         // find conlict and show
         if conflict_context != "" {
             let alert = UIAlertView(title: "提醒", message: "当前设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             return
         }
-        
+
         // add todo item------------------------
         if let todo = todo {
             todo.date = datePicker.date
             var strDate = dateFormatter.string(from: todo.date as Date)
             let current_index = DBManager.shareManager().find_id(date: strDate, title: todo.title)
-            
+
             todo.note = todoNote.text!
             todo.priority = priorityPicker.selectedRow(inComponent: 0) + 1
             strDate = dateFormatter.string(from: todo.date as Date)
-            
+
             // update todoitem
             var sql = "UPDATE TodoDB SET title='\(todo.title)',date='\(strDate)',note='\(todo.note)',priority=\(todo.priority) ,repeatday='\(todo.repeatday)' WHERE id=\(current_index);"
             NSLog("update todoitem" + sql)
@@ -248,7 +251,7 @@ extension DCClockSettingViewController {
             if !flag_bool {
                 NSLog("update todoitem error")
             }
-            
+
             // update alarm error
             let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
             sql = "UPDATE TodoDB SET date='\(strDate)',repeatday='\(str_repeatday)' WHERE id=\(current_index);"
@@ -257,18 +260,18 @@ extension DCClockSettingViewController {
             if !flag_bool {
                 NSLog("update alarm error")
             }
-            
+
         } else {
             //tag
-            
+
             let str_repeatday = get_b_repeatday(repeatday: selectedButtonTag)
-            
+
             priority_index = priorityPicker.selectedRow(inComponent: 0) + 1
             todo = ToDoItem(title: todoTitleLabel.text!, note: todoNote.text, date: datePicker.date, priority: priority_index, repeatday: str_repeatday, alarmOn: true)
-            
+
             todos_list.append(todo!)
             DBManager.shareManager().insert(todoitem: todo!)
-            
+
             // add alarm
             let alarm = DCAlarm()
             alarm.alarmDate = datePicker.date
@@ -276,7 +279,7 @@ extension DCClockSettingViewController {
             alarm.descriptionText = String(format: "%02x", selectedButtonTag)
             alarm.alarmOn = true
             alarm.identifier = dateFormatter.string(from: todo!.date as Date)
-            
+
             let current_id = DBManager.shareManager().find_id(date: alarm.identifier, title: (todo?.title)!)
             alarm.id = Int(current_id)
             DCAlarmManager.sharedInstance.alarmArray.append(alarm)
@@ -287,7 +290,7 @@ extension DCClockSettingViewController {
         handleCancelButtonTapped(UIButton())
         _ = navigationController?.popToRootViewController(animated: true)
     }
-    
+
     @IBAction func handleDayButtonTapped(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         var resultTag = 0x0
@@ -297,15 +300,13 @@ extension DCClockSettingViewController {
             resultTag = resultTag | tag
         }
         selectedButtonTag = resultTag
-        
+
         //        let aaa = String(format: "%02x", resultTag)
         //        NSLog("self.selectedButtonTag is \(aaa)")
     }
 }
 
-
 extension DCClockSettingViewController: RichEditorToolbarDelegate {
-    
     fileprivate func randomColor() -> UIColor {
         let colors: [UIColor] = [
             .red,
@@ -313,32 +314,31 @@ extension DCClockSettingViewController: RichEditorToolbarDelegate {
             .yellow,
             .green,
             .blue,
-            .purple
+            .purple,
         ]
-        
+
         let color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
         return color
     }
-    
+
     func richEditorToolbarChangeTextColor(_ toolbar: RichEditorToolbar) {
         let color = randomColor()
         toolbar.editor?.setTextColor(color)
     }
-    
+
     func richEditorToolbarChangeBackgroundColor(_ toolbar: RichEditorToolbar) {
         let color = randomColor()
         toolbar.editor?.setTextBackgroundColor(color)
     }
-    
+
     func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
         toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
     }
-    
+
     func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {
         // Can only add links to selected text, so make sure there is a range selection first
         if toolbar.editor?.hasRangeSelection == true {
             toolbar.editor?.insertLink("http://github.com/cjwirth/RichEditorView", title: "Github Link")
         }
     }
-    
 }

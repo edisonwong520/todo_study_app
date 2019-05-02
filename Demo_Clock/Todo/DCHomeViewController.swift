@@ -10,7 +10,8 @@ import SQLite3
 import UIKit
 //todos_list record current list
 var todos_list: [ToDoItem] = []
-
+var current_selected_row = 0
+var add_item_flag = true
 class DCHomeViewController: LXMBaseViewController {
     @IBOutlet var tableView: UITableView!
 
@@ -74,6 +75,7 @@ extension DCHomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DCAlarmCellIdentifier) as! DCAlarmCell
         let alarm = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
+        
         cell.configWithAlarm(alarm, indexPath: indexPath)
         return cell
     }
@@ -101,6 +103,11 @@ extension DCHomeViewController: UITableViewDataSource {
 
 extension DCHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        current_selected_row = indexPath.row
+        NSLog("current row is \(current_selected_row)")
+        NSLog("current todolist count is \(todos_list.count)")
+        add_item_flag = false
+        
         let alarm = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
         let clockSettingViewController = DCClockSettingViewController.loadFromStroyboardWithTargetAlarm(alarm)
         clockSettingViewController.hidesBottomBarWhenPushed = true
