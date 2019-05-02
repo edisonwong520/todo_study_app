@@ -12,9 +12,10 @@ let NoteCellIdentifier = "NoteCell"
 let kTDAlarmCellHeight = 60
 
 class NoteCell: UITableViewCell {
-    @IBOutlet var title: UILabel!
-//    fileprivate var alarm: TDAlarm?
-
+    
+    @IBOutlet weak var title: UILabel!
+    
+    fileprivate var note: NoteItem?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,6 +31,6 @@ class NoteCell: UITableViewCell {
     func judge_operate() {}
     
     func configWithNote(_ note: NoteItem, indexPath _: IndexPath) {
-        
+        self.note = note
     }
 }

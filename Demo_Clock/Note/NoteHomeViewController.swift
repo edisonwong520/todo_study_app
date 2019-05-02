@@ -12,8 +12,8 @@ import UIKit
 var notes_list: [NoteItem] = []
 
 class NoteHomeViewController: LXMBaseViewController {
-    @IBOutlet var tableView: UITableView!
-
+    @IBOutlet weak var tableView: UITableView!
+    
 //    var dataArray = [TDAlarm]()
 
     override func viewDidLoad() {

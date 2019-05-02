@@ -22,7 +22,6 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
         return toolbar
     }()
 
-    var todo: ToDoItem?
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {

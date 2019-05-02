@@ -354,11 +354,8 @@
                     </view>
                     <connections>
                         <outlet property="done" destination="0yS-C1-ZG0" id="xt1-Tw-xlR"/>
-                        <outlet property="editor" destination="Nhc-X2-OuR" id="Mzq-3w-fPP"/>
                         <outlet property="editorView" destination="Nhc-X2-OuR" id="Yfu-vc-TDY"/>
                         <outlet property="notetitle" destination="ZkL-ZF-prv" id="xjJ-Cn-vbE"/>
-                        <outlet property="title" destination="ZkL-ZF-prv" id="D9q-cp-Trl"/>
-                        <outlet property="todoTitleLabel" destination="ZkL-ZF-prv" id="tGW-KJ-qts"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UV1-pW-zrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -398,8 +395,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionLabel" destination="5AS-IM-bMh" id="oZA-Gq-0OX"/>
-                                            <outlet property="title" destination="5AS-IM-bMh" id="MjU-uj-gem"/>
+                                            <outlet property="title" destination="5AS-IM-bMh" id="XYS-l3-S75"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
