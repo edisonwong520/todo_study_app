@@ -67,8 +67,9 @@ extension ChartViewController:ZXLineChartViewDataSource {
         return values[index]
     }
     
+    //present the label on the axis x
     func zxLineChartView(_ lineChartView: ZXLineChartView, titleAt index: Int) -> String {
-        return "\(index)"
+        return "\(data_list[index].title)"
     }
     /*
      func preValue(in lineChartView: ZXLineChartView) -> NSNumber? {
