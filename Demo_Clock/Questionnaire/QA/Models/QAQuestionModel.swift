@@ -1,9 +1,9 @@
 //
-//  QuestionModel.swift
-//  Q&A
+//  QAQuestionModel.swift
+//  Todo
 //
-//  Created by kyang on 2017/7/17.
-//  Copyright © 2017年 kyang. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import Foundation
