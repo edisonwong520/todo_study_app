@@ -11,7 +11,7 @@ import Foundation
 class QAQuestion: NSObject {
     var questionId: Int = 0
     var question: String = "未知异常"
-    var mode: Int = 1  // 1, 单选 2，多选， 3 简答
+    var mode: Int = 1  // 0, 单选 1，多选， 2 简答
     var answers: [Answer] = []
     var required: Int = 0 // 0 不必须， 1 必须
     
@@ -23,7 +23,7 @@ class QAQuestion: NSObject {
         if key == "answers" {
             guard let answers = value as? [[String: Any]] else
             {
-                print("失败鸟")
+                NSLog("失败")
                 return
             }
             answers.forEach({ (dict) in

@@ -163,7 +163,7 @@ extension QAQuestionViewController: UITableViewDataSource, UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("\(tableView)")
+        NSLog("\(tableView)")
         switch (question?.mode)! {
         case 0:
             //单选

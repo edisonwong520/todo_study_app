@@ -76,10 +76,10 @@ class QAViewController: UIViewController {
                     }
                 })
             } catch {
-                print("json decode error")
+                NSLog("json decode error")
             }
         } catch {
-            print("cann't find dataSource.txt")
+            NSLog("cann't find dataSource.txt")
         }
     }
 
@@ -191,7 +191,7 @@ extension QAViewController {
         }
 
         pageViewController.setViewControllers([viewControllers.first!], direction: .forward, animated: true) { _ in
-            print("设置完成")
+            NSLog("设置完成")
             self.addChildViewController(self.pageViewController)
             self.view.addSubview(self.pageViewController.view)
 
@@ -228,7 +228,7 @@ extension QAViewController {
 
 extension QAViewController {
     func backButtonAction() {
-        print("click back button")
+        NSLog("click back button")
         let alert = UIAlertController(title: "确定退出", message: "退出后未提交的内容将不被保存，是否继续", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "退出", style: .default, handler: { _ in
@@ -242,13 +242,13 @@ extension QAViewController {
 
     func nextButtonAction() {
         if pageIndex < questions.count - 1 {
-            print("next button clicked")
+            NSLog("next button clicked")
 
             showTargetQuestion(with: pageIndex + 1)
 
         } else if pageIndex == questions.count - 1 {
             // 最后一个题，提交
-            print("next button 提交")
+            NSLog("next button 提交")
             let alert = UIAlertController(title: "是否提交", message: "提交后不可更改，是否提交", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "交卷", style: .default, handler: { _ in
@@ -289,7 +289,7 @@ extension QAViewController {
         }
 
         guard unDidAnswers.count == 0 else {
-            print("any question required is not answerd")
+            NSLog("any question required is not answerd")
             let firstUnDid = realAnswer.index(of: unDidAnswers.first!)
             let alert = UIAlertController(title: "存在未答题的必选项:\(firstUnDid! + 1)题", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
@@ -305,11 +305,33 @@ extension QAViewController {
             let data = try JSONSerialization.data(withJSONObject: results, options: .prettyPrinted)
 
             let jsonStr = String(data: data, encoding: .utf8)
-            print(jsonStr ?? "what")
+            NSLog(jsonStr ?? "what")
 
         } catch {
-            print("转json出错了")
+            NSLog("转json出错了")
         }
+    }
+    //judge score
+    func judge_score(qajson:String,resultjson:String) -> Float{
+        let qa_array = getArrayFromJSONString(jsonString: qajson)
+        for qa_item in qa_array{
+            qa_item["id"]
+        }
+        
+        return -1.0
+    }
+    
+    //json to array
+    func getArrayFromJSONString(jsonString:String) ->NSArray{
+        
+        let jsonData:Data = jsonString.data(using: .utf8)!
+        
+        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+        if array != nil {
+            return array as! NSArray
+        }
+        return array as! NSArray
+        
     }
 
     /// 添加通知监听
@@ -323,7 +345,7 @@ extension QAViewController {
     func answerChanged(notify: Notification) {
         //
         let answer = notify.object as? RealAnswer
-        print("answer changed")
+        NSLog("answer changed")
         let index = realAnswer.index(of: answer!)
 
         let cell = answerCard.cellForItem(at: IndexPath(item: index!, section: 0)) as? QAAnswerCardCell
