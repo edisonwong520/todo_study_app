@@ -37,6 +37,11 @@
 		B70FB869227C0A6800E07FA5 /* QASubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FB854227C0A6800E07FA5 /* QASubjectCell.xib */; };
 		B70FB86A227C0A6800E07FA5 /* QASubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB855227C0A6800E07FA5 /* QASubjectCell.swift */; };
 		B70FB86B227C0A6800E07FA5 /* QAAnswerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FB856227C0A6800E07FA5 /* QAAnswerCardCell.xib */; };
+		B716DC7E227C618700D7E5FA /* String+ZX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC7B227C618700D7E5FA /* String+ZX.swift */; };
+		B716DC7F227C618700D7E5FA /* ZXLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC7C227C618700D7E5FA /* ZXLineChartView.swift */; };
+		B716DC80227C618700D7E5FA /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC7D227C618700D7E5FA /* ChartViewController.swift */; };
+		B716DC82227C675800D7E5FA /* ScoreDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC81227C675800D7E5FA /* ScoreDBManager.swift */; };
+		B716DC84227C692000D7E5FA /* ScoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC83227C692000D7E5FA /* ScoreItem.swift */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -103,6 +108,11 @@
 		B70FB854227C0A6800E07FA5 /* QASubjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QASubjectCell.xib; sourceTree = "<group>"; };
 		B70FB855227C0A6800E07FA5 /* QASubjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QASubjectCell.swift; sourceTree = "<group>"; };
 		B70FB856227C0A6800E07FA5 /* QAAnswerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAAnswerCardCell.xib; sourceTree = "<group>"; };
+		B716DC7B227C618700D7E5FA /* String+ZX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ZX.swift"; sourceTree = "<group>"; };
+		B716DC7C227C618700D7E5FA /* ZXLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXLineChartView.swift; sourceTree = "<group>"; };
+		B716DC7D227C618700D7E5FA /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		B716DC81227C675800D7E5FA /* ScoreDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreDBManager.swift; sourceTree = "<group>"; };
+		B716DC83227C692000D7E5FA /* ScoreItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreItem.swift; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +177,7 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				B716DC7A227C618700D7E5FA /* ChartView */,
 				B70FB843227C0A6800E07FA5 /* Questionnaire */,
 				B765AE332279BF450024CAE7 /* Note */,
 				B7BF6ABA227456EF00C59E95 /* DAO */,
@@ -277,6 +288,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B716DC7A227C618700D7E5FA /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				B716DC83227C692000D7E5FA /* ScoreItem.swift */,
+				B716DC7B227C618700D7E5FA /* String+ZX.swift */,
+				B716DC7C227C618700D7E5FA /* ZXLineChartView.swift */,
+				B716DC7D227C618700D7E5FA /* ChartViewController.swift */,
+			);
+			path = ChartView;
+			sourceTree = "<group>";
+		};
 		B765AE332279BF450024CAE7 /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +314,7 @@
 		B7BF6ABA227456EF00C59E95 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
+				B716DC81227C675800D7E5FA /* ScoreDBManager.swift */,
 				B765AE502279C49B0024CAE7 /* NoteDBManager.swift */,
 				B7BF6ABC227456EF00C59E95 /* DBManager.swift */,
 				B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */,
@@ -473,14 +496,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */,
+				B716DC7E227C618700D7E5FA /* String+ZX.swift in Sources */,
+				B716DC80227C618700D7E5FA /* ChartViewController.swift in Sources */,
 				B765AE4D2279C17C0024CAE7 /* NoteHomeViewController.swift in Sources */,
 				B70FB862227C0A6800E07FA5 /* QAQuestionViewController.swift in Sources */,
 				436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */,
+				B716DC7F227C618700D7E5FA /* ZXLineChartView.swift in Sources */,
 				430DA2C31C4F84EB00C4E60C /* DCHomeViewController.swift in Sources */,
 				433A26FA1C51094B00251D82 /* DCAlarmCell.swift in Sources */,
 				B70FB863227C0A6800E07FA5 /* QAViewController.swift in Sources */,
 				B70FB860227C0A6800E07FA5 /* QAConfig.swift in Sources */,
 				B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */,
+				B716DC82227C675800D7E5FA /* ScoreDBManager.swift in Sources */,
 				B70FB868227C0A6800E07FA5 /* QAAnswerCardCell.swift in Sources */,
 				430DA2C51C4F858B00C4E60C /* DCClockSettingViewController.swift in Sources */,
 				B70FB861227C0A6800E07FA5 /* QAQuestionModel.swift in Sources */,
@@ -488,6 +515,7 @@
 				430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */,
 				B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */,
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
+				B716DC84227C692000D7E5FA /* ScoreItem.swift in Sources */,
 				433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */,
 				433A26EB1C50DC6300251D82 /* LXMBaseView.swift in Sources */,
 				B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */,

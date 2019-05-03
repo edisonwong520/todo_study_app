@@ -24,6 +24,8 @@ class DCHomeViewController: LXMBaseViewController {
         setupTableView()
         setupNavigationBar()
         todos_list = DBManager.shareManager().findAll() as! [ToDoItem]
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,7 +77,7 @@ extension DCHomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DCAlarmCellIdentifier) as! DCAlarmCell
         let alarm = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
-        
+
         cell.configWithAlarm(alarm, indexPath: indexPath)
         return cell
     }
@@ -107,7 +109,7 @@ extension DCHomeViewController: UITableViewDelegate {
         NSLog("current row is \(current_selected_row)")
         NSLog("current todolist count is \(todos_list.count)")
         add_item_flag = false
-        
+
         let alarm = DCAlarmManager.sharedInstance.alarmArray[indexPath.row]
         let clockSettingViewController = DCClockSettingViewController.loadFromStroyboardWithTargetAlarm(alarm)
         clockSettingViewController.hidesBottomBarWhenPushed = true

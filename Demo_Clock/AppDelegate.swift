@@ -13,8 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        DBManager.shareManager().drop_table()
-
+        
+        DBManager.shareManager().initDB()
+        
         if application.responds(to: #selector(getter: UIApplication.isRegisteredForRemoteNotifications)) {
             application.registerUserNotificationSettings(UIUserNotificationSettings(types: [UIUserNotificationType.sound, UIUserNotificationType.alert, UIUserNotificationType.badge], categories: nil))
             application.registerForRemoteNotifications()

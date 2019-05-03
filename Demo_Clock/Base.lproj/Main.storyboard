@@ -45,6 +45,80 @@
             </objects>
             <point key="canvasLocation" x="-740.79999999999995" y="114.24287856071965"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="zGa-PT-B4Q">
+            <objects>
+                <viewController id="JQB-cf-HFN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n1g-ln-h2a"/>
+                        <viewControllerLayoutGuide type="bottom" id="AYv-IZ-onK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RIy-0c-Dhi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-QP-sFY">
+                                <rect key="frame" x="66" y="276" width="81" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Exam"/>
+                                <connections>
+                                    <segue destination="AH2-iW-DP1" kind="modal" id="kO1-0w-Dcz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XC-FD-hwZ">
+                                <rect key="frame" x="228" y="276" width="81" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Curve"/>
+                                <connections>
+                                    <segue destination="bGl-fc-y2m" kind="push" id="dfe-14-DtG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KqF-Iu-w1h"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m2w-ke-G2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="823.89162561576359"/>
+        </scene>
+        <!--曲线查看-->
+        <scene sceneID="auW-Pv-0r2">
+            <objects>
+                <viewController id="bGl-fc-y2m" customClass="ChartViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dYY-5m-B8u"/>
+                        <viewControllerLayoutGuide type="bottom" id="gzc-hF-3Ev"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XaD-ed-rCu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最近成绩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rg4-ts-hgZ">
+                                <rect key="frame" x="152" y="109" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="学习时长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62I-xf-gYF">
+                                <rect key="frame" x="152" y="425" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="曲线查看" id="biL-ky-5MP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WPz-L1-wH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1567" y="824"/>
+        </scene>
         <!--Item-->
         <scene sceneID="DDP-yH-XiJ">
             <objects>
@@ -64,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAV-QB-9gP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202.40000000000001" y="821.67487684729065"/>
+            <point key="canvasLocation" x="810" y="822"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -495,7 +569,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="AH2-iW-DP1" kind="relationship" relationship="rootViewController" id="FkY-8N-0mB"/>
+                        <segue destination="JQB-cf-HFN" kind="relationship" relationship="rootViewController" id="3NU-Qx-eEZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16L-ik-abM" userLabel="First Responder" sceneMemberID="firstResponder"/>

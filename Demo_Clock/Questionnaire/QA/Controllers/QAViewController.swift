@@ -232,8 +232,8 @@ extension QAViewController {
         let alert = UIAlertController(title: "确定退出", message: "退出后未提交的内容将不被保存，是否继续", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "退出", style: .default, handler: { _ in
-            //
-            print("做退出的逻辑")
+        self.dismiss(animated: true, completion: nil)
+            
         }))
         present(alert, animated: true, completion: {
             //

@@ -51,6 +51,13 @@ public class DBManager {
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("create note table failed")
             }
+            // create score db
+            sql = "CREATE TABLE IF NOT EXISTS ScoreDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,score FLOAT)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create score table failed")
+            }
         }
         sqlite3_close(db)
     }
@@ -59,6 +66,16 @@ public class DBManager {
         let documentDirectory: NSArray = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let path = (documentDirectory[0] as AnyObject).appendingPathComponent(DBFILE_NAME) as String
         return path
+    }
+
+    // initial the db
+    public func initDB() {
+        DBManager.shareManager().drop_table()
+        // insert scoredb
+        var sql = "INSERT INTO ScoreDB (title,score) VALUES('测验1',79);"
+        DBManager.shareManager().execute_sql(sql: sql)
+        sql = "INSERT INTO ScoreDB (title,score) VALUES('测验2',88);"
+        DBManager.shareManager().execute_sql(sql: sql)
     }
 
     // 插入TodoiItem方法
@@ -364,6 +381,12 @@ public class DBManager {
                 NSLog("drop table failed")
             }
             sql = "drop table 'NoteDB' ;"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("drop table failed")
+            }
+            sql = "drop table 'ScoreDB' ;"
             cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
