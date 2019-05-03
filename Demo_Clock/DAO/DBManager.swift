@@ -68,15 +68,7 @@ public class DBManager {
         return path
     }
 
-    // initial the db
-    public func initDB() {
-        DBManager.shareManager().drop_table()
-        // insert scoredb
-        var sql = "INSERT INTO ScoreDB (title,score) VALUES('测验1',79);"
-        DBManager.shareManager().execute_sql(sql: sql)
-        sql = "INSERT INTO ScoreDB (title,score) VALUES('测验2',88);"
-        DBManager.shareManager().execute_sql(sql: sql)
-    }
+    
 
     // 插入TodoiItem方法
     public func insert(todoitem: ToDoItem) {
