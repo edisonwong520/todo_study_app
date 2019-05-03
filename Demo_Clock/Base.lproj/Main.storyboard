@@ -487,7 +487,7 @@
         <scene sceneID="6RY-Ms-Hvf">
             <objects>
                 <navigationController title="Exam" automaticallyAdjustsScrollViewInsets="NO" id="VIY-E0-hNT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="qPG-fy-Yut"/>
+                    <tabBarItem key="tabBarItem" title="Exam" id="qPG-fy-Yut"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ghv-Dh-gja">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

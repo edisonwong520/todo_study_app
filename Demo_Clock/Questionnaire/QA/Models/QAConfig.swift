@@ -20,10 +20,10 @@ struct Q_A {
         static let drakText = UIColor(red: 15/255.0, green: 57/255.0, blue: 18/255.0, alpha: 1)
     }
     
-    
+    //边框距离设定
     struct Padding {
         static var top: CGFloat {
-            return 94 * UIScreen.main.bounds.height / 667
+            return 94 * UIScreen.main.bounds.height / 667 + 10
         }
         static let left: CGFloat = 20
     }

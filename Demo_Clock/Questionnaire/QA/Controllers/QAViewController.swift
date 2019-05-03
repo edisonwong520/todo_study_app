@@ -141,7 +141,7 @@ class QAViewController: UIViewController {
         
         nextButton.backgroundColor = Q_A.Color.blue
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
-        nextButton.frame = CGRect(x: 0, y: 0, width: view.frame.width * 0.5, height: 40)
+        nextButton.frame = CGRect(x: 0, y: 0, width: view.frame.width * 0.5, height: 35)
         nextButton.center = CGPoint(x: view.frame.width * 0.5, y: pageViewController.view.frame.maxY)
         nextButton.layer.cornerRadius = 5
         nextButton.layer.masksToBounds = true
@@ -159,7 +159,7 @@ extension QAViewController {
     func makePageViewController() {
         //主体答题位置，设置样式为 pageCurl ，
         pageViewController =  UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionSpineLocationKey: NSNumber(value:UIPageViewControllerSpineLocation.min.rawValue)])
-        pageViewController.view.frame = CGRect(x: Q_A.Padding.left, y: Q_A.Padding.top, width: view.frame.width - 2 * Q_A.Padding.left, height: view.frame.height - Q_A.Padding.top - answerCardFrame.height - 44 - 64)
+        pageViewController.view.frame = CGRect(x: Q_A.Padding.left, y: Q_A.Padding.top, width: view.frame.width - 2 * Q_A.Padding.left, height: view.frame.height - Q_A.Padding.top - answerCardFrame.height - 170)
         pageViewController.delegate = self
         pageViewController.dataSource = self
         
@@ -206,7 +206,7 @@ extension QAViewController {
         flowLayout.minimumLineSpacing = 5
         flowLayout.minimumInteritemSpacing = 5
         
-        answerCard = UICollectionView(frame: CGRect(x: Q_A.Padding.left, y: view.frame.height - answerCardFrame.height - 44, width: answerCardFrame.width, height: answerCardFrame.height), collectionViewLayout: flowLayout)
+        answerCard = UICollectionView(frame: CGRect(x: Q_A.Padding.left, y: view.frame.height - answerCardFrame.height - 135, width: answerCardFrame.width, height: answerCardFrame.height), collectionViewLayout: flowLayout)
         answerCard.delegate = self
         answerCard.dataSource = self
         answerCard.backgroundColor = UIColor.white
