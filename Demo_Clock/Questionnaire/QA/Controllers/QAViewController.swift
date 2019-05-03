@@ -232,8 +232,8 @@ extension QAViewController {
         let alert = UIAlertController(title: "确定退出", message: "退出后未提交的内容将不被保存，是否继续", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "退出", style: .default, handler: { _ in
-        self.dismiss(animated: true, completion: nil)
-            
+            self.dismiss(animated: true, completion: nil)
+
         }))
         present(alert, animated: true, completion: {
             //
@@ -281,9 +281,61 @@ extension QAViewController {
         }
     }
 
+    // judge score
+    func judge_score(qajson: String, answerjson: String) -> Float {
+        var score = 0
+        NSLog("qajson:\(qajson)")
+        NSLog("answer:\(answerjson)")
+        if let jsonData = qajson.data(using: .utf8) {
+            let qaArr = try! JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [[String: AnyObject]]
+            if let jsonData = answerjson.data(using: .utf8) {
+                let answerArr = try! JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [[String: AnyObject]]
+
+                if answerArr.count == qaArr.count {
+                    for index in 0 ..< (qaArr.count) {
+                        let qaid = qaArr[index]["id"] as! Int
+                        let answerid = answerArr[index]["id"] as! Int
+                        let qastr = qaArr[index]["answer"] as! String
+                        let answerstr = answerArr[index]["answer"] as! String
+                        if qaid == answerid {
+                            if judge_multi_answer(str1: qastr, str2: answerstr) {
+                                NSLog("judge_multi_answer:\(qastr)")
+                                score += 5
+                            }
+                        }
+                    }
+                }
+            }
+            return Float(score)
+        }
+
+        return -1.0
+    }
+
+    // judge multi answer
+    func judge_multi_answer(str1: String, str2: String) -> Bool {
+        // str1 example: 2|3|4
+        // str2 example: 3|2|4   judge wheather they are have the same number
+
+        if str1 == str2 {
+            return true
+        }
+        let strarray: Array = str1.components(separatedBy: "|")
+
+        for item in strarray {
+            if item != "" {
+                if str2.components(separatedBy: item).count <= 1 {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
     /// 检查并提交--检查是否必填项都已完成
     func checkAndUpload() {
         //
+        var json: Data
         let unDidAnswers = realAnswer.filter { (answer) -> Bool in
             return (answer.answer.isEmpty && answer.required == 1)
         }
@@ -305,34 +357,36 @@ extension QAViewController {
             let data = try JSONSerialization.data(withJSONObject: results, options: .prettyPrinted)
 
             let jsonStr = String(data: data, encoding: .utf8)
-            NSLog(jsonStr ?? "what")
+
+            // get answer
+            let filePath = Bundle.main.path(forResource: "AnswerSource", ofType: "json")
+            do {
+                json = try Data(contentsOf: URL(fileURLWithPath: filePath!), options: Data.ReadingOptions.dataReadingMapped)
+                let answerjson = String(data: json, encoding: .utf8)
+                NSLog(jsonStr ?? "what")
+                let score = judge_score(qajson: jsonStr!, answerjson: answerjson!)
+                NSLog("score:\(score)")
+            } catch {
+                NSLog("cann't find dataSource.txt")
+            }
+
+            // --
 
         } catch {
             NSLog("转json出错了")
         }
     }
-    //judge score
-    func judge_score(qajson:String,resultjson:String) -> Float{
-        let qa_array = getArrayFromJSONString(jsonString: qajson)
-        for qa_item in qa_array{
-            qa_item["id"]
-        }
-        
-        return -1.0
-    }
-    
-    //json to array
-    func getArrayFromJSONString(jsonString:String) ->NSArray{
-        
-        let jsonData:Data = jsonString.data(using: .utf8)!
-        
-        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-        if array != nil {
-            return array as! NSArray
-        }
-        return array as! NSArray
-        
-    }
+
+//    // json to array
+//    func getArrayFromJSONString(jsonString: String) -> NSArray {
+//        let jsonData: Data = jsonString.data(using: .utf8)!
+//
+//        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+//        if array != nil {
+//            return array as! NSArray
+//        }
+//        return array as! NSArray
+//    }
 
     /// 添加通知监听
     func addNotification() {

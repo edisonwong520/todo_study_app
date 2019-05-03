@@ -43,6 +43,7 @@
 		B716DC82227C675800D7E5FA /* ScoreDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC81227C675800D7E5FA /* ScoreDBManager.swift */; };
 		B716DC84227C692000D7E5FA /* ScoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC83227C692000D7E5FA /* ScoreItem.swift */; };
 		B716DC86227C769000D7E5FA /* InitDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC85227C769000D7E5FA /* InitDB.swift */; };
+		B716DC88227C86A700D7E5FA /* AnswerSource.json in Resources */ = {isa = PBXBuildFile; fileRef = B716DC87227C86A700D7E5FA /* AnswerSource.json */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -115,6 +116,7 @@
 		B716DC81227C675800D7E5FA /* ScoreDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreDBManager.swift; sourceTree = "<group>"; };
 		B716DC83227C692000D7E5FA /* ScoreItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreItem.swift; sourceTree = "<group>"; };
 		B716DC85227C769000D7E5FA /* InitDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDB.swift; sourceTree = "<group>"; };
+		B716DC87227C86A700D7E5FA /* AnswerSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AnswerSource.json; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		B70FB846227C0A6800E07FA5 /* QA */ = {
 			isa = PBXGroup;
 			children = (
+				B716DC87227C86A700D7E5FA /* AnswerSource.json */,
 				B70FB847227C0A6800E07FA5 /* DataSource.json */,
 				B70FB848227C0A6800E07FA5 /* Models */,
 				B70FB84B227C0A6800E07FA5 /* Controllers */,
@@ -445,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				430DA2951C4F81BC00C4E60C /* LaunchScreen.storyboard in Resources */,
+				B716DC88227C86A700D7E5FA /* AnswerSource.json in Resources */,
 				B70FB85F227C0A6800E07FA5 /* DataSource.json in Resources */,
 				B70FB864227C0A6800E07FA5 /* QAOptionCell.xib in Resources */,
 				B70FB866227C0A6800E07FA5 /* QATextViewCell.xib in Resources */,

@@ -22,7 +22,7 @@
     ]
 },
 {
-    "questionId": 12
+    "questionId": 2,
     "question": "TCP不属于哪一层？",
     "mode": 1,
     "required": 1,
