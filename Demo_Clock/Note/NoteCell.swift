@@ -12,11 +12,10 @@ let NoteCellIdentifier = "NoteCell"
 let kTDAlarmCellHeight = 60
 
 class NoteCell: UITableViewCell {
-    
-    @IBOutlet weak var title: UILabel!
-    
-    @IBOutlet weak var datelabel: UILabel!
-    
+    @IBOutlet var title: UILabel!
+
+    @IBOutlet var datelabel: UILabel!
+
     fileprivate var note: NoteItem?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,9 +28,8 @@ class NoteCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-
     func judge_operate() {}
-    
+
     func configWithNote(_ note: NoteItem, indexPath _: IndexPath) {
         self.note = note
         title.text = note.title

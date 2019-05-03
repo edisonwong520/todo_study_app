@@ -10,46 +10,46 @@ import SQLite3
 import UIKit
 // notes_list record current list
 var notes_list: [NoteItem] = []
-//record search result list
+// record search result list
 var filter_list: [NoteItem] = []
 
 class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
-    
-    var searchController : UISearchController!
-    
+    var searchController: UISearchController!
+
     func updateSearchResults(for searchController: UISearchController) {
         let searchString = searchController.searchBar.text
-        self.filterContentForSearchText(searchString! as NSString, scope: searchController.searchBar.selectedScopeButtonIndex)
-        self.tableView.reloadData()
+        filterContentForSearchText(searchString! as NSString, scope: searchController.searchBar.selectedScopeButtonIndex)
+        tableView.reloadData()
     }
-    
-    //MARK: --实现UISearchBarDelegate协议方法
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        self.updateSearchResults(for: self.searchController)
+
+    // MARK: --实现UISearchBarDelegate协议方法
+
+    func searchBar(_: UISearchBar, selectedScopeButtonIndexDidChange _: Int) {
+        updateSearchResults(for: searchController)
     }
-    
+
     @IBOutlet var tableView: UITableView!
 
 //    var dataArray = [TDAlarm]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = "Note"
-        
-        //add search bar
-        //实例化UISearchController
-        self.searchController = UISearchController(searchResultsController: nil)
-        //设置self为更新搜索结果对象
-        self.searchController.searchResultsUpdater = self
-        //在搜索是背景设置为灰色
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.searchController.searchBar.scopeButtonTitles = ["标题", "笔记"]
-        self.searchController.searchBar.delegate = self
-        //将搜索栏放到表视图的表头中
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        
-        self.searchController.searchBar.sizeToFit()
+
+        // add search bar
+        // 实例化UISearchController
+        searchController = UISearchController(searchResultsController: nil)
+        // 设置self为更新搜索结果对象
+        searchController.searchResultsUpdater = self
+        // 在搜索是背景设置为灰色
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["标题", "笔记"]
+        searchController.searchBar.delegate = self
+        // 将搜索栏放到表视图的表头中
+        tableView.tableHeaderView = searchController.searchBar
+
+        searchController.searchBar.sizeToFit()
 
         setupTableView()
         setupNavigationBar()
@@ -95,29 +95,29 @@ extension NoteHomeViewController {
 
         })
     }
-    //filter the search
+
+    // filter the search
     func filterContentForSearchText(_ searchText: NSString, scope: Int) {
-        if(searchText.length == 0) {
-            //查询所有
+        if searchText.length == 0 {
+            // 查询所有
             filter_list = notes_list
             return
         }
-        var tempArray : NSArray!
+
         var sql = ""
-        
+
 //        filter_list =
-        if (scope == 0) {
+        if scope == 0 {
             sql = "SELECT id FROM NoteDB WHERE title LIKE '%\(searchText)%';"
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
-        } else if (scope == 1) {
+        } else if scope == 1 {
             sql = "SELECT id FROM NoteDB WHERE note LIKE '%\(searchText)%';"
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
-            
+
         } else {
             sql = "SELECT id FROM NoteDB WHERE note LIKE '%\(searchText)%' OR title LIKE '%\(searchText)%';"
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
         }
-        
     }
 }
 
@@ -182,6 +182,5 @@ extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let note = notes_list.remove(at: (sourceIndexPath as NSIndexPath).row)
         notes_list.insert(note, at: (destinationIndexPath as NSIndexPath).row)
-
     }
 }

@@ -6,7 +6,6 @@
 //  Copyright © 2019年 EDC. All rights reserved.
 //
 
-
 import UIKit
 
 class NoteManager {

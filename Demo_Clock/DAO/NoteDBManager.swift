@@ -116,7 +116,7 @@ extension DBManager {
             return -1
     } }
 
-    func find_keyword(_ sql:String) -> NSMutableArray {
+    func find_keyword(_ sql: String) -> NSMutableArray {
         var result = NSMutableArray()
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         var id_list: [Int] = []
@@ -124,7 +124,6 @@ extension DBManager {
             NSLog("db open failed")
             return result
         } else {
-
             NSLog("select id sql:\(sql)")
             let cSql = sql.cString(using: String.Encoding.utf8)
             var statement: OpaquePointer?
@@ -139,17 +138,17 @@ extension DBManager {
                 sqlite3_finalize(statement)
             }
         }
-        
-        //add to the result list
-        for id in id_list{
-            for note_item in notes_list{
-                if id == note_item.id{
+
+        // add to the result list
+        for id in id_list {
+            for note_item in notes_list {
+                if id == note_item.id {
                     result.add(note_item)
                     break
                 }
             }
         }
-        
+
         return result
     }
 }
