@@ -254,6 +254,7 @@ extension QAViewController {
             alert.addAction(UIAlertAction(title: "交卷", style: .default, handler: { _ in
                 //
                 self.checkAndUpload()
+                self.dismiss(animated: true, completion: nil)
             }))
             present(alert, animated: true, completion: {
                 //
@@ -365,6 +366,13 @@ extension QAViewController {
                 let answerjson = String(data: json, encoding: .utf8)
                 NSLog(jsonStr ?? "what")
                 let score = judge_score(qajson: jsonStr!, answerjson: answerjson!)
+                let sql = "INSERT INTO ScoreDB (title,score)VALUES('',\(score));"
+                let boolflag = DBManager.shareManager().execute_sql(sql: sql)
+                if boolflag {
+                    NSLog("insert score into db success")
+                }else{
+                    NSLog("insert score into db failed")
+                }
                 NSLog("score:\(score)")
             } catch {
                 NSLog("cann't find dataSource.txt")
