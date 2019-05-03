@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="-740.79999999999995" y="114.24287856071965"/>
         </scene>
-        <!--Exam-->
+        <!--Item-->
         <scene sceneID="DDP-yH-XiJ">
             <objects>
-                <viewController title="Exam" id="AH2-iW-DP1" customClass="QAViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AH2-iW-DP1" customClass="QAViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0NE-OW-cDI"/>
                         <viewControllerLayoutGuide type="bottom" id="ZnB-FH-LjD"/>

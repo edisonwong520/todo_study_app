@@ -92,6 +92,7 @@ class QAViewController: UIViewController {
     
     //TODO: lifeCircle
     override func viewDidLoad() {
+        title = "Exam"
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
        
