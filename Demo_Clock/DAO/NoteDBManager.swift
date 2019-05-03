@@ -88,7 +88,7 @@ extension DBManager {
         }
     }
 
-    func fing_note_id(note: NoteItem) -> Int {
+    func find_note_id(note: NoteItem) -> Int {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("db open failed")
@@ -115,4 +115,41 @@ extension DBManager {
             }
             return -1
     } }
+
+    func find_keyword(_ sql:String) -> NSMutableArray {
+        var result = NSMutableArray()
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        var id_list: [Int] = []
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            return result
+        } else {
+
+            NSLog("select id sql:\(sql)")
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            // 预处理过程
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    if let strId = getColumnValue(index: 0, stmt: statement!) {
+                        id_list.append(Int(strId)!)
+                    }
+                }
+                sqlite3_close(db)
+                sqlite3_finalize(statement)
+            }
+        }
+        
+        //add to the result list
+        for id in id_list{
+            for note_item in notes_list{
+                if id == note_item.id{
+                    result.add(note_item)
+                    break
+                }
+            }
+        }
+        
+        return result
+    }
 }

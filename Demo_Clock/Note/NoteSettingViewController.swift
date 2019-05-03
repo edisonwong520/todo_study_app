@@ -102,9 +102,10 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
         
         //add item
         DBManager.shareManager().insert(noteitem: note)
-        note.id = DBManager.shareManager().fing_note_id(note: note)
+        note.id = DBManager.shareManager().find_note_id(note: note)
 //        NoteManager.sharedInstance.noteArray.append(note)
         notes_list.append(note)
+        filter_list = notes_list
         handleCancelButtonTapped(UIButton())
         _ = navigationController?.popToRootViewController(animated: true)
         
