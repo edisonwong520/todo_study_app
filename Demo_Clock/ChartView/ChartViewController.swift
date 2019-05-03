@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  ZXChartViewTemp
+//  ChartViewController.swift
+//  Todo
 //
-//  Created by JuanFelix on 2017/4/27.
-//  Copyright © 2017年 screson. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import UIKit
