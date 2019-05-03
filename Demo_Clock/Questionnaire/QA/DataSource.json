@@ -1,0 +1,24 @@
+[{
+"questionId": 1,
+"question": "你觉得你是否是一个聪明的人",
+"mode": 0,
+"required": 1,
+"answers": [{
+"answerId": 1,
+"desc": "问题A，我是一个聪明的人"
+},
+{
+"answerId": 2,
+"desc": "问题B，我不是一个聪明的人"
+},
+{
+"answerId": 3,
+"desc": "问题C，我既不聪明也不不聪明,你说我聪明不聪明"
+},
+{
+"answerId": 4,
+"desc": "问题D，我不是人"
+}
+]
+}
+]

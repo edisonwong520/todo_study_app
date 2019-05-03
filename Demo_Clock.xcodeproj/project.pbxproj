@@ -24,6 +24,19 @@
 		433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433A26FB1C5121E200251D82 /* DCAlarmManager.swift */; };
 		4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358B97E1C5071950081E3A5 /* DCAlarm.swift */; };
 		436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */; };
+		B70FB85F227C0A6800E07FA5 /* DataSource.json in Resources */ = {isa = PBXBuildFile; fileRef = B70FB847227C0A6800E07FA5 /* DataSource.json */; };
+		B70FB860227C0A6800E07FA5 /* QAConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB849227C0A6800E07FA5 /* QAConfig.swift */; };
+		B70FB861227C0A6800E07FA5 /* QAQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB84A227C0A6800E07FA5 /* QAQuestionModel.swift */; };
+		B70FB862227C0A6800E07FA5 /* QAQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB84C227C0A6800E07FA5 /* QAQuestionViewController.swift */; };
+		B70FB863227C0A6800E07FA5 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB84D227C0A6800E07FA5 /* QAViewController.swift */; };
+		B70FB864227C0A6800E07FA5 /* QAOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FB84F227C0A6800E07FA5 /* QAOptionCell.xib */; };
+		B70FB865227C0A6800E07FA5 /* QAOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB850227C0A6800E07FA5 /* QAOptionCell.swift */; };
+		B70FB866227C0A6800E07FA5 /* QATextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FB851227C0A6800E07FA5 /* QATextViewCell.xib */; };
+		B70FB867227C0A6800E07FA5 /* QATextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB852227C0A6800E07FA5 /* QATextViewCell.swift */; };
+		B70FB868227C0A6800E07FA5 /* QAAnswerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB853227C0A6800E07FA5 /* QAAnswerCardCell.swift */; };
+		B70FB869227C0A6800E07FA5 /* QASubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FB854227C0A6800E07FA5 /* QASubjectCell.xib */; };
+		B70FB86A227C0A6800E07FA5 /* QASubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70FB855227C0A6800E07FA5 /* QASubjectCell.swift */; };
+		B70FB86B227C0A6800E07FA5 /* QAAnswerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70FB856227C0A6800E07FA5 /* QAAnswerCardCell.xib */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -77,6 +90,19 @@
 		433A26FB1C5121E200251D82 /* DCAlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarmManager.swift; sourceTree = "<group>"; };
 		4358B97E1C5071950081E3A5 /* DCAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlarm.swift; sourceTree = "<group>"; };
 		436D743C1CBE80330054ECE8 /* LXMConfigExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXMConfigExtentsion.swift; sourceTree = "<group>"; };
+		B70FB847227C0A6800E07FA5 /* DataSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DataSource.json; sourceTree = "<group>"; };
+		B70FB849227C0A6800E07FA5 /* QAConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAConfig.swift; sourceTree = "<group>"; };
+		B70FB84A227C0A6800E07FA5 /* QAQuestionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAQuestionModel.swift; sourceTree = "<group>"; };
+		B70FB84C227C0A6800E07FA5 /* QAQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAQuestionViewController.swift; sourceTree = "<group>"; };
+		B70FB84D227C0A6800E07FA5 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
+		B70FB84F227C0A6800E07FA5 /* QAOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAOptionCell.xib; sourceTree = "<group>"; };
+		B70FB850227C0A6800E07FA5 /* QAOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAOptionCell.swift; sourceTree = "<group>"; };
+		B70FB851227C0A6800E07FA5 /* QATextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QATextViewCell.xib; sourceTree = "<group>"; };
+		B70FB852227C0A6800E07FA5 /* QATextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QATextViewCell.swift; sourceTree = "<group>"; };
+		B70FB853227C0A6800E07FA5 /* QAAnswerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAAnswerCardCell.swift; sourceTree = "<group>"; };
+		B70FB854227C0A6800E07FA5 /* QASubjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QASubjectCell.xib; sourceTree = "<group>"; };
+		B70FB855227C0A6800E07FA5 /* QASubjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QASubjectCell.swift; sourceTree = "<group>"; };
+		B70FB856227C0A6800E07FA5 /* QAAnswerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAAnswerCardCell.xib; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +167,7 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				B70FB843227C0A6800E07FA5 /* Questionnaire */,
 				B765AE332279BF450024CAE7 /* Note */,
 				B7BF6ABA227456EF00C59E95 /* DAO */,
 				430DA2C11C4F848100C4E60C /* Todo */,
@@ -196,6 +223,58 @@
 				433A26FB1C5121E200251D82 /* DCAlarmManager.swift */,
 			);
 			path = Todo;
+			sourceTree = "<group>";
+		};
+		B70FB843227C0A6800E07FA5 /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				B70FB846227C0A6800E07FA5 /* QA */,
+			);
+			path = Questionnaire;
+			sourceTree = "<group>";
+		};
+		B70FB846227C0A6800E07FA5 /* QA */ = {
+			isa = PBXGroup;
+			children = (
+				B70FB847227C0A6800E07FA5 /* DataSource.json */,
+				B70FB848227C0A6800E07FA5 /* Models */,
+				B70FB84B227C0A6800E07FA5 /* Controllers */,
+				B70FB84E227C0A6800E07FA5 /* Views */,
+			);
+			path = QA;
+			sourceTree = "<group>";
+		};
+		B70FB848227C0A6800E07FA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B70FB849227C0A6800E07FA5 /* QAConfig.swift */,
+				B70FB84A227C0A6800E07FA5 /* QAQuestionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B70FB84B227C0A6800E07FA5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B70FB84C227C0A6800E07FA5 /* QAQuestionViewController.swift */,
+				B70FB84D227C0A6800E07FA5 /* QAViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B70FB84E227C0A6800E07FA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B70FB84F227C0A6800E07FA5 /* QAOptionCell.xib */,
+				B70FB850227C0A6800E07FA5 /* QAOptionCell.swift */,
+				B70FB851227C0A6800E07FA5 /* QATextViewCell.xib */,
+				B70FB852227C0A6800E07FA5 /* QATextViewCell.swift */,
+				B70FB853227C0A6800E07FA5 /* QAAnswerCardCell.swift */,
+				B70FB854227C0A6800E07FA5 /* QASubjectCell.xib */,
+				B70FB855227C0A6800E07FA5 /* QASubjectCell.swift */,
+				B70FB856227C0A6800E07FA5 /* QAAnswerCardCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B765AE332279BF450024CAE7 /* Note */ = {
@@ -340,6 +419,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				430DA2951C4F81BC00C4E60C /* LaunchScreen.storyboard in Resources */,
+				B70FB85F227C0A6800E07FA5 /* DataSource.json in Resources */,
+				B70FB864227C0A6800E07FA5 /* QAOptionCell.xib in Resources */,
+				B70FB866227C0A6800E07FA5 /* QATextViewCell.xib in Resources */,
+				B70FB86B227C0A6800E07FA5 /* QAAnswerCardCell.xib in Resources */,
+				B70FB869227C0A6800E07FA5 /* QASubjectCell.xib in Resources */,
 				430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */,
 				430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */,
 			);
@@ -390,11 +474,16 @@
 			files = (
 				B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */,
 				B765AE4D2279C17C0024CAE7 /* NoteHomeViewController.swift in Sources */,
+				B70FB862227C0A6800E07FA5 /* QAQuestionViewController.swift in Sources */,
 				436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */,
 				430DA2C31C4F84EB00C4E60C /* DCHomeViewController.swift in Sources */,
 				433A26FA1C51094B00251D82 /* DCAlarmCell.swift in Sources */,
+				B70FB863227C0A6800E07FA5 /* QAViewController.swift in Sources */,
+				B70FB860227C0A6800E07FA5 /* QAConfig.swift in Sources */,
 				B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */,
+				B70FB868227C0A6800E07FA5 /* QAAnswerCardCell.swift in Sources */,
 				430DA2C51C4F858B00C4E60C /* DCClockSettingViewController.swift in Sources */,
+				B70FB861227C0A6800E07FA5 /* QAQuestionModel.swift in Sources */,
 				430DA2BE1C4F820900C4E60C /* LXMConsoleViewController.swift in Sources */,
 				430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */,
 				B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */,
@@ -402,12 +491,15 @@
 				433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */,
 				433A26EB1C50DC6300251D82 /* LXMBaseView.swift in Sources */,
 				B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */,
+				B70FB865227C0A6800E07FA5 /* QAOptionCell.swift in Sources */,
 				B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */,
+				B70FB86A227C0A6800E07FA5 /* QASubjectCell.swift in Sources */,
 				430DA2BF1C4F820900C4E60C /* LXMMacro.swift in Sources */,
 				430DA28B1C4F81BC00C4E60C /* AppDelegate.swift in Sources */,
 				430DA2C01C4F820900C4E60C /* LXMToolFunction.swift in Sources */,
 				B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */,
 				B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */,
+				B70FB867227C0A6800E07FA5 /* QATextViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
