@@ -33,8 +33,9 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
 //    var dataArray = [TDAlarm]()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
+        notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         title = "Note"
 
         // add search bar
@@ -53,7 +54,7 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
 
         setupTableView()
         setupNavigationBar()
-        notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +63,7 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
 
 //        dataArray = notes_list // swift的数组是struct，是值类型，写的时候要特别注意
@@ -123,6 +125,7 @@ extension NoteHomeViewController {
 
 extension NoteHomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         return filter_list.count
     }
 

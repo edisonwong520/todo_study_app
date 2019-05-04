@@ -26,7 +26,8 @@ class QAViewController: UIViewController {
             }
         }
     }
-    var current_score:Float = 0
+
+    var current_score: Float = 0
 
     // 其实可以合成一个model
     var questions = [QAQuestion]() // 问题的数组
@@ -38,6 +39,8 @@ class QAViewController: UIViewController {
     var nextButton: UIButton! // 下一题
 
     var answerCard: UICollectionView! // 答题卡
+    
+    
 
     struct AnswerCardFrame {
         let count: Int
@@ -243,6 +246,9 @@ extension QAViewController {
         })
     }
 
+    func show_result_alert(){
+        
+    }
     func nextButtonAction() {
         if pageIndex < questions.count - 1 {
             NSLog("next button clicked")
@@ -259,37 +265,37 @@ extension QAViewController {
                 self.checkAndUpload()
                 self.show_result()
                 
+
             }))
             present(alert, animated: true, completion: {
                 //
             })
         }
+        
     }
 
-    func show_result(){
-        let alert = UIAlertController(title: "本次成绩", message: "本次考试您获得了\(current_score)分", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "查看错题", style: .default, handler: { _ in
-            if self.wrong_answer.count == 0 {
-                let rightalert = UIAlertController(title: "查看", message: "恭喜您无错题！", preferredStyle: .alert)
-                self.present(rightalert, animated: true, completion: {
-                    
-                })
-            }else{
-                let strwrong = "第" + self.wrong_answer.joined(separator: "、") + "题错了"
-                let wrongalert = UIAlertController(title: "查看", message: strwrong, preferredStyle: .alert)
-                self.present(wrongalert, animated: true, completion: {
-                    //
-                })}
-            
-        }))
+    // show the exam result
+    func show_result() {
+        var wrong_str = ""
+        if self.wrong_answer.count != 0 {
+            wrong_str = "其中第" + self.wrong_answer.joined(separator: "、") + "题错了"
+        }
+        let alert = UIAlertController(title: "本次成绩", message: "本次考试您获得了\(current_score)分\n"+wrong_str, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "查看错题", style: .default, handler: { _ in
+//            show_wrong = true
+//            self.dismiss(animated: true, completion: nil)
+//        }))
         
-        alert.addAction(UIAlertAction(title: "确认", style: .default, handler: {_ in
+        
+        alert.addAction(UIAlertAction(title: "确认", style: .default, handler: { _ in
             self.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: {
-            //
+            
         })
+       
     }
+
     /// 显示相应题目
     ///
     /// - Parameter index: 数组中第几个
@@ -348,12 +354,17 @@ extension QAViewController {
     func judge_multi_answer(str1: String, str2: String) -> Bool {
         // str1 example: 2|3|4
         // str2 example: 3|2|4   judge wheather they are have the same number
+        //str1 example:2
+        //str2 example:3|2|4  this situation is also wrong
 
         if str1 == str2 {
             return true
         }
         let strarray: Array = str1.components(separatedBy: "|")
-
+        
+        if str1.count != str2.count{
+            return false
+        }
         for item in strarray {
             if item != "" {
                 if str2.components(separatedBy: item).count <= 1 {
