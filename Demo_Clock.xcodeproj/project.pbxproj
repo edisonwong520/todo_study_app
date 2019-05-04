@@ -45,8 +45,9 @@
 		B716DC86227C769000D7E5FA /* InitDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC85227C769000D7E5FA /* InitDB.swift */; };
 		B716DC88227C86A700D7E5FA /* AnswerSource.json in Resources */ = {isa = PBXBuildFile; fileRef = B716DC87227C86A700D7E5FA /* AnswerSource.json */; };
 		B71872EA227DA8220070B52E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872E7227DA8220070B52E /* SignUpViewController.swift */; };
-		B71872EB227DA8220070B52E /* LoginPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B71872E8227DA8220070B52E /* LoginPopup.storyboard */; };
 		B71872EC227DA8220070B52E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872E9227DA8220070B52E /* SignInViewController.swift */; };
+		B71872EE227DAE910070B52E /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872ED227DAE910070B52E /* UserDBManager.swift */; };
+		B71872F0227DAEB60070B52E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872EF227DAEB60070B52E /* User.swift */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -121,8 +122,9 @@
 		B716DC85227C769000D7E5FA /* InitDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDB.swift; sourceTree = "<group>"; };
 		B716DC87227C86A700D7E5FA /* AnswerSource.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AnswerSource.json; sourceTree = "<group>"; };
 		B71872E7227DA8220070B52E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B71872E8227DA8220070B52E /* LoginPopup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginPopup.storyboard; sourceTree = "<group>"; };
 		B71872E9227DA8220070B52E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		B71872ED227DAE910070B52E /* UserDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
+		B71872EF227DAEB60070B52E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -315,8 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				B71872E7227DA8220070B52E /* SignUpViewController.swift */,
-				B71872E8227DA8220070B52E /* LoginPopup.storyboard */,
 				B71872E9227DA8220070B52E /* SignInViewController.swift */,
+				B71872EF227DAEB60070B52E /* User.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -341,6 +343,7 @@
 				B7BF6ABC227456EF00C59E95 /* DBManager.swift */,
 				B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */,
 				B716DC85227C769000D7E5FA /* InitDB.swift */,
+				B71872ED227DAE910070B52E /* UserDBManager.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -471,7 +474,6 @@
 				B70FB866227C0A6800E07FA5 /* QATextViewCell.xib in Resources */,
 				B70FB86B227C0A6800E07FA5 /* QAAnswerCardCell.xib in Resources */,
 				B70FB869227C0A6800E07FA5 /* QASubjectCell.xib in Resources */,
-				B71872EB227DA8220070B52E /* LoginPopup.storyboard in Resources */,
 				430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */,
 				430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */,
 			);
@@ -520,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71872F0227DAEB60070B52E /* User.swift in Sources */,
 				B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */,
 				B716DC7E227C618700D7E5FA /* String+ZX.swift in Sources */,
 				B716DC80227C618700D7E5FA /* ChartViewController.swift in Sources */,
@@ -536,6 +539,7 @@
 				B716DC82227C675800D7E5FA /* ScoreDBManager.swift in Sources */,
 				B70FB868227C0A6800E07FA5 /* QAAnswerCardCell.swift in Sources */,
 				430DA2C51C4F858B00C4E60C /* DCClockSettingViewController.swift in Sources */,
+				B71872EE227DAE910070B52E /* UserDBManager.swift in Sources */,
 				B70FB861227C0A6800E07FA5 /* QAQuestionModel.swift in Sources */,
 				430DA2BE1C4F820900C4E60C /* LXMConsoleViewController.swift in Sources */,
 				430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */,

@@ -58,6 +58,13 @@ public class DBManager {
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("create score table failed")
             }
+            // create user db
+            sql = "CREATE TABLE IF NOT EXISTS UserDB (id INTEGER PRIMARY KEY AUTOINCREMENT, realname VARCHAR,name VARCHAR,password VARCHAR,email VARCHAR)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+            
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create score table failed")
+            }
         }
         sqlite3_close(db)
     }
@@ -381,6 +388,12 @@ public class DBManager {
             sql = "drop table 'ScoreDB' ;"
             cSql = sql.cString(using: String.Encoding.utf8)
 
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("drop table failed")
+            }
+            sql = "drop table 'UserDB' ;"
+            cSql = sql.cString(using: String.Encoding.utf8)
+            
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")
             }

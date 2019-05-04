@@ -648,7 +648,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZv-w9-zyj" customClass="CustomButton" customModule="Demo_Clock" customModuleProvider="target">
                                                     <rect key="frame" x="80" y="185" width="125" height="50"/>
-                                                    <color key="backgroundColor" red="0.27411199209999998" green="0.89133610070000002" blue="0.5093213312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.58266327780000005" green="0.87913477419999997" blue="0.4053925035" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="C3m-I0-gIJ"/>
                                                         <constraint firstAttribute="height" constant="50" id="aJI-dY-fn0"/>
@@ -665,7 +665,7 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlH-bs-OZz">
                                                     <rect key="frame" x="80" y="85" width="125" height="50"/>
-                                                    <color key="backgroundColor" red="0.27411199209999998" green="0.89133610070000002" blue="0.5093213312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.58266327780000005" green="0.87913477419999997" blue="0.4053925035" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="HB5-Fl-BqW"/>
                                                         <constraint firstAttribute="width" constant="125" id="wjD-XL-p2R"/>
@@ -689,7 +689,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎使用" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXn-mh-diJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
-                                                    <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.9200318455696106" green="0.55222045339032044" blue="0.72791196032749839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="GBn-bq-cen"/>
                                                     </constraints>
@@ -763,7 +763,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvX-eW-lTd">
                                                             <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
-                                                            <color key="backgroundColor" red="0.27411199209999998" green="0.89133610070000002" blue="0.5093213312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.58266327780000005" green="0.87913477419999997" blue="0.4053925035" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="iee-gI-rrm"/>
                                                             </constraints>
