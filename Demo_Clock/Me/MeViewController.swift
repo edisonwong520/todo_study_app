@@ -26,6 +26,16 @@ class MeViewController: UIViewController,UIImagePickerControllerDelegate,UINavig
         NSLog("loginflag:\(login_flag)")
         current_user_id = DBManager.shareManager().find_current_login_id()
 
+        
+        //
+        imgView.layer.borderWidth = 0.5
+        imgView.layer.borderColor = UIColor.orange.cgColor
+        imgView.clipsToBounds = true
+        imgView.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
+        imgView.addGestureRecognizer(tapGesture)
+        
         // already log in
         if login_flag {
             UnlogLabel.isHidden = true
@@ -36,6 +46,7 @@ class MeViewController: UIViewController,UIImagePickerControllerDelegate,UINavig
             nameLabel.text = "用户名：" + current_user.name
             realnameLabel.text = "邮箱：" + current_user.email
         } else {
+            imgView.image = nil
             UnlogLabel.isHidden = false
             loginButton.isHidden = false
             logoutButton.isHidden = true
@@ -44,14 +55,7 @@ class MeViewController: UIViewController,UIImagePickerControllerDelegate,UINavig
         }
         // Do any additional setup after loading the view.
         
-        //
-        imgView.layer.borderWidth = 0.5
-        imgView.layer.borderColor = UIColor.orange.cgColor
-        imgView.clipsToBounds = true
-        imgView.isUserInteractionEnabled = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
-        imgView.addGestureRecognizer(tapGesture)
     }
     @objc func tapAction(tapGesture: UITapGestureRecognizer) {
         let alertController = UIAlertController(title: "更改头像", message: nil,
