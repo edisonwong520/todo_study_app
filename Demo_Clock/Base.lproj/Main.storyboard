@@ -22,7 +22,7 @@
                         <segue destination="x6z-dn-9fY" kind="relationship" relationship="viewControllers" id="r4w-Uf-32p"/>
                         <segue destination="kvu-K3-Ujn" kind="relationship" relationship="viewControllers" id="v8U-G2-ARv"/>
                         <segue destination="VIY-E0-hNT" kind="relationship" relationship="viewControllers" id="chw-U4-ZAp"/>
-                        <segue destination="Lqq-9U-duN" kind="relationship" relationship="viewControllers" id="QlW-5p-o0O"/>
+                        <segue destination="Lqq-9U-duN" kind="relationship" relationship="viewControllers" id="xuR-nd-csc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1oR-oH-CWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -46,7 +46,7 @@
             </objects>
             <point key="canvasLocation" x="-740.79999999999995" y="114.24287856071965"/>
         </scene>
-        <!--View Controller-->
+        <!--Exam-->
         <scene sceneID="zGa-PT-B4Q">
             <objects>
                 <viewController id="JQB-cf-HFN" sceneMemberID="viewController">
@@ -79,7 +79,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KqF-Iu-w1h"/>
+                    <navigationItem key="navigationItem" title="Exam" id="KqF-Iu-w1h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2w-ke-G2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -600,18 +600,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VKI-kz-b06"/>
+                    <navigationItem key="navigationItem" title="Me" id="VKI-kz-b06"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIk-Es-vup" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="54" y="1526"/>
         </scene>
-        <!--Me Home-->
+        <!--Me-->
         <scene sceneID="4ty-iq-Liq">
             <objects>
-                <navigationController title="Me Home" automaticallyAdjustsScrollViewInsets="NO" id="Lqq-9U-duN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="kJm-Em-rkB"/>
+                <navigationController title="Me" automaticallyAdjustsScrollViewInsets="NO" id="Lqq-9U-duN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" id="kJm-Em-rkB"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="UUt-DG-JPb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Am7-k5-Ruy">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -625,10 +626,10 @@
             </objects>
             <point key="canvasLocation" x="-775" y="1526"/>
         </scene>
-        <!--View Controller-->
+        <!--欢迎使用-->
         <scene sceneID="nSX-yj-rIb">
             <objects>
-                <viewController id="JLu-44-hUR" sceneMemberID="viewController">
+                <viewController title="欢迎使用" id="JLu-44-hUR" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GW5-tX-JjE"/>
                         <viewControllerLayoutGuide type="bottom" id="RQQ-LF-XMd"/>
@@ -738,10 +739,10 @@
             </objects>
             <point key="canvasLocation" x="809" y="1526"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign in-->
         <scene sceneID="1YM-zw-Ksc">
             <objects>
-                <viewController id="uCW-is-nP8" customClass="SignUpViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign in" id="uCW-is-nP8" customClass="SignUpViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nd8-1O-VfT"/>
                         <viewControllerLayoutGuide type="bottom" id="MuG-ca-eBX"/>
@@ -955,10 +956,10 @@
             </objects>
             <point key="canvasLocation" x="1566" y="1526"/>
         </scene>
-        <!--Sign In View Controller-->
+        <!--Sign up-->
         <scene sceneID="POL-a5-cHQ">
             <objects>
-                <viewController id="fAo-eU-W68" customClass="SignInViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign up" id="fAo-eU-W68" customClass="SignInViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8KK-0I-IuF"/>
                         <viewControllerLayoutGuide type="bottom" id="OgZ-Qg-4Au"/>

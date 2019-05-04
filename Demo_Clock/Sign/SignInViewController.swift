@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var login_flag = false
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,6 +22,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.textfieldsCollection.forEach { (textfld) in
@@ -70,6 +71,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         //star to judge
         if login_flag == true{
             NSLog("log in success")
+            login_flag = true
         }else{
             let alert = UIAlertController(title: "提示", message: "账号或密码错误，请重新输入", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "确定", style: .cancel, handler: nil))
