@@ -8,12 +8,13 @@
 
 import UIKit
 
-class MeViewController: UIViewController {
+class MeViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet var UnlogLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var realnameLabel: UILabel!
+    @IBOutlet weak var imgView: UIImageView!
     override func viewDidLoad() {
         loginButton.isHidden = true
         logoutButton.isHidden = true
@@ -42,8 +43,66 @@ class MeViewController: UIViewController {
             realnameLabel.text = ""
         }
         // Do any additional setup after loading the view.
+        
+        //
+        imgView.layer.borderWidth = 0.5
+        imgView.layer.borderColor = UIColor.orange.cgColor
+        imgView.clipsToBounds = true
+        imgView.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
+        imgView.addGestureRecognizer(tapGesture)
     }
-
+    @objc func tapAction(tapGesture: UITapGestureRecognizer) {
+        let alertController = UIAlertController(title: "更改头像", message: nil,
+                                                preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let photoAction = UIAlertAction(title: "相册选取", style: .default) { (_) in
+            self.getPhoto()
+        }
+        let cameraAction = UIAlertAction(title: "拍照", style: .default) { (_) in
+            self.takePic()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(photoAction)
+        alertController.addAction(cameraAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func getPhoto() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("相册不可用")
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func takePic() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("相册不可用")
+            return
+        }
+        
+        let takePic = UIImagePickerController()
+        takePic.allowsEditing = true
+        takePic.sourceType = .camera
+        takePic.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(takePic, animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        imgView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imgView.contentMode = .scaleAspectFill
+        imgView.clipsToBounds = true
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func LogOutTapped(_: UIButton) {
         if current_user_id > 0 {
             current_user_id = 0
