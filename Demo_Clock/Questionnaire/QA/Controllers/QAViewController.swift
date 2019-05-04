@@ -14,6 +14,8 @@ class QAViewController: UIViewController {
 
     var viewControllers: [UIViewController] = []
 
+    var wrong_answer: [String] = []
+
     var pageIndex = 0 {
         didSet {
             // 设置当前页面的下一题按钮的标题
@@ -24,6 +26,7 @@ class QAViewController: UIViewController {
             }
         }
     }
+    var current_score:Float = 0
 
     // 其实可以合成一个model
     var questions = [QAQuestion]() // 问题的数组
@@ -254,7 +257,8 @@ extension QAViewController {
             alert.addAction(UIAlertAction(title: "交卷", style: .default, handler: { _ in
                 //
                 self.checkAndUpload()
-                self.dismiss(animated: true, completion: nil)
+                self.show_result()
+                
             }))
             present(alert, animated: true, completion: {
                 //
@@ -262,6 +266,30 @@ extension QAViewController {
         }
     }
 
+    func show_result(){
+        let alert = UIAlertController(title: "本次成绩", message: "本次考试您获得了\(current_score)分", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "查看错题", style: .default, handler: { _ in
+            if self.wrong_answer.count == 0 {
+                let rightalert = UIAlertController(title: "查看", message: "恭喜您无错题！", preferredStyle: .alert)
+                self.present(rightalert, animated: true, completion: {
+                    
+                })
+            }else{
+                let strwrong = "第" + self.wrong_answer.joined(separator: "、") + "题错了"
+                let wrongalert = UIAlertController(title: "查看", message: strwrong, preferredStyle: .alert)
+                self.present(wrongalert, animated: true, completion: {
+                    //
+                })}
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "确认", style: .default, handler: {_ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: {
+            //
+        })
+    }
     /// 显示相应题目
     ///
     /// - Parameter index: 数组中第几个
@@ -285,6 +313,7 @@ extension QAViewController {
     // judge score
     func judge_score(qajson: String, answerjson: String) -> Float {
         var score = 0
+        wrong_answer = []
         NSLog("qajson:\(qajson)")
         NSLog("answer:\(answerjson)")
         if let jsonData = qajson.data(using: .utf8) {
@@ -302,6 +331,8 @@ extension QAViewController {
                             if judge_multi_answer(str1: qastr, str2: answerstr) {
                                 NSLog("judge_multi_answer:\(qastr)")
                                 score += 5
+                            } else {
+                                wrong_answer.append("\(qaid)")
                             }
                         }
                     }
@@ -344,10 +375,12 @@ extension QAViewController {
         guard unDidAnswers.count == 0 else {
             NSLog("any question required is not answerd")
             let firstUnDid = realAnswer.index(of: unDidAnswers.first!)
-            let alert = UIAlertController(title: "存在未答题的必选项:\(firstUnDid! + 1)题", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
+            let alert = UIAlertController(title: "存在未答题的必选项:\(firstUnDid! + 1)题\n请继续答题", message: nil, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "继续答题", style: .default, handler: { _ in
+//
+//            }))
             present(alert, animated: true, completion: {
-                //
+                sleep(2)
             })
             return
         }
@@ -365,15 +398,17 @@ extension QAViewController {
                 json = try Data(contentsOf: URL(fileURLWithPath: filePath!), options: Data.ReadingOptions.dataReadingMapped)
                 let answerjson = String(data: json, encoding: .utf8)
                 NSLog(jsonStr ?? "what")
-                let score = judge_score(qajson: jsonStr!, answerjson: answerjson!)
-                let sql = "INSERT INTO ScoreDB (title,score)VALUES('',\(score));"
+                current_score = judge_score(qajson: jsonStr!, answerjson: answerjson!)
+                let sql = "INSERT INTO ScoreDB (title,score)VALUES('',\(current_score));"
                 let boolflag = DBManager.shareManager().execute_sql(sql: sql)
                 if boolflag {
                     NSLog("insert score into db success")
-                }else{
+                } else {
                     NSLog("insert score into db failed")
                 }
-                NSLog("score:\(score)")
+                // ---
+
+                NSLog("score:\(current_score)")
             } catch {
                 NSLog("cann't find dataSource.txt")
             }
@@ -384,17 +419,6 @@ extension QAViewController {
             NSLog("转json出错了")
         }
     }
-
-//    // json to array
-//    func getArrayFromJSONString(jsonString: String) -> NSArray {
-//        let jsonData: Data = jsonString.data(using: .utf8)!
-//
-//        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-//        if array != nil {
-//            return array as! NSArray
-//        }
-//        return array as! NSArray
-//    }
 
     /// 添加通知监听
     func addNotification() {
