@@ -8,7 +8,7 @@
 
 import UIKit
 var login_flag = false
-
+var current_user_id = -1
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -57,13 +57,16 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         var login_flag = false
         NSLog(sql)
         var result = DBManager.shareManager().find_user_id(sql: sql)
+        
         if result != -1{
+            current_user_id = result
             login_flag = true
         }else{
             sql = "SELECT id FROM UserDB WHERE password='\(password.text?.md5() ?? "\(1)")' AND email ='\(usernameOrEmail.text  ?? "\(1)")' ;"
             NSLog(sql)
             result = DBManager.shareManager().find_user_id(sql: sql)
             if result != -1{
+                current_user_id = result
                 login_flag = true
             }
         }

@@ -8,6 +8,31 @@
 
 import Foundation
 extension DBManager {
+    
+    func login_ornot()->Bool{
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        var flag = false
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            return false
+        } else {
+            
+            let sql = "SELECT id FROM LoginDB WHERE flag='1'"
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    flag = true
+                    break
+                }
+                sqlite3_close(db)
+                sqlite3_finalize(statement)
+                return flag
+            }
+        }
+        return false
+    }
+    
     func insert_user_db(user:UserItem){
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         
@@ -52,6 +77,73 @@ extension DBManager {
             }
         }
         return -1
+    }
+    func find_current_login_id()->Int{
+        var result = 0
+        let useritem = UserItem()
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            
+        } else {
+            let sql = "SELECT userid FROM LoginDB WHERE id=1"
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            // 预处理过程
+            NSLog("find_current_login_id:\(sql)")
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    if let strid = getColumnValue(index: 0, stmt: statement!) {
+                        result = Int(strid)!
+                    }
+                }
+                sqlite3_close(db)
+                sqlite3_finalize(statement)
+                return result
+            }
+        }
+        return result
+    }
+    
+    func find_user_byid(id:Int) -> UserItem{
+        let useritem = UserItem()
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            
+        } else {
+            let sql = "SELECT realname,name,password,email FROM UserDB WHERE id=\(id)"
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            // 预处理过程
+            NSLog("find_user_byid:\(sql)")
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    if let strrealname = getColumnValue(index: 0, stmt: statement!) {
+                        useritem.realname = strrealname
+                    }
+                    if let strname = getColumnValue(index: 1, stmt: statement!) {
+                        useritem.name = strname
+                    }
+                    if let strpass = getColumnValue(index: 2, stmt: statement!) {
+                        useritem.password = strpass
+                    }
+                    if let stremail = getColumnValue(index: 3, stmt: statement!) {
+                        useritem.email = stremail
+                        NSLog("email\(stremail)")
+                    }
+                    useritem.id = id
+                    
+                    
+                }
+                sqlite3_close(db)
+                sqlite3_finalize(statement)
+                return useritem
+            }
+        }
+        return useritem
     }
     
 }

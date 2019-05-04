@@ -30,44 +30,7 @@ public class DBManager {
         return instance
     }
 
-    // 初始化DB
-    private func createEditableCopyOfDatabaseIfNeeded() {
-        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
-        NSLog(plistFilePath)
-
-        if sqlite3_open(cpath!, &db) != SQLITE_OK {
-            NSLog("open db failed")
-        } else {
-            var sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
-            var cSql = sql.cString(using: String.Encoding.utf8)
-
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create todo table failed")
-            }
-            // create note db
-            sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create note table failed")
-            }
-            // create score db
-            sql = "CREATE TABLE IF NOT EXISTS ScoreDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,score FLOAT)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create score table failed")
-            }
-            // create user db
-            sql = "CREATE TABLE IF NOT EXISTS UserDB (id INTEGER PRIMARY KEY AUTOINCREMENT, realname VARCHAR,name VARCHAR,password VARCHAR,email VARCHAR)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create score table failed")
-            }
-        }
-        sqlite3_close(db)
-    }
+    
 
     private func applicationDocumentsDirectoryFile() -> String {
         let documentDirectory: NSArray = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
@@ -367,38 +330,6 @@ public class DBManager {
         }
     }
 
-    public func drop_table() {
-        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
-        if sqlite3_open(cpath!, &db) != SQLITE_OK {
-            NSLog("db open failed")
-
-        } else {
-            var sql = "drop table 'TodoDB' ;"
-            var cSql = sql.cString(using: String.Encoding.utf8)
-
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("drop table failed")
-            }
-            sql = "drop table 'NoteDB' ;"
-            cSql = sql.cString(using: String.Encoding.utf8)
-
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("drop table failed")
-            }
-            sql = "drop table 'ScoreDB' ;"
-            cSql = sql.cString(using: String.Encoding.utf8)
-
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("drop table failed")
-            }
-            sql = "drop table 'UserDB' ;"
-            cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("drop table failed")
-            }
-        }
-    }
 
     // find conflict
     public func find_confilt(strdate: String) -> [Int] {

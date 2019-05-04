@@ -49,6 +49,7 @@
 		B71872EE227DAE910070B52E /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872ED227DAE910070B52E /* UserDBManager.swift */; };
 		B71872F0227DAEB60070B52E /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872EF227DAEB60070B52E /* UserItem.swift */; };
 		B71872F2227DB3EE0070B52E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872F1227DB3EE0070B52E /* Utils.swift */; };
+		B71872F4227DCA640070B52E /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872F3227DCA640070B52E /* MeViewController.swift */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -127,6 +128,7 @@
 		B71872ED227DAE910070B52E /* UserDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
 		B71872EF227DAEB60070B52E /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		B71872F1227DB3EE0070B52E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B71872F3227DCA640070B52E /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
-				B71872E6227DA8220070B52E /* Sign */,
+				B71872E6227DA8220070B52E /* Me */,
 				B716DC7A227C618700D7E5FA /* ChartView */,
 				B70FB843227C0A6800E07FA5 /* Questionnaire */,
 				B765AE332279BF450024CAE7 /* Note */,
@@ -316,14 +318,15 @@
 			path = ChartView;
 			sourceTree = "<group>";
 		};
-		B71872E6227DA8220070B52E /* Sign */ = {
+		B71872E6227DA8220070B52E /* Me */ = {
 			isa = PBXGroup;
 			children = (
 				B71872E7227DA8220070B52E /* SignUpViewController.swift */,
 				B71872E9227DA8220070B52E /* SignInViewController.swift */,
 				B71872EF227DAEB60070B52E /* UserItem.swift */,
+				B71872F3227DCA640070B52E /* MeViewController.swift */,
 			);
-			path = Sign;
+			path = Me;
 			sourceTree = "<group>";
 		};
 		B765AE332279BF450024CAE7 /* Note */ = {
@@ -535,6 +538,7 @@
 				436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */,
 				B716DC7F227C618700D7E5FA /* ZXLineChartView.swift in Sources */,
 				430DA2C31C4F84EB00C4E60C /* DCHomeViewController.swift in Sources */,
+				B71872F4227DCA640070B52E /* MeViewController.swift in Sources */,
 				433A26FA1C51094B00251D82 /* DCAlarmCell.swift in Sources */,
 				B716DC86227C769000D7E5FA /* InitDB.swift in Sources */,
 				B70FB863227C0A6800E07FA5 /* QAViewController.swift in Sources */,
