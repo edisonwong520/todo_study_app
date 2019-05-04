@@ -17,13 +17,18 @@ extension DBManager {
             return false
         } else {
             
-            let sql = "SELECT id FROM LoginDB WHERE flag='1'"
+            let sql = "SELECT flag FROM LoginDB WHERE id=1"
             let cSql = sql.cString(using: String.Encoding.utf8)
             var statement: OpaquePointer?
             if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
                 while sqlite3_step(statement) == SQLITE_ROW {
-                    flag = true
-                    break
+                    if let strflag = getColumnValue(index: 0, stmt: statement!) {
+                        if strflag == "1"{
+                            flag = true
+                        }else{
+                            flag = false
+                        }
+                    }
                 }
                 sqlite3_close(db)
                 sqlite3_finalize(statement)
@@ -76,7 +81,7 @@ extension DBManager {
                 sqlite3_finalize(statement)
             }
         }
-        return -1
+        return 0
     }
     func find_current_login_id()->Int{
         var result = 0

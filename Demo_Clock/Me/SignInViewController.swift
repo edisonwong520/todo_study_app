@@ -7,8 +7,8 @@
 //
 
 import UIKit
-var login_flag = false
-var current_user_id = -1
+
+var current_user_id = 0
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -40,13 +40,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func SignInTapped(_ sender: UIButton) {
         
-        /*
-         !!!ADD HERE YOUR SIGN IN CODE!!!
-         
-         WHEN USER TAPPED SIGN IN BUTTON, THIS METHOD
-         WILL BE CALLED.
-         
-         */
         if password.text == nil{
             password.text = ""
         }
@@ -54,27 +47,33 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             usernameOrEmail.text = ""
         }
         var sql = "SELECT id FROM UserDB WHERE password='\(password.text?.md5()  ?? "\(1)")' AND name ='\(usernameOrEmail.text ?? "\(1)")' ;"
-        var login_flag = false
+        var login_success_flag = false
         NSLog(sql)
+        //result storage user id
         var result = DBManager.shareManager().find_user_id(sql: sql)
         
         if result != -1{
             current_user_id = result
-            login_flag = true
+            login_success_flag = true
         }else{
             sql = "SELECT id FROM UserDB WHERE password='\(password.text?.md5() ?? "\(1)")' AND email ='\(usernameOrEmail.text  ?? "\(1)")' ;"
             NSLog(sql)
             result = DBManager.shareManager().find_user_id(sql: sql)
             if result != -1{
                 current_user_id = result
-                login_flag = true
+                login_success_flag = true
             }
         }
         
         //star to judge
-        if login_flag == true{
+        if login_success_flag == true{
             NSLog("log in success")
-            login_flag = true
+            
+            let sql = "UPDATE LoginDB SET userid=\(result),flag=1 WHERE id=1;"
+            current_user_id = 1
+            _ = DBManager.shareManager().execute_sql(sql: sql)
+            self.view.window?.rootViewController?.viewDidLoad()
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }else{
             let alert = UIAlertController(title: "提示", message: "账号或密码错误，请重新输入", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "确定", style: .cancel, handler: nil))
