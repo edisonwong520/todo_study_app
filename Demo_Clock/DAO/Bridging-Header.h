@@ -12,3 +12,4 @@
 
 #endif /* Bridging_Header_h */
 #import "sqlite3.h"
+#import <CommonCrypto/CommonDigest.h>

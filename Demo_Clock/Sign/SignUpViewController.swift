@@ -36,17 +36,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signupTapped(_ sender: UIButton) {
-        
-        
-        /*
-            !!!ADD HERE YOUR SIGN UP CODE!!!
-         
-            WHEN USER TAPPED SIGN UP BUTTON, THIS METHOD
-            WILL BE CALLED.
-         
-         */
-        
-        
+        let user = UserItem()
+        user.name = userName.text!
+        user.email = emailAddr.text!
+        user.realname = realName.text!
+        user.password = (password.text?.md5())!
+        DBManager.shareManager().insert_user_db(user: user)
         dismiss(animated: true)
         
     }

@@ -9,7 +9,7 @@
 
 import Foundation
 
-class User: NSObject {
+class UserItem: NSObject {
     
     var id: Int
     var realname: String
