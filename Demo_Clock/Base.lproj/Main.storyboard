@@ -88,7 +88,7 @@
         <!--曲线查看-->
         <scene sceneID="auW-Pv-0r2">
             <objects>
-                <viewController id="bGl-fc-y2m" customClass="ChartViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bGl-fc-y2m" customClass="LineChartVC" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dYY-5m-B8u"/>
                         <viewControllerLayoutGuide type="bottom" id="gzc-hF-3Ev"/>
