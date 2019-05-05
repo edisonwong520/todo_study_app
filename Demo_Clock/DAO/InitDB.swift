@@ -38,7 +38,7 @@ extension DBManager {
                 NSLog("create score table failed")
             }
             // create user db
-            sql = "CREATE TABLE IF NOT EXISTS UserDB (id INTEGER PRIMARY KEY AUTOINCREMENT, realname VARCHAR,name VARCHAR,password VARCHAR,email VARCHAR)"
+            sql = "CREATE TABLE IF NOT EXISTS UserDB (id INTEGER PRIMARY KEY AUTOINCREMENT, realname VARCHAR,name VARCHAR,password VARCHAR,email VARCHAR,picurl VARCHAR DEFAULT '')"
             cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
@@ -86,7 +86,7 @@ extension DBManager {
         sql = "INSERT INTO TodoDB (title,note,date,priority,repeatday,alarmOn) VALUES('练车','练车地点在吉林大学.','2019-05-04 15:29',1,'0000000',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT OR REPLACE INTO UserDB (realname,name,password,email) VALUES ('user','user','c4ca4238a0b923820dcc509a6f75849b','user@qq.com');"
+        sql = "INSERT OR REPLACE INTO UserDB (realname,name,password,email,picurl) VALUES ('user','user','c4ca4238a0b923820dcc509a6f75849b','user@qq.com','/Users/edison/Library/Developer/CoreSimulator/Devices/E3EEE923-7B86-4B03-A9F8-A75CFC9AE48E/data/Containers/Data/Application/FBBA3D7C-710A-485C-89BB-DC588DE6605A/Documents4585EFF2-1E47-478A-B66D-054EE37D45D9.jpeg');"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
         sql = "INSERT OR REPLACE INTO LoginDB (flag,userid) VALUES (1,1);"

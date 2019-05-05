@@ -22,9 +22,15 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         loginButton.isHidden = true
         logoutButton.isHidden = true
         UnlogLabel.isHidden = true
-
+        let result = DBManager.shareManager().get_single_col(sql: "SELECT picurl FROM UserDB WHERE id=\(current_user_id);")
+        
+        if result != ""{
+            load_user_pic()
+        }
         super.viewDidLoad()
-
+        
+        
+        
         // get current login id  if no one login the current id is 0
         let login_flag = DBManager.shareManager().login_ornot()
         NSLog("loginflag:\(login_flag)")
@@ -59,6 +65,24 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         // Do any additional setup after loading the view.
     }
 
+    func load_user_pic(){
+        let sql = "SELECT picurl FROM UserDB WHERE id=\(current_user_id);"
+        let result = DBManager.shareManager().get_single_col(sql: sql)
+        if result.count != 0{
+            do {
+            let photoURL = URL.init(fileURLWithPath: pic_path)
+            let imageData = try Data(contentsOf: photoURL)
+//            imgView.image = UIImage.init(contentsOfFile: result)
+            imgView.image = UIImage(data: imageData)
+//            imgView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
+            imgView.image?.fixedOrientation()
+
+            NSLog("load user pic success")
+            } catch {print("Error loading image : \(error)")
+            }
+            
+        }
+    }
     @objc func tapAction(tapGesture _: UITapGestureRecognizer) {
         let alertController = UIAlertController(title: "更改头像", message: nil,
                                                 preferredStyle: .actionSheet)
@@ -87,6 +111,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         present(picker, animated: true, completion: nil)
         
+        
     }
     
     
@@ -110,6 +135,32 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         imgView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
+        
+        if #available(iOS 11.0, *) {
+            if let imgUrl = info[UIImagePickerControllerImageURL] as? URL{
+                let imgName = imgUrl.lastPathComponent
+                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+                let localPath = documentDirectory?.appending(imgName)
+                
+                let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+                let data = UIImagePNGRepresentation(image)! as NSData
+                data.write(toFile: localPath!, atomically: true)
+                //let imageData = NSData(contentsOfFile: localPath!)!
+                let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
+                pic_path = "" + localPath!
+                NSLog("localpath:"+localPath!)
+                
+                let sql = "UPDATE UserDB SET picurl='\(pic_path)' WHERE id=\(current_user_id);"
+                NSLog(sql)
+                let boolflag = DBManager.shareManager().execute_sql(sql: sql)
+                if !boolflag{
+                    NSLog("UPDATE UserDB SET picurl failed")
+                }
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         dismiss(animated: true, completion: nil)
     }
 
@@ -123,12 +174,9 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
 
     override func viewWillAppear(_: Bool) {
+        
         viewDidLoad()
-//        if daka_begin_flag {
-//            dakaLabel.titleLabel?.text = "学习打卡（当前打卡已经开始）"
-//        } else {
-//            dakaLabel.titleLabel?.text = "学习打卡（当前打卡未开始）"
-//        }
+        
     }
 
     @IBAction func dailybonusTapped(_: Any) {

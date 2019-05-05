@@ -8,7 +8,7 @@
 
 import RichEditorView
 import UIKit
-
+var pic_path = ""
 class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var notetitle: UITextField!
 
@@ -142,13 +142,14 @@ extension NoteSettingViewController: RichEditorToolbarDelegate {
 
     func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
         tapAction()
+        toolbar.editor?.insertImage(pic_path, alt: "Pic")
 //        toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
     }
 
     func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {
         // Can only add links to selected text, so make sure there is a range selection first
         if toolbar.editor?.hasRangeSelection == true {
-            toolbar.editor?.insertLink("http://github.com/cjwirth/RichEditorView", title: "Github Link")
+            toolbar.editor?.insertLink("", title: "Link")
         }
     }
 }
@@ -199,6 +200,34 @@ extension NoteSettingViewController: RichEditorDelegate {
         takePic.sourceType = .camera
         takePic.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         present(takePic, animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+//        imgView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        imgView.contentMode = .scaleAspectFill
+//        imgView.clipsToBounds = true
+        
+        if #available(iOS 11.0, *) {
+            if let imgUrl = info[UIImagePickerControllerImageURL] as? URL{
+                let imgName = imgUrl.lastPathComponent
+                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+                let localPath = documentDirectory?.appending(imgName)
+                
+                let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+                let data = UIImagePNGRepresentation(image)! as NSData
+                data.write(toFile: localPath!, atomically: true)
+                //let imageData = NSData(contentsOfFile: localPath!)!
+                let photoURL = URL.init(fileURLWithPath: localPath!)
+//                print(photoURL)
+                //NSURL(fileURLWithPath: localPath!)
+                NSLog("localpath:"+localPath!)
+                pic_path = "file://" + localPath!
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     
