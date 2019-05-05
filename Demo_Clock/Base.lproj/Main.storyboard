@@ -626,11 +626,19 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-AC-Yhu">
                                 <rect key="frame" x="0.0" y="255" width="375" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="学习打卡"/>
                                 <connections>
                                     <action selector="dailybonusTapped:" destination="hQ5-ur-3qU" eventType="touchUpInside" id="yDW-rg-rNB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-C9-Sop">
+                                <rect key="frame" x="11" y="226" width="218" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alb-MW-vpi">
                                 <rect key="frame" x="303" y="137" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -647,6 +655,7 @@
                     <connections>
                         <outlet property="UnlogLabel" destination="fnh-XY-vEP" id="J7b-d1-Asn"/>
                         <outlet property="dailybonus" destination="RLn-AC-Yhu" id="Wu7-Ud-bwW"/>
+                        <outlet property="dakaLabel" destination="TTh-C9-Sop" id="R2W-ah-eRV"/>
                         <outlet property="imgView" destination="OWf-9W-kIh" id="gWb-2F-m2e"/>
                         <outlet property="loginButton" destination="fiU-d8-rP1" id="o9z-FN-gS2"/>
                         <outlet property="logoutButton" destination="alb-MW-vpi" id="hPG-vF-MYN"/>

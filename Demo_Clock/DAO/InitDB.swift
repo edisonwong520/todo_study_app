@@ -57,7 +57,7 @@ extension DBManager {
                 NSLog("create login table failed")
             }
 
-            sql = "CREATE TABLE IF NOT EXISTS StudytimeDB (id INTEGER PRIMARY KEY AUTOINCREMENT, userid INTEGER,date DATETIME,studytime FLOAT,sumflag DEFAULT 0)"
+            sql = "CREATE TABLE IF NOT EXISTS StudytimeDB (id INTEGER PRIMARY KEY AUTOINCREMENT, userid INTEGER,date DATETIME,studytime FLOAT)"
             cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
