@@ -623,6 +623,14 @@
                                 <rect key="frame" x="11" y="121" width="66" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-AC-Yhu">
+                                <rect key="frame" x="0.0" y="255" width="375" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="学习打卡"/>
+                                <connections>
+                                    <action selector="dailybonusTapped:" destination="hQ5-ur-3qU" eventType="touchUpInside" id="yDW-rg-rNB"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alb-MW-vpi">
                                 <rect key="frame" x="303" y="137" width="35" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -638,6 +646,7 @@
                     <navigationItem key="navigationItem" title="个人主页" id="VKI-kz-b06"/>
                     <connections>
                         <outlet property="UnlogLabel" destination="fnh-XY-vEP" id="J7b-d1-Asn"/>
+                        <outlet property="dailybonus" destination="RLn-AC-Yhu" id="Wu7-Ud-bwW"/>
                         <outlet property="imgView" destination="OWf-9W-kIh" id="gWb-2F-m2e"/>
                         <outlet property="loginButton" destination="fiU-d8-rP1" id="o9z-FN-gS2"/>
                         <outlet property="logoutButton" destination="alb-MW-vpi" id="hPG-vF-MYN"/>

@@ -9,6 +9,7 @@
 import UIKit
 
 class MeViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    @IBOutlet weak var dailybonus: UIButton!
     @IBOutlet var UnlogLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
     @IBOutlet var loginButton: UIButton!
@@ -118,5 +119,30 @@ class MeViewController: UIViewController,UIImagePickerControllerDelegate,UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         viewDidLoad()
+    }
+    
+    
+    @IBAction func dailybonusTapped(_ sender: Any) {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var strdate = dateFormatter.string(from: now)
+        let sql = "INSERT INTO CheckinDB(userid,checkindate)VALUES(\(current_user_id),'\(strdate)');"
+        if DBManager.shareManager().execute_sql(sql: sql){
+            NSLog("insert checkindb success")
+            let today_study_time = DBManager.shareManager().get_today_study_time(userid: current_user_id, today: now)
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            strdate = dateFormatter.string(from: now)
+            let sql = "INSERT INTO StudytimeDB(userid,date,studytime)VALUES(\(current_user_id),'\(strdate)',\(today_study_time));"
+            if !DBManager.shareManager().execute_sql(sql: sql){
+                NSLog("insert today_study_time false")
+            }else{
+                NSLog("insert today_study_time success")
+            }
+            
+            //get tody studytime sum
+        }else{
+            NSLog("insert checkindb failed")
+        }
     }
 }

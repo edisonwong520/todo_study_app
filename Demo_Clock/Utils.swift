@@ -24,3 +24,10 @@ extension String {
         return result_str
     }
 }
+
+extension Date {
+    func minuteBetweenDate(toDate: Date) -> Int {
+        let components = Calendar.current.dateComponents([.minute], from: self, to: toDate)
+        return (components.minute ?? 0)
+    }
+}

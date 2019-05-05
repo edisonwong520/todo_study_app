@@ -50,6 +50,7 @@
 		B71872F0227DAEB60070B52E /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872EF227DAEB60070B52E /* UserItem.swift */; };
 		B71872F2227DB3EE0070B52E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872F1227DB3EE0070B52E /* Utils.swift */; };
 		B71872F4227DCA640070B52E /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71872F3227DCA640070B52E /* MeViewController.swift */; };
+		B718730D227EA8290070B52E /* BonusDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718730C227EA8290070B52E /* BonusDBManager.swift */; };
 		B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B765AE252279AEFE0024CAE7 /* RichEditorView.framework */; };
 		B765AE4B2279C17C0024CAE7 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE462279C17B0024CAE7 /* NoteCell.swift */; };
 		B765AE4C2279C17C0024CAE7 /* NoteSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */; };
@@ -129,6 +130,7 @@
 		B71872EF227DAEB60070B52E /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		B71872F1227DB3EE0070B52E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B71872F3227DCA640070B52E /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		B718730C227EA8290070B52E /* BonusDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusDBManager.swift; sourceTree = "<group>"; };
 		B765AE252279AEFE0024CAE7 /* RichEditorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichEditorView.framework; path = Carthage/Build/iOS/RichEditorView.framework; sourceTree = "<group>"; };
 		B765AE462279C17B0024CAE7 /* NoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		B765AE472279C17B0024CAE7 /* NoteSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSettingViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */,
 				B716DC85227C769000D7E5FA /* InitDB.swift */,
 				B71872ED227DAE910070B52E /* UserDBManager.swift */,
+				B718730C227EA8290070B52E /* BonusDBManager.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
 				B716DC84227C692000D7E5FA /* ScoreItem.swift in Sources */,
 				433A26FC1C5121E200251D82 /* DCAlarmManager.swift in Sources */,
+				B718730D227EA8290070B52E /* BonusDBManager.swift in Sources */,
 				433A26EB1C50DC6300251D82 /* LXMBaseView.swift in Sources */,
 				B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */,
 				B70FB865227C0A6800E07FA5 /* QAOptionCell.swift in Sources */,

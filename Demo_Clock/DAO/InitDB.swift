@@ -9,6 +9,64 @@
 import Foundation
 
 extension DBManager {
+    // 初始化DB
+    public func createEditableCopyOfDatabaseIfNeeded() {
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        NSLog(plistFilePath)
+
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("open db failed")
+        } else {
+            var sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
+            var cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create todo table failed")
+            }
+            // create note db
+            sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create note table failed")
+            }
+            // create score db
+            sql = "CREATE TABLE IF NOT EXISTS ScoreDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,score FLOAT)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create score table failed")
+            }
+            // create user db
+            sql = "CREATE TABLE IF NOT EXISTS UserDB (id INTEGER PRIMARY KEY AUTOINCREMENT, realname VARCHAR,name VARCHAR,password VARCHAR,email VARCHAR)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create user table failed")
+            }
+            sql = "CREATE TABLE IF NOT EXISTS LoginDB (id INTEGER PRIMARY KEY AUTOINCREMENT, flag INTEGER,userid INTEGER)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create login table failed")
+            }
+            sql = "CREATE TABLE IF NOT EXISTS CheckinDB (id INTEGER PRIMARY KEY AUTOINCREMENT, userid INTEGER,checkindate DATETIME)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create login table failed")
+            }
+
+            sql = "CREATE TABLE IF NOT EXISTS StudytimeDB (id INTEGER PRIMARY KEY AUTOINCREMENT, userid INTEGER,date DATETIME,studytime FLOAT,sumflag DEFAULT 0)"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("create login table failed")
+            }
+        }
+        sqlite3_close(db)
+    }
+
     // initial the db
     public func initDB() {
         DBManager.shareManager().drop_table()
@@ -30,89 +88,67 @@ extension DBManager {
 
         sql = "INSERT OR REPLACE INTO UserDB (realname,name,password,email) VALUES ('user','user','c4ca4238a0b923820dcc509a6f75849b','user@qq.com');"
         _ = DBManager.shareManager().execute_sql(sql: sql)
-        
+
         sql = "INSERT OR REPLACE INTO LoginDB (flag,userid) VALUES (1,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
+
+        sql = "INSERT INTO CheckinDB (userid,checkindate) VALUES (1,'2019-05-05 08:11:00');"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
+
+        sql = "INSERT INTO CheckinDB (userid,checkindate) VALUES (1,'2019-05-05 10:30:00');"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
     }
-    
-    
-    // 初始化DB
-    public func createEditableCopyOfDatabaseIfNeeded() {
-        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
-        NSLog(plistFilePath)
-        
-        if sqlite3_open(cpath!, &db) != SQLITE_OK {
-            NSLog("open db failed")
-        } else {
-            var sql = "CREATE TABLE IF NOT EXISTS TodoDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,note TEXT,date DATETIME,priority INTEGER,repeatday VARCHAR(10),alarmOn INTEGER)"
-            var cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create todo table failed")
-            }
-            // create note db
-            sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create note table failed")
-            }
-            // create score db
-            sql = "CREATE TABLE IF NOT EXISTS ScoreDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,score FLOAT)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create score table failed")
-            }
-            // create user db
-            sql = "CREATE TABLE IF NOT EXISTS UserDB (id INTEGER PRIMARY KEY AUTOINCREMENT, realname VARCHAR,name VARCHAR,password VARCHAR,email VARCHAR)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create user table failed")
-            }
-            sql = "CREATE TABLE IF NOT EXISTS LoginDB (id INTEGER PRIMARY KEY AUTOINCREMENT, flag INTEGER,userid INTEGER)"
-            cSql = sql.cString(using: String.Encoding.utf8)
-            
-            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
-                NSLog("create login table failed")
-            }
-        }
-        sqlite3_close(db)
-    }
-    
-    
+
     public func drop_table() {
         let cpath = plistFilePath.cString(using: String.Encoding.utf8)
         if sqlite3_open(cpath!, &db) != SQLITE_OK {
             NSLog("db open failed")
-            
+
         } else {
             var sql = "drop table 'TodoDB' ;"
             var cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")
             }
             sql = "drop table 'NoteDB' ;"
             cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")
             }
             sql = "drop table 'ScoreDB' ;"
             cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")
             }
             sql = "drop table 'UserDB' ;"
             cSql = sql.cString(using: String.Encoding.utf8)
-            
+
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("drop table failed")
             }
             sql = "drop table 'LoginDB' ;"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("drop table failed")
+            }
+            sql = "drop table 'CheckinDB' ;"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("drop table failed")
+            }
+
+            sql = "drop table 'StudytimeDB' ;"
+            cSql = sql.cString(using: String.Encoding.utf8)
+
+            if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
+                NSLog("drop table failed")
+            }
+            sql = "drop table 'BonusDB' ;"
             cSql = sql.cString(using: String.Encoding.utf8)
             
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
