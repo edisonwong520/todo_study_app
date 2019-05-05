@@ -36,7 +36,7 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
         
         super.viewDidLoad()
         notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
-        title = "Note"
+        title = "笔记"
 
         // add search bar
         // 实例化UISearchController

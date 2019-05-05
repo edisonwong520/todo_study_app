@@ -35,6 +35,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(false)
+    }
     @IBAction func signupTapped(_ sender: UIButton) {
         let user = UserItem()
         user.name = userName.text!
@@ -46,10 +49,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // Hide keyboard when user touches outside keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+    
     
     // Hide keyboard when user touches return key on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

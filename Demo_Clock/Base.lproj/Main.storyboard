@@ -29,11 +29,11 @@
             </objects>
             <point key="canvasLocation" x="-2138" y="422"/>
         </scene>
-        <!--Todo-->
+        <!--提醒-->
         <scene sceneID="RKV-iK-r7C">
             <objects>
                 <navigationController id="x6z-dn-9fY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Todo" id="9Vc-Fx-hJ3"/>
+                    <tabBarItem key="tabBarItem" title="提醒" id="9Vc-Fx-hJ3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Unq-K2-Ivv">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -59,19 +59,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-QP-sFY">
-                                <rect key="frame" x="66" y="276" width="81" height="57"/>
+                                <rect key="frame" x="0.0" y="276" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Exam"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="进行测验"/>
                                 <connections>
                                     <segue destination="AH2-iW-DP1" kind="modal" id="kO1-0w-Dcz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XC-FD-hwZ">
-                                <rect key="frame" x="228" y="276" width="81" height="57"/>
+                                <rect key="frame" x="0.0" y="363" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Curve"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="曲线生成"/>
                                 <connections>
                                     <segue destination="bGl-fc-y2m" kind="push" id="dfe-14-DtG"/>
                                 </connections>
@@ -437,22 +437,24 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhc-X2-OuR" customClass="RichEditorView" customModule="RichEditorView">
-                                <rect key="frame" x="16" y="243" width="343" height="255"/>
+                                <rect key="frame" x="16" y="243" width="343" height="436"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-BO-o6J">
-                                <rect key="frame" x="208" y="540" width="48" height="30"/>
+                                <rect key="frame" x="253" y="708" width="45" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="取消"/>
                                 <connections>
                                     <action selector="handleCancelButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="Quh-x0-k4n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yS-C1-ZG0">
-                                <rect key="frame" x="119" y="540" width="37" height="30"/>
+                                <rect key="frame" x="77" y="708" width="45" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="完成"/>
                                 <connections>
                                     <action selector="handleConfirmButtonTapped:" destination="4Kq-xT-NLL" eventType="touchUpInside" id="xDL-Vq-S9u"/>
                                 </connections>
@@ -469,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UV1-pW-zrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-604"/>
+            <point key="canvasLocation" x="808.79999999999995" y="-604.43349753694588"/>
         </scene>
         <!--Note Home View Controller-->
         <scene sceneID="s1b-0m-Rpo">
@@ -539,11 +541,11 @@
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="-604.43349753694588"/>
         </scene>
-        <!--Note-->
+        <!--笔记-->
         <scene sceneID="xld-EN-4us">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kvu-K3-Ujn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Note" id="hZo-bg-OQs"/>
+                    <tabBarItem key="tabBarItem" title="笔记" id="hZo-bg-OQs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mjS-gt-EW5">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -562,7 +564,7 @@
         <scene sceneID="6RY-Ms-Hvf">
             <objects>
                 <navigationController title="Exam" automaticallyAdjustsScrollViewInsets="NO" id="VIY-E0-hNT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Exam" id="qPG-fy-Yut"/>
+                    <tabBarItem key="tabBarItem" title="测验" id="qPG-fy-Yut"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ghv-Dh-gja">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -616,22 +618,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="注册/登陆"/>
                                 <connections>
-                                    <segue destination="JLu-44-hUR" kind="modal" id="Map-1Q-SxR"/>
+                                    <segue destination="JLu-44-hUR" kind="push" id="Map-1Q-SxR"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWf-9W-kIh">
                                 <rect key="frame" x="11" y="121" width="66" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-AC-Yhu">
-                                <rect key="frame" x="0.0" y="255" width="375" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="学习打卡"/>
-                                <connections>
-                                    <action selector="dailybonusTapped:" destination="hQ5-ur-3qU" eventType="touchUpInside" id="yDW-rg-rNB"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-C9-Sop">
                                 <rect key="frame" x="11" y="226" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -646,6 +639,15 @@
                                 <state key="normal" title="注销"/>
                                 <connections>
                                     <action selector="LogOutTapped:" destination="hQ5-ur-3qU" eventType="touchUpInside" id="LD6-em-FZP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLn-AC-Yhu">
+                                <rect key="frame" x="0.0" y="280" width="375" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="学习打卡"/>
+                                <connections>
+                                    <action selector="dailybonusTapped:" destination="hQ5-ur-3qU" eventType="touchUpInside" id="yDW-rg-rNB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -671,7 +673,7 @@
         <scene sceneID="4ty-iq-Liq">
             <objects>
                 <navigationController title="Me" automaticallyAdjustsScrollViewInsets="NO" id="Lqq-9U-duN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Me" id="kJm-Em-rkB"/>
+                    <tabBarItem key="tabBarItem" title="主页" id="kJm-Em-rkB"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="UUt-DG-JPb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Am7-k5-Ruy">
@@ -700,16 +702,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfI-bQ-1bt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3n8-Gs-I9p">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLQ-N9-oHk">
-                                            <rect key="frame" x="45" y="229" width="285" height="320"/>
+                                            <rect key="frame" x="45" y="204.66666666666663" width="285" height="320"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZv-w9-zyj" customClass="CustomButton" customModule="Demo_Clock" customModuleProvider="target">
-                                                    <rect key="frame" x="80" y="185" width="125" height="50"/>
+                                                    <rect key="frame" x="80" y="185.00000000000003" width="125" height="50"/>
                                                     <color key="backgroundColor" red="0.58266327780000005" green="0.87913477419999997" blue="0.4053925035" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="C3m-I0-gIJ"/>
@@ -722,11 +724,11 @@
                                                         <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="uCW-is-nP8" kind="modal" id="3HU-pn-c8n"/>
+                                                        <segue destination="uCW-is-nP8" kind="push" id="3HU-pn-c8n"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlH-bs-OZz">
-                                                    <rect key="frame" x="80" y="85" width="125" height="50"/>
+                                                    <rect key="frame" x="80" y="85.000000000000028" width="125" height="50"/>
                                                     <color key="backgroundColor" red="0.58266327780000005" green="0.87913477419999997" blue="0.4053925035" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="HB5-Fl-BqW"/>
@@ -739,7 +741,7 @@
                                                         <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="fAo-eU-W68" kind="modal" id="0gw-Mv-jMM"/>
+                                                        <segue destination="fAo-eU-W68" kind="push" id="0gw-Mv-jMM"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pk7-KP-H7L">
@@ -813,16 +815,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAh-vZ-rVR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Che-OT-fb4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jq0-tu-d6Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1U-3n-H9P">
-                                                    <rect key="frame" x="45" y="164" width="285" height="450"/>
+                                                    <rect key="frame" x="45" y="139.66666666666663" width="285" height="450"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvX-eW-lTd">
                                                             <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
@@ -837,7 +839,7 @@
                                                             <size key="shadowOffset" width="0.5" height="0.5"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVW-ko-nxt">
-                                                            <rect key="frame" x="55" y="139" width="175" height="21"/>
+                                                            <rect key="frame" x="55" y="139.00000000000003" width="175" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="wr1-dW-qMV"/>
                                                             </constraints>
@@ -846,7 +848,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G4X-rd-Qll">
-                                                            <rect key="frame" x="17" y="163" width="251" height="30"/>
+                                                            <rect key="frame" x="17" y="163.00000000000003" width="251" height="30"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -867,7 +869,7 @@
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="name"/>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bg-II-RqZ">
-                                                            <rect key="frame" x="55" y="201" width="175" height="21"/>
+                                                            <rect key="frame" x="55" y="201.00000000000003" width="175" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Osb-BF-z1c"/>
                                                             </constraints>
@@ -876,7 +878,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9rn-0l-bs4">
-                                                            <rect key="frame" x="17" y="225" width="251" height="30"/>
+                                                            <rect key="frame" x="17" y="225.00000000000003" width="251" height="30"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
@@ -999,6 +1001,7 @@
                             <constraint firstItem="oAh-vZ-rVR" firstAttribute="trailing" secondItem="3sQ-qO-yjj" secondAttribute="trailing" id="jI8-lc-sa7"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fEc-Hf-wYW"/>
                     <connections>
                         <outlet property="emailAddr" destination="9rn-0l-bs4" id="feI-Fa-aue"/>
                         <outlet property="password" destination="wVG-Fl-fVZ" id="Ulr-fF-KP1"/>
@@ -1030,16 +1033,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdG-GU-MNt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ojn-Hj-j3J">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LN-qI-8pG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Li-C2-HHx">
-                                                    <rect key="frame" x="45" y="246.66666666666663" width="285" height="285"/>
+                                                    <rect key="frame" x="45" y="222" width="285" height="285"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登陆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5d-nD-tJk">
                                                             <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
@@ -1061,25 +1064,25 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名或邮箱地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxX-PX-861">
-                                                            <rect key="frame" x="93.333333333333343" y="70.000000000000028" width="98.333333333333343" height="21"/>
+                                                            <rect key="frame" x="93.333333333333343" y="70" width="98.333333333333343" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVu-et-khg">
-                                                            <rect key="frame" x="16" y="167.00000000000003" width="253" height="36"/>
+                                                            <rect key="frame" x="16" y="167" width="253" height="36"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orM-UP-tm7">
-                                                            <rect key="frame" x="130.33333333333334" y="148.00000000000003" width="24.666666666666657" height="15"/>
+                                                            <rect key="frame" x="130.33333333333334" y="148" width="24.666666666666657" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fej-dO-8Vz">
-                                                            <rect key="frame" x="16" y="94.000000000000028" width="253" height="30"/>
+                                                            <rect key="frame" x="16" y="94" width="253" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Ixu-QC-CoF"/>
                                                             </constraints>
@@ -1097,7 +1100,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8g-Dn-qNQ">
-                                                            <rect key="frame" x="193" y="237.00000000000003" width="33" height="31.999999999999972"/>
+                                                            <rect key="frame" x="193" y="237" width="33" height="32"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <state key="normal" title="登陆"/>
                                                             <connections>
@@ -1158,6 +1161,7 @@
                             <constraint firstItem="CdG-GU-MNt" firstAttribute="leading" secondItem="Gva-nM-yqK" secondAttribute="leading" id="PEH-xS-4G8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5Te-aT-1sK"/>
                     <connections>
                         <outlet property="password" destination="SVu-et-khg" id="cAq-XT-lpK"/>
                         <outlet property="scrollView" destination="7LN-qI-8pG" id="PoQ-NP-WgM"/>

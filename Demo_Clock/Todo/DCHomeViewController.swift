@@ -19,7 +19,7 @@ class DCHomeViewController: LXMBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Todo"
+        title = "提醒"
 
         setupTableView()
         setupNavigationBar()

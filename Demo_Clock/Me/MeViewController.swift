@@ -86,7 +86,10 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         picker.sourceType = .photoLibrary
         picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         present(picker, animated: true, completion: nil)
+        
     }
+    
+    
 
     func takePic() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -98,6 +101,8 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         takePic.allowsEditing = true
         takePic.sourceType = .camera
         takePic.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        
+        
         present(takePic, animated: true, completion: nil)
     }
 

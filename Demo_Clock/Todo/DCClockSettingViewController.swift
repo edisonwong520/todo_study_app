@@ -68,6 +68,10 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
         toolbar.options = RichEditorDefaultOption.all
         return toolbar
     }()
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(false)
+    }
 
     var todo: ToDoItem?
 
@@ -99,7 +103,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // ----
         selectedButtonTag = getWeekday()
         priorityPicker.delegate = self

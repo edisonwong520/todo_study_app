@@ -9,7 +9,7 @@
 import RichEditorView
 import UIKit
 
-class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
+class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var notetitle: UITextField!
 
     @IBOutlet var editorView: RichEditorView!
@@ -21,7 +21,7 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
     var htmlcontext = ""
 
     lazy var toolbar: RichEditorToolbar = {
-        let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 100))
+        let toolbar = RichEditorToolbar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 42))
         toolbar.options = RichEditorDefaultOption.all
         return toolbar
     }()
@@ -31,6 +31,9 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate {
             textView.text = nil
             textView.textColor = UIColor.black
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(false)
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -138,7 +141,8 @@ extension NoteSettingViewController: RichEditorToolbarDelegate {
     }
 
     func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
-        toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
+        tapAction()
+//        toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
     }
 
     func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {
@@ -154,5 +158,48 @@ extension NoteSettingViewController: RichEditorDelegate {
     func richEditor(_ editor: RichEditorView, contentDidChange content: String) {
         htmlcontext = content
     }
+    
+    func tapAction() {
+        let alertController = UIAlertController(title: "更改头像", message: nil,
+                                                preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let photoAction = UIAlertAction(title: "相册选取", style: .default) { _ in
+            self.getPhoto()
+        }
+        let cameraAction = UIAlertAction(title: "拍照", style: .default) { _ in
+            self.takePic()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(photoAction)
+        alertController.addAction(cameraAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func getPhoto() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            NSLog("相册不可用")
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func takePic() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            NSLog("相册不可用")
+            return
+        }
+        
+        let takePic = UIImagePickerController()
+        takePic.allowsEditing = true
+        takePic.sourceType = .camera
+        takePic.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(takePic, animated: true, completion: nil)
+    }
+    
     
 }
