@@ -1,9 +1,9 @@
 //
 //  BalloonMarker.swift
-//  ChartsUnderstandAndUsage
+//  Todo
 //
-//  Created by 张海峰 on 2018/9/18.
-//  Copyright © 2018年 张海峰. All rights reserved.
+//  Created by edison on 2019/4/25.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import UIKit
@@ -168,7 +168,7 @@ class BalloonMarker: MarkerImage {
         
         UIGraphicsPushContext(context)
         
-        label.draw(in: rect, withAttributes: _drawAttributes)
+        label.draw(in: rect, withAttributes: _drawAttributes as [String : Any])
         
         UIGraphicsPopContext()
         
@@ -186,13 +186,13 @@ class BalloonMarker: MarkerImage {
     {
         label = newLabel
         
-        _drawAttributes.removeAll()
-        _drawAttributes[.font] = self.font
-        _drawAttributes[.paragraphStyle] = _paragraphStyle
-        _drawAttributes[.foregroundColor] = self.textColor
-        
-        _labelSize = label?.size(withAttributes: _drawAttributes) ?? CGSize.zero
-        
+//        _drawAttributes.removeAll()
+//        _drawAttributes[.font] = self.font
+//        _drawAttributes[.paragraphStyle] = _paragraphStyle
+//        _drawAttributes[.foregroundColor] = self.textColor
+//
+//        _labelSize = label?.size(withAttributes: _drawAttributes) ?? CGSize.zero
+//
         var size = CGSize()
         size.width = _labelSize.width + self.insets.left + self.insets.right
         size.height = _labelSize.height + self.insets.top + self.insets.bottom

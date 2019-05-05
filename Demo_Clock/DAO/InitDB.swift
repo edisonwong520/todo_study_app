@@ -97,6 +97,12 @@ extension DBManager {
 
         sql = "INSERT INTO CheckinDB (userid,checkindate) VALUES (1,'2019-05-05 10:30:00');"
         _ = DBManager.shareManager().execute_sql(sql: sql)
+        
+        sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-03',3);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
+        
+        sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-04',4.5);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
     }
 
     public func drop_table() {

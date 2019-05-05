@@ -42,9 +42,7 @@
 		B7136EFD227EF593005C0F2A /* LineChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7136EFB227EF593005C0F2A /* LineChartVC.swift */; };
 		B7136EFF227EF5EA005C0F2A /* ZHFColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7136EFE227EF5EA005C0F2A /* ZHFColor.swift */; };
 		B7136F01227EF67B005C0F2A /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7136F00227EF67B005C0F2A /* BalloonMarker.swift */; };
-		B716DC7E227C618700D7E5FA /* String+ZX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC7B227C618700D7E5FA /* String+ZX.swift */; };
-		B716DC7F227C618700D7E5FA /* ZXLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC7C227C618700D7E5FA /* ZXLineChartView.swift */; };
-		B716DC80227C618700D7E5FA /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC7D227C618700D7E5FA /* ChartViewController.swift */; };
+		B7136F0E227F0892005C0F2A /* StudytimeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7136F0D227F0892005C0F2A /* StudytimeItem.swift */; };
 		B716DC82227C675800D7E5FA /* ScoreDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC81227C675800D7E5FA /* ScoreDBManager.swift */; };
 		B716DC84227C692000D7E5FA /* ScoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC83227C692000D7E5FA /* ScoreItem.swift */; };
 		B716DC86227C769000D7E5FA /* InitDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716DC85227C769000D7E5FA /* InitDB.swift */; };
@@ -127,9 +125,7 @@
 		B7136EFB227EF593005C0F2A /* LineChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartVC.swift; sourceTree = "<group>"; };
 		B7136EFE227EF5EA005C0F2A /* ZHFColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHFColor.swift; sourceTree = "<group>"; };
 		B7136F00227EF67B005C0F2A /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
-		B716DC7B227C618700D7E5FA /* String+ZX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ZX.swift"; sourceTree = "<group>"; };
-		B716DC7C227C618700D7E5FA /* ZXLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZXLineChartView.swift; sourceTree = "<group>"; };
-		B716DC7D227C618700D7E5FA /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		B7136F0D227F0892005C0F2A /* StudytimeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudytimeItem.swift; sourceTree = "<group>"; };
 		B716DC81227C675800D7E5FA /* ScoreDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreDBManager.swift; sourceTree = "<group>"; };
 		B716DC83227C692000D7E5FA /* ScoreItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreItem.swift; sourceTree = "<group>"; };
 		B716DC85227C769000D7E5FA /* InitDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDB.swift; sourceTree = "<group>"; };
@@ -328,9 +324,7 @@
 				B7136EFA227EF593005C0F2A /* BaseVC.swift */,
 				B7136EFB227EF593005C0F2A /* LineChartVC.swift */,
 				B716DC83227C692000D7E5FA /* ScoreItem.swift */,
-				B716DC7B227C618700D7E5FA /* String+ZX.swift */,
-				B716DC7C227C618700D7E5FA /* ZXLineChartView.swift */,
-				B716DC7D227C618700D7E5FA /* ChartViewController.swift */,
+				B7136F0D227F0892005C0F2A /* StudytimeItem.swift */,
 			);
 			path = ChartView;
 			sourceTree = "<group>";
@@ -530,11 +524,13 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RichEditorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RichEditorView.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -549,19 +545,17 @@
 			files = (
 				B71872F0227DAEB60070B52E /* UserItem.swift in Sources */,
 				B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */,
-				B716DC7E227C618700D7E5FA /* String+ZX.swift in Sources */,
-				B716DC80227C618700D7E5FA /* ChartViewController.swift in Sources */,
 				B765AE4D2279C17C0024CAE7 /* NoteHomeViewController.swift in Sources */,
 				B71872F2227DB3EE0070B52E /* Utils.swift in Sources */,
 				B70FB862227C0A6800E07FA5 /* QAQuestionViewController.swift in Sources */,
 				436D743D1CBE80330054ECE8 /* LXMConfigExtentsion.swift in Sources */,
 				B7136EFD227EF593005C0F2A /* LineChartVC.swift in Sources */,
-				B716DC7F227C618700D7E5FA /* ZXLineChartView.swift in Sources */,
 				430DA2C31C4F84EB00C4E60C /* DCHomeViewController.swift in Sources */,
 				B71872F4227DCA640070B52E /* MeViewController.swift in Sources */,
 				433A26FA1C51094B00251D82 /* DCAlarmCell.swift in Sources */,
 				B716DC86227C769000D7E5FA /* InitDB.swift in Sources */,
 				B70FB863227C0A6800E07FA5 /* QAViewController.swift in Sources */,
+				B7136F0E227F0892005C0F2A /* StudytimeItem.swift in Sources */,
 				B70FB860227C0A6800E07FA5 /* QAConfig.swift in Sources */,
 				B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */,
 				B716DC82227C675800D7E5FA /* ScoreDBManager.swift in Sources */,
