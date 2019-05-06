@@ -11,6 +11,7 @@ var daka_begin_flag = false
 class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var dakaLabel: UILabel!
     // 学习打卡的按钮
+    @IBOutlet weak var singlescore: UIButton!
     @IBOutlet var dailybonus: UIButton!
     @IBOutlet var UnlogLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
@@ -28,9 +29,13 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             load_user_pic()
         }
         super.viewDidLoad()
+        dailybonus.backgroundColor = .clear
+        dailybonus.layer.borderWidth = 1
+        dailybonus.layer.borderColor = UIColor.lightGray.cgColor
         
-        
-        
+        singlescore.backgroundColor = .clear
+        singlescore.layer.borderWidth = 1
+        singlescore.layer.borderColor = UIColor.lightGray.cgColor
         // get current login id  if no one login the current id is 0
         let login_flag = DBManager.shareManager().login_ornot()
         NSLog("loginflag:\(login_flag)")
