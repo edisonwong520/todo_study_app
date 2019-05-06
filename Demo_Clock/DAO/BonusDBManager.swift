@@ -1,9 +1,9 @@
 //
-//  CheckinManager.swift
+//  BonusDBManager.swift
 //  Demo_Clock
 //
-//  Created by edison on 2019/5/5.
-//  Copyright © 2019年 luxiaoming. All rights reserved.
+//  Created by edison on 2019/5/4.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import Foundation

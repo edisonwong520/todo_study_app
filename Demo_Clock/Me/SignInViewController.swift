@@ -1,9 +1,9 @@
 //
 //  SignInViewController.swift
-//  LoginPopup
+//  Demo_Clock
 //
-//  Created by Chris Chang on 20/02/2018.
-//  Copyright © 2018 Chris Chang. All rights reserved.
+//  Created by edison on 2019/5/4.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import UIKit

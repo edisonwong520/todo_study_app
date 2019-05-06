@@ -3,7 +3,7 @@
 //  Demo_Clock
 //
 //  Created by edison on 2019/5/3.
-//  Copyright © 2019年 luxiaoming. All rights reserved.
+//  Copyright © 2019年 EDC. All rights reserved.
 //
 
 import Foundation
