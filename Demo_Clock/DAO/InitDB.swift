@@ -24,14 +24,14 @@ extension DBManager {
                 NSLog("create todo table failed")
             }
             // create note db
-            sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME)"
+            sql = "CREATE TABLE IF NOT EXISTS NoteDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,context TEXT,createdate DATETIME,userid INTEGER DEFAULT 0)"
             cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
                 NSLog("create note table failed")
             }
             // create score db
-            sql = "CREATE TABLE IF NOT EXISTS ScoreDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,score FLOAT)"
+            sql = "CREATE TABLE IF NOT EXISTS ScoreDB (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR,score FLOAT,userid INTEGER DEFAULT 0)"
             cSql = sql.cString(using: String.Encoding.utf8)
 
             if sqlite3_exec(db, cSql!, nil, nil, nil) != SQLITE_OK {
@@ -71,16 +71,16 @@ extension DBManager {
     public func initDB() {
         DBManager.shareManager().drop_table()
         // insert scoredb
-        var sql = "INSERT INTO ScoreDB (title,score) VALUES('测验1',65);"
+        var sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验1',65,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT INTO ScoreDB (title,score) VALUES('测验2',82);"
+        sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验2',82,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT INTO ScoreDB (title,score) VALUES('测验3',73);"
+        sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验3',73,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT INTO NoteDB (title,context,createdate) VALUES('第一条笔记','This is my fisrt note.','2019-05-04 15:28:13');"
+        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('第一条笔记','This is my fisrt note.','2019-05-04 15:28:13',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
         sql = "INSERT INTO TodoDB (title,note,date,priority,repeatday,alarmOn) VALUES('练车','练车地点在吉林大学.','2019-05-04 15:29',1,'0000000',1);"

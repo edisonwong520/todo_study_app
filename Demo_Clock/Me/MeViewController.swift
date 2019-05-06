@@ -22,7 +22,8 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     @IBOutlet weak var note_count_label: UILabel!
     
-    @IBOutlet weak var top_score_label: UILabel!
+  
+    @IBOutlet weak var score_text: UITextView!
     
     @IBOutlet weak var study_time_label: UILabel!
     
@@ -36,6 +37,11 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             load_user_pic()
         }
         super.viewDidLoad()
+        
+        get_all_score()
+        get_all_note_count()
+        get_all_study_time()
+        
         dailybonus.backgroundColor = .clear
         dailybonus.layer.borderWidth = 1
         dailybonus.layer.borderColor = UIColor.lightGray.cgColor
@@ -229,7 +235,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         for item in result{
             time_count += Float(item)!
         }
-        self.study_time_label.text = "当前学习总时长为：\(time_count)"
+        self.study_time_label.text = "当前学习总时长为：\(time_count)小时"
     }
     
     
@@ -237,9 +243,26 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         var note_count = 0
         let sql = "SELECT id FROM NoteDB WHERE userid='\(current_user_id)';"
         let result = DBManager.shareManager().get_single_col_array(sql: sql)
-        for item in result{
-            note_count += !
+        for _ in result{
+            note_count += 1
         }
-        self.study_time_label.text = "当前学习总时长为：\(time_count)"
+        self.note_count_label.text = "当前笔记条数为：\(note_count)"
+    }
+    
+    func get_all_score(){
+        var score_sum:Float = 0
+        var test_count  = 0
+        var score_list :[Float] = []
+        let sql = "SELECT score FROM ScoreDB WHERE userid='\(current_user_id)';"
+        let result = DBManager.shareManager().get_single_col_array(sql: sql)
+        for index in result{
+            test_count += 1
+            score_sum += Float(index)!
+            score_list.append(Float(index)!)
+        }
+        let av :Float = score_sum/Float(test_count)
+        let avstr = String(format: "%.2f", av)
+        self.score_text.text = "当前测验\(test_count)次\n平均分为：\(avstr)\n最高分：\(score_list.max() ?? 0.0)分"
+        
     }
 }

@@ -105,7 +105,7 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
         note.title = notetitle.text!
         note.createDate = Date()
         note.context = htmlcontext
-        
+        note.userid = current_user_id
         //add item
         DBManager.shareManager().insert(noteitem: note)
         note.id = DBManager.shareManager().find_note_id(note: note)

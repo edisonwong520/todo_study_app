@@ -401,7 +401,7 @@ extension QAViewController {
                 let answerjson = String(data: json, encoding: .utf8)
                 NSLog(jsonStr ?? "what")
                 current_score = judge_score(qajson: jsonStr!, answerjson: answerjson!)
-                let sql = "INSERT INTO ScoreDB (title,score)VALUES('',\(current_score));"
+                let sql = "INSERT INTO ScoreDB (title,score,userid)VALUES('',\(current_score),\(current_user_id);"
                 let boolflag = DBManager.shareManager().execute_sql(sql: sql)
                 if boolflag {
                     NSLog("insert score into db success")
