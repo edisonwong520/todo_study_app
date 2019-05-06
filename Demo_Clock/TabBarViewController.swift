@@ -14,9 +14,9 @@ class TabBarViewController: SwipeableTabBarController {
         
         super.viewDidLoad()
         swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
-        let appearance = UITabBarItem.appearance()
-        let attributes: [String: AnyObject] = [NSFontAttributeName:UIFont(name: "American Typewriter", size: 16)!]
-        appearance.setTitleTextAttributes(attributes, for: .normal)
+//        let appearance = UITabBarItem.appearance()
+//        let attributes: [String: AnyObject] = [NSFontAttributeName:UIFont(name: "American Typewriter", size: 16)!]
+//        appearance.setTitleTextAttributes(attributes, for: .normal)
 
         // Do any additional setup after loading the view.
     }
@@ -31,14 +31,14 @@ class TabBarViewController: SwipeableTabBarController {
         // Pass the selected object to the new view controller.
     }
     */
-    override func viewWillLayoutSubviews() {
-        var tabFrame = self.tabBar.frame
-        // - 40 is editable , the default value is 49 px, below lowers the tabbar and above increases the tab bar size
-        tabFrame.size.height = 67
-        tabFrame.origin.y = self.view.frame.size.height - tabFrame.size.height
-        self.tabBar.frame = tabFrame
-        
-        
-    }
+//    override func viewWillLayoutSubviews() {
+//        var tabFrame = self.tabBar.frame
+//        // - 40 is editable , the default value is 49 px, below lowers the tabbar and above increases the tab bar size
+//        tabFrame.size.height = 67
+//        tabFrame.origin.y = self.view.frame.size.height - tabFrame.size.height
+//        self.tabBar.frame = tabFrame
+//        
+//        
+//    }
 
 }

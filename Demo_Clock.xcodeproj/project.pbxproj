@@ -61,6 +61,7 @@
 		B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE4A2279C17C0024CAE7 /* NoteItem.swift */; };
 		B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE502279C49B0024CAE7 /* NoteDBManager.swift */; };
 		B79FDD0822806BA40069BD46 /* SwipeableTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDD0722806BA40069BD46 /* SwipeableTabBarController.framework */; };
+		B79FDD0A228071860069BD46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B79FDD09228071860069BD46 /* Assets.xcassets */; };
 		B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */; };
 		B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABC227456EF00C59E95 /* DBManager.swift */; };
 		B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */; };
@@ -145,6 +146,7 @@
 		B765AE4A2279C17C0024CAE7 /* NoteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
 		B765AE502279C49B0024CAE7 /* NoteDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDBManager.swift; sourceTree = "<group>"; };
 		B79FDD0722806BA40069BD46 /* SwipeableTabBarController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeableTabBarController.framework; path = Carthage/Build/iOS/SwipeableTabBarController.framework; sourceTree = "<group>"; };
+		B79FDD09228071860069BD46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		B7BF6ABC227456EF00C59E95 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		430DA2891C4F81BC00C4E60C /* Demo_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				B79FDD09228071860069BD46 /* Assets.xcassets */,
 				B71872E6227DA8220070B52E /* Me */,
 				B716DC7A227C618700D7E5FA /* ChartView */,
 				B70FB843227C0A6800E07FA5 /* Questionnaire */,
@@ -497,6 +500,7 @@
 				B70FB866227C0A6800E07FA5 /* QATextViewCell.xib in Resources */,
 				B70FB86B227C0A6800E07FA5 /* QAAnswerCardCell.xib in Resources */,
 				B70FB869227C0A6800E07FA5 /* QASubjectCell.xib in Resources */,
+				B79FDD0A228071860069BD46 /* Assets.xcassets in Resources */,
 				430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

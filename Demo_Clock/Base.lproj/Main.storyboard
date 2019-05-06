@@ -32,7 +32,7 @@
         <scene sceneID="RKV-iK-r7C">
             <objects>
                 <navigationController id="x6z-dn-9fY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="提醒" id="9Vc-Fx-hJ3"/>
+                    <tabBarItem key="tabBarItem" title="提醒" image="timer" id="9Vc-Fx-hJ3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Unq-K2-Ivv">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -544,7 +544,7 @@
         <scene sceneID="xld-EN-4us">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kvu-K3-Ujn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="笔记" id="hZo-bg-OQs"/>
+                    <tabBarItem key="tabBarItem" title="笔记" image="literature" id="hZo-bg-OQs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mjS-gt-EW5">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -563,7 +563,7 @@
         <scene sceneID="6RY-Ms-Hvf">
             <objects>
                 <navigationController title="Exam" automaticallyAdjustsScrollViewInsets="NO" id="VIY-E0-hNT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="测验" id="qPG-fy-Yut"/>
+                    <tabBarItem key="tabBarItem" title="测验" image="documents" id="qPG-fy-Yut"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ghv-Dh-gja">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -672,7 +672,7 @@
         <scene sceneID="4ty-iq-Liq">
             <objects>
                 <navigationController title="Me" automaticallyAdjustsScrollViewInsets="NO" id="Lqq-9U-duN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="主页" id="kJm-Em-rkB"/>
+                    <tabBarItem key="tabBarItem" title="主页" image="home" id="kJm-Em-rkB"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="UUt-DG-JPb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Am7-k5-Ruy">
@@ -1174,4 +1174,10 @@
             <point key="canvasLocation" x="2246" y="1526"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="documents" width="30" height="30"/>
+        <image name="home" width="30" height="30"/>
+        <image name="literature" width="30" height="30"/>
+        <image name="timer" width="30" height="30"/>
+    </resources>
 </document>
