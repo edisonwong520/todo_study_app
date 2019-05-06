@@ -1,5 +1,5 @@
 //
-//  TDClockSettingViewController.swift
+//  NoteSettingViewController.swift
 //  Todo
 //
 //  Created by edison on 2019/4/25.
@@ -106,9 +106,11 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
         note.createDate = Date()
         note.context = htmlcontext
         note.userid = current_user_id
+        NSLog("note.userid :\(current_user_id)")
         //add item
-        DBManager.shareManager().insert(noteitem: note)
         note.id = DBManager.shareManager().find_note_id(note: note)
+        DBManager.shareManager().insert(noteitem: note)
+        
 //        NoteManager.sharedInstance.noteArray.append(note)
         notes_list.append(note)
         filter_list = notes_list

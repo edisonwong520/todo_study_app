@@ -11,7 +11,7 @@ var daka_begin_flag = false
 class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var dakaLabel: UILabel!
     // 学习打卡的按钮
-    @IBOutlet weak var singlescore: UIButton!
+    @IBOutlet var singlescore: UIButton!
     @IBOutlet var dailybonus: UIButton!
     @IBOutlet var UnlogLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
@@ -19,33 +19,28 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var realnameLabel: UILabel!
     @IBOutlet var imgView: UIImageView!
-    
-    @IBOutlet weak var note_count_label: UILabel!
-    
-  
-    @IBOutlet weak var score_text: UITextView!
-    
-    @IBOutlet weak var study_time_label: UILabel!
-    
+
+    @IBOutlet var note_count_label: UILabel!
+
+    @IBOutlet var score_text: UITextView!
+
+    @IBOutlet var study_time_label: UILabel!
+
     override func viewDidLoad() {
         loginButton.isHidden = true
         logoutButton.isHidden = true
         UnlogLabel.isHidden = true
         let result = DBManager.shareManager().get_single_col(sql: "SELECT picurl FROM UserDB WHERE id=\(current_user_id);")
-        
-        if result != ""{
+
+        if result != "" {
             load_user_pic()
         }
         super.viewDidLoad()
-        
-        get_all_score()
-        get_all_note_count()
-        get_all_study_time()
-        
+
         dailybonus.backgroundColor = .clear
         dailybonus.layer.borderWidth = 1
         dailybonus.layer.borderColor = UIColor.lightGray.cgColor
-        
+
         singlescore.backgroundColor = .clear
         singlescore.layer.borderWidth = 1
         singlescore.layer.borderColor = UIColor.lightGray.cgColor
@@ -83,24 +78,24 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         // Do any additional setup after loading the view.
     }
 
-    func load_user_pic(){
+    func load_user_pic() {
         let sql = "SELECT picurl FROM UserDB WHERE id=\(current_user_id);"
         let result = DBManager.shareManager().get_single_col(sql: sql)
-        if result.count != 0{
+        if result.count != 0 {
             do {
-            let photoURL = URL.init(fileURLWithPath: pic_path)
-            let imageData = try Data(contentsOf: photoURL)
+                let photoURL = URL(fileURLWithPath: pic_path)
+                let imageData = try Data(contentsOf: photoURL)
 //            imgView.image = UIImage.init(contentsOfFile: result)
-            imgView.image = UIImage(data: imageData)
+                imgView.image = UIImage(data: imageData)
 //            imgView.transform = CGAffineTransform(rotationAngle: CGFloat.pi*2)
-            imgView.image?.fixedOrientation()
+                imgView.image?.fixedOrientation()
 
-            NSLog("load user pic success")
-            } catch {print("Error loading image : \(error)")
+                NSLog("load user pic success")
+            } catch { print("Error loading image : \(error)")
             }
-            
         }
     }
+
     @objc func tapAction(tapGesture _: UITapGestureRecognizer) {
         let alertController = UIAlertController(title: "更改头像", message: nil,
                                                 preferredStyle: .actionSheet)
@@ -128,11 +123,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         picker.sourceType = .photoLibrary
         picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         present(picker, animated: true, completion: nil)
-        
-        
     }
-    
-    
 
     func takePic() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -144,8 +135,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         takePic.allowsEditing = true
         takePic.sourceType = .camera
         takePic.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        
-        
+
         present(takePic, animated: true, completion: nil)
     }
 
@@ -153,28 +143,27 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         imgView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
-        
+
         if #available(iOS 11.0, *) {
-            if let imgUrl = info[UIImagePickerControllerImageURL] as? URL{
+            if let imgUrl = info[UIImagePickerControllerImageURL] as? URL {
                 let imgName = imgUrl.lastPathComponent
                 let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
                 let localPath = documentDirectory?.appending(imgName)
-                
+
                 let image = info[UIImagePickerControllerOriginalImage] as! UIImage
                 let data = UIImagePNGRepresentation(image)! as NSData
                 data.write(toFile: localPath!, atomically: true)
-                //let imageData = NSData(contentsOfFile: localPath!)!
-                let photoURL = URL.init(fileURLWithPath: localPath!)//NSURL(fileURLWithPath: localPath!)
+                // let imageData = NSData(contentsOfFile: localPath!)!
+                let photoURL = URL(fileURLWithPath: localPath!) // NSURL(fileURLWithPath: localPath!)
                 pic_path = "" + localPath!
-                NSLog("localpath:"+localPath!)
-                
+                NSLog("localpath:" + localPath!)
+
                 let sql = "UPDATE UserDB SET picurl='\(pic_path)' WHERE id=\(current_user_id);"
                 NSLog(sql)
                 let boolflag = DBManager.shareManager().execute_sql(sql: sql)
-                if !boolflag{
+                if !boolflag {
                     NSLog("UPDATE UserDB SET picurl failed")
                 }
-                
             }
         } else {
             // Fallback on earlier versions
@@ -192,9 +181,10 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
 
     override func viewWillAppear(_: Bool) {
-        
+        get_all_score()
+        get_all_note_count()
+        get_all_study_time()
         viewDidLoad()
-        
     }
 
     @IBAction func dailybonusTapped(_: Any) {
@@ -227,42 +217,40 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             NSLog("insert checkindb failed")
         }
     }
-    
-    func get_all_study_time(){
-        var time_count:Float = 0
+
+    func get_all_study_time() {
+        var time_count: Float = 0
         let sql = "SELECT studytime FROM StudytimeDB WHERE userid='\(current_user_id)';"
         let result = DBManager.shareManager().get_single_col_array(sql: sql)
-        for item in result{
+        for item in result {
             time_count += Float(item)!
         }
-        self.study_time_label.text = "当前学习总时长为：\(time_count)小时"
+        study_time_label.text = "当前学习总时长为：\(time_count)小时"
     }
-    
-    
-    func get_all_note_count(){
+
+    func get_all_note_count() {
         var note_count = 0
         let sql = "SELECT id FROM NoteDB WHERE userid='\(current_user_id)';"
         let result = DBManager.shareManager().get_single_col_array(sql: sql)
-        for _ in result{
+        for _ in result {
             note_count += 1
         }
-        self.note_count_label.text = "当前笔记条数为：\(note_count)"
+        note_count_label.text = "当前笔记条数为：\(note_count)"
     }
-    
-    func get_all_score(){
-        var score_sum:Float = 0
-        var test_count  = 0
-        var score_list :[Float] = []
+
+    func get_all_score() {
+        var score_sum: Float = 0
+        var test_count = 0
+        var score_list: [Float] = []
         let sql = "SELECT score FROM ScoreDB WHERE userid='\(current_user_id)';"
         let result = DBManager.shareManager().get_single_col_array(sql: sql)
-        for index in result{
+        for index in result {
             test_count += 1
             score_sum += Float(index)!
             score_list.append(Float(index)!)
         }
-        let av :Float = score_sum/Float(test_count)
+        let av: Float = score_sum / Float(test_count)
         let avstr = String(format: "%.2f", av)
-        self.score_text.text = "当前测验\(test_count)次\n平均分为：\(avstr)\n最高分：\(score_list.max() ?? 0.0)分"
-        
+        score_text.text = "当前测验\(test_count)次\n平均分为：\(avstr)\n最高分：\(score_list.max() ?? 0.0)分"
     }
 }

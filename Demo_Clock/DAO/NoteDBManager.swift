@@ -58,32 +58,13 @@ extension DBManager {
             NSLog("db open failed")
             return
         } else {
-            let sql = "INSERT OR REPLACE INTO NoteDB (title,context,createdate) VALUES (?,?,?)"
-            let cSql = sql.cString(using: String.Encoding.utf8)
-            // 语句对象
-            var statement: OpaquePointer?
-            // 预处理过程
-
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let strDate = dateFormatter.string(from: noteitem.createDate as! Date)
+            let sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES ('\(noteitem.title)','\(noteitem.context)','\(strDate)',\(current_user_id));"
+            NSLog("insert note sql:\(sql)")
 
-            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
-                let cTitle = noteitem.title.cString(using: String.Encoding.utf8)
-                let strDate = dateFormatter.string(from: noteitem.createDate as! Date)
-                let cContext = noteitem.context.cString(using: String.Encoding.utf8)
+            _ = DBManager.shareManager().execute_sql(sql: sql)
 
-                sqlite3_bind_text(statement, 1, cTitle!, -1, nil)
-                sqlite3_bind_text(statement, 2, cContext!, -1, nil)
-                sqlite3_bind_text(statement, 3, strDate, -1, nil)
-
-                // 执行插入
-                if sqlite3_step(statement) != SQLITE_DONE {
-                    NSLog("insert failed")
-                } else {
-                    //                    NSLog("insert success")
-                }
-            }
-            sqlite3_finalize(statement)
-            sqlite3_close(db)
             return
         }
     }
@@ -96,7 +77,7 @@ extension DBManager {
         } else {
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let strDate = dateFormatter.string(from: note.createDate as! Date)
-            let sql = "SELECT id FROM NoteDB WHERE title='\(note.title)' AND createdate='\(strDate)';"
+            let sql = "SELECT id FROM NoteDB WHERE (title='\(note.title)' AND createdate='\(strDate)' AND userid=\(current_user_id));"
             NSLog("select id sql:\(sql)")
             let cSql = sql.cString(using: String.Encoding.utf8)
             var statement: OpaquePointer?

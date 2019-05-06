@@ -69,6 +69,7 @@ extension DBManager {
 
     // initial the db
     public func initDB() {
+        current_user_id = 1 
         DBManager.shareManager().drop_table()
         // insert scoredb
         var sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验1',65,1);"

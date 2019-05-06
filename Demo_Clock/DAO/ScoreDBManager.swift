@@ -54,7 +54,7 @@ extension DBManager {
             NSLog("db open failed")
             return listData as! [StudytimeItem]
         } else {
-            let sql = "SELECT userid,date,studytime FROM StudytimeDB WHERE userid=\(current_user_id)"
+            let sql = "SELECT userid,date,studytime FROM StudytimeDB WHERE userid=\(current_user_id);"
             let cSql = sql.cString(using: String.Encoding.utf8)
             
             // 语句对象
