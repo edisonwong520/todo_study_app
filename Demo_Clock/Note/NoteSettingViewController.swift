@@ -88,8 +88,11 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
     }
 
     @IBAction func handleCancelButtonTapped(_: UIButton) {
-        dismiss(animated: true) { () -> Void in
-        }
+        self.navigationController?.popViewController(animated: true)
+        
+        self.dismiss(animated: true, completion: nil)
+//        dismiss(animated: true) { () -> Void in
+//        }
     }
     
     //add note item

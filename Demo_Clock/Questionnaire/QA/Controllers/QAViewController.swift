@@ -236,6 +236,8 @@ extension QAViewController {
         let alert = UIAlertController(title: "确定退出", message: "退出后未提交的内容将不被保存，是否继续", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "继续答题", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "退出", style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+            
             self.dismiss(animated: true, completion: nil)
 
         }))
@@ -276,10 +278,8 @@ extension QAViewController {
             wrong_str = "其中第" + wrong_answer.joined(separator: "、") + "题错了"
         }
         let alert = UIAlertController(title: "本次成绩", message: "本次考试您获得了\(current_score)分\n" + wrong_str, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "查看错题", style: .default, handler: { _ in
-//            show_wrong = true
-//            self.dismiss(animated: true, completion: nil)
-//        }))
+
+
 
         alert.addAction(UIAlertAction(title: "确认", style: .default, handler: { _ in
             self.dismiss(animated: true, completion: nil)

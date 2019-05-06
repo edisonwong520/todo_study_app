@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="dcG-qu-oEX">
             <objects>
-                <tabBarController id="IC3-zb-k1i" sceneMemberID="viewController">
+                <tabBarController id="IC3-zb-k1i" customClass="TabBarViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RzJ-fc-kIr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="-740.79999999999995" y="114.24287856071965"/>
         </scene>
-        <!--Exam-->
+        <!--测验-->
         <scene sceneID="zGa-PT-B4Q">
             <objects>
                 <viewController id="JQB-cf-HFN" sceneMemberID="viewController">
@@ -78,7 +78,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Exam" id="KqF-Iu-w1h"/>
+                    <navigationItem key="navigationItem" title="测验" id="KqF-Iu-w1h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2w-ke-G2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,7 +122,7 @@
         <!--Item-->
         <scene sceneID="DDP-yH-XiJ">
             <objects>
-                <viewController id="AH2-iW-DP1" customClass="QAViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QAViewController" id="AH2-iW-DP1" customClass="QAViewController" customModule="Demo_Clock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0NE-OW-cDI"/>
                         <viewControllerLayoutGuide type="bottom" id="ZnB-FH-LjD"/>
@@ -436,12 +436,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhc-X2-OuR" customClass="RichEditorView" customModule="RichEditorView">
-                                <rect key="frame" x="16" y="243" width="343" height="436"/>
+                                <rect key="frame" x="16" y="243" width="343" height="386"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-BO-o6J">
-                                <rect key="frame" x="253" y="708" width="45" height="39"/>
+                                <rect key="frame" x="76" y="687" width="45" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="取消"/>
@@ -450,7 +450,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yS-C1-ZG0">
-                                <rect key="frame" x="77" y="708" width="45" height="39"/>
+                                <rect key="frame" x="253" y="687" width="45" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="完成"/>

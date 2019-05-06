@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     enum ShortcutIdentifier: String {
         case First
         case Second
-        case Dynamic
+        case Third
 
         // MARK: Initializers
 
@@ -93,39 +93,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func handleShortcutItem(item: UIApplicationShortcutItem) -> Bool {
+        
         var handled = false
         // Verify that the provided shortcutItem's type is one handled by the application.
         guard ShortcutIdentifier(fullNameForType: item.type) != nil else { return false }
         guard let shortCutType = item.type as String? else { return false }
-
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var reqVC: UIViewController!
-
+        let myTabBar = self.window?.rootViewController as? UITabBarController
+        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
         switch shortCutType {
         case ShortcutIdentifier.First.type:
-            reqVC = mainStoryboard.instantiateViewController(withIdentifier: "DCClockSettingViewController") as! DCClockSettingViewController
+            myTabBar?.selectedIndex = 0
+            let nvc = myTabBar?.selectedViewController as? UINavigationController
+            let req = mainStoryboard.instantiateViewController(withIdentifier: "DCClockSettingViewController") as! DCClockSettingViewController
+            nvc?.pushViewController(req, animated: true)
             handled = true
-
+            
         case ShortcutIdentifier.Second.type:
-            let notehomeVC = NoteHomeViewController()
-//            reqVC = mainStoryboard.instantiateViewController(withIdentifier: "NoteSettingViewController") as! NoteSettingViewController
+
+            myTabBar?.selectedIndex = 1
+            let nvc = myTabBar?.selectedViewController as? UINavigationController
+            let req = mainStoryboard.instantiateViewController(withIdentifier: "NoteSettingViewController") as! NoteSettingViewController
+            nvc?.pushViewController(req, animated: true)
             handled = true
-
-//        case ShortcutIdentifier.Dynamic.type:
-//
-//            handleDynamicAction()
-//            return true
-
+            
+        case ShortcutIdentifier.Third.type:
+            myTabBar?.selectedIndex = 2
+            let nvc = myTabBar?.selectedViewController as? UINavigationController
+            let req = mainStoryboard.instantiateViewController(withIdentifier: "QAViewController") as! QAViewController
+            nvc?.pushViewController(req, animated: true)
+            
+            handled = true
+            
         default:
             NSLog("Shortcut Item Handle func")
         }
-
-        if let homeVC = self.window?.rootViewController as? UINavigationController {
-            homeVC.pushViewController(reqVC, animated: true)
-        } else {
-            return false
-        }
-
+        
+        
         return handled
     }
 

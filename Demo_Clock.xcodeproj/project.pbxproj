@@ -64,6 +64,7 @@
 		B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */; };
 		B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABC227456EF00C59E95 /* DBManager.swift */; };
 		B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */; };
+		B7CAEE1E22805768007C7EEE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CAEE1D22805768007C7EEE /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		B7BF6ABC227456EF00C59E95 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B7CAEE1D22805768007C7EEE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				430DA2931C4F81BC00C4E60C /* LaunchScreen.storyboard */,
 				430DA2961C4F81BC00C4E60C /* Info.plist */,
 				B71872F1227DB3EE0070B52E /* Utils.swift */,
+				B7CAEE1D22805768007C7EEE /* TabBarViewController.swift */,
 			);
 			path = Demo_Clock;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				B70FB861227C0A6800E07FA5 /* QAQuestionModel.swift in Sources */,
 				430DA2BE1C4F820900C4E60C /* LXMConsoleViewController.swift in Sources */,
 				430DA2BD1C4F820900C4E60C /* LXMBaseViewController.swift in Sources */,
+				B7CAEE1E22805768007C7EEE /* TabBarViewController.swift in Sources */,
 				B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */,
 				4358B97F1C5071950081E3A5 /* DCAlarm.swift in Sources */,
 				B716DC84227C692000D7E5FA /* ScoreItem.swift in Sources */,

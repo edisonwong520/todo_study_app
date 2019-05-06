@@ -221,8 +221,11 @@ extension DCClockSettingViewController {
 // ----
 extension DCClockSettingViewController {
     @IBAction func handleCancelButtonTapped(_: UIButton) {
-        dismiss(animated: true) { () -> Void in
-        }
+//        dismiss(animated: true) { () -> Void in
+//        }
+        self.navigationController?.popViewController(animated: true)
+        
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
