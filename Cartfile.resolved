@@ -1,2 +1,3 @@
 github "cjwirth/RichEditorView" "5.0.0"
 github "danielgindi/Charts" "v3.2.0"
+github "marcosgriselli/SwipeableTabBarController" "2.1.0"

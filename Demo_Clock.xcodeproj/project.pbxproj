@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		430DA28B1C4F81BC00C4E60C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */; };
 		430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430DA28E1C4F81BC00C4E60C /* Main.storyboard */; };
-		430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430DA2911C4F81BC00C4E60C /* Assets.xcassets */; };
 		430DA2951C4F81BC00C4E60C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430DA2931C4F81BC00C4E60C /* LaunchScreen.storyboard */; };
 		430DA2A01C4F81BC00C4E60C /* Demo_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA29F1C4F81BC00C4E60C /* Demo_ClockTests.swift */; };
 		430DA2AB1C4F81BC00C4E60C /* Demo_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430DA2AA1C4F81BC00C4E60C /* Demo_ClockUITests.swift */; };
@@ -61,6 +60,7 @@
 		B765AE4E2279C17C0024CAE7 /* NoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE492279C17C0024CAE7 /* NoteManager.swift */; };
 		B765AE4F2279C17C0024CAE7 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE4A2279C17C0024CAE7 /* NoteItem.swift */; };
 		B765AE512279C49B0024CAE7 /* NoteDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765AE502279C49B0024CAE7 /* NoteDBManager.swift */; };
+		B79FDD0822806BA40069BD46 /* SwipeableTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDD0722806BA40069BD46 /* SwipeableTabBarController.framework */; };
 		B7BF6ABE227456EF00C59E95 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */; };
 		B7BF6ABF227456EF00C59E95 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF6ABC227456EF00C59E95 /* DBManager.swift */; };
 		B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */; };
@@ -88,7 +88,6 @@
 		430DA2871C4F81BB00C4E60C /* Demo_Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo_Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		430DA28F1C4F81BC00C4E60C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		430DA2911C4F81BC00C4E60C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		430DA2941C4F81BC00C4E60C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		430DA2961C4F81BC00C4E60C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		430DA29B1C4F81BC00C4E60C /* Demo_ClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo_ClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +144,7 @@
 		B765AE492279C17C0024CAE7 /* NoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteManager.swift; sourceTree = "<group>"; };
 		B765AE4A2279C17C0024CAE7 /* NoteItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
 		B765AE502279C49B0024CAE7 /* NoteDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDBManager.swift; sourceTree = "<group>"; };
+		B79FDD0722806BA40069BD46 /* SwipeableTabBarController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeableTabBarController.framework; path = Carthage/Build/iOS/SwipeableTabBarController.framework; sourceTree = "<group>"; };
 		B7BF6ABB227456EF00C59E95 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		B7BF6ABC227456EF00C59E95 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		B7BF6ABD227456EF00C59E95 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -160,6 +160,7 @@
 				B7136EF9227EF157005C0F2A /* Charts.framework in Frameworks */,
 				B765AE262279AEFE0024CAE7 /* RichEditorView.framework in Frameworks */,
 				B7BF6AC2227459C600C59E95 /* libsqlite3.0.tbd in Frameworks */,
+				B79FDD0822806BA40069BD46 /* SwipeableTabBarController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +214,6 @@
 				430DA2B81C4F820900C4E60C /* LXMKit */,
 				430DA28A1C4F81BC00C4E60C /* AppDelegate.swift */,
 				430DA28E1C4F81BC00C4E60C /* Main.storyboard */,
-				430DA2911C4F81BC00C4E60C /* Assets.xcassets */,
 				430DA2931C4F81BC00C4E60C /* LaunchScreen.storyboard */,
 				430DA2961C4F81BC00C4E60C /* Info.plist */,
 				B71872F1227DB3EE0070B52E /* Utils.swift */,
@@ -372,6 +372,7 @@
 		B7BF6AC0227459C600C59E95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B79FDD0722806BA40069BD46 /* SwipeableTabBarController.framework */,
 				B7136EF8227EF157005C0F2A /* Charts.framework */,
 				B7BF6AC1227459C600C59E95 /* libsqlite3.0.tbd */,
 				B765AE252279AEFE0024CAE7 /* RichEditorView.framework */,
@@ -496,7 +497,6 @@
 				B70FB866227C0A6800E07FA5 /* QATextViewCell.xib in Resources */,
 				B70FB86B227C0A6800E07FA5 /* QAAnswerCardCell.xib in Resources */,
 				B70FB869227C0A6800E07FA5 /* QASubjectCell.xib in Resources */,
-				430DA2921C4F81BC00C4E60C /* Assets.xcassets in Resources */,
 				430DA2901C4F81BC00C4E60C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,12 +528,14 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RichEditorView.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwipeableTabBarController.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RichEditorView.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwipeableTabBarController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

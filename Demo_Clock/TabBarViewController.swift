@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
-class TabBarViewController: UITabBarController {
+import SwipeableTabBarController
+class TabBarViewController: SwipeableTabBarController {
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
         let appearance = UITabBarItem.appearance()
         let attributes: [String: AnyObject] = [NSFontAttributeName:UIFont(name: "American Typewriter", size: 16)!]
         appearance.setTitleTextAttributes(attributes, for: .normal)
