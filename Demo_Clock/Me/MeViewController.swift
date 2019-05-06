@@ -19,6 +19,13 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var realnameLabel: UILabel!
     @IBOutlet var imgView: UIImageView!
+    
+    @IBOutlet weak var note_count_label: UILabel!
+    
+    @IBOutlet weak var top_score_label: UILabel!
+    
+    @IBOutlet weak var study_time_label: UILabel!
+    
     override func viewDidLoad() {
         loginButton.isHidden = true
         logoutButton.isHidden = true
@@ -213,5 +220,26 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         } else {
             NSLog("insert checkindb failed")
         }
+    }
+    
+    func get_all_study_time(){
+        var time_count:Float = 0
+        let sql = "SELECT studytime FROM StudytimeDB WHERE userid='\(current_user_id)';"
+        let result = DBManager.shareManager().get_single_col_array(sql: sql)
+        for item in result{
+            time_count += Float(item)!
+        }
+        self.study_time_label.text = "当前学习总时长为：\(time_count)"
+    }
+    
+    
+    func get_all_note_count(){
+        var note_count = 0
+        let sql = "SELECT id FROM NoteDB WHERE userid='\(current_user_id)';"
+        let result = DBManager.shareManager().get_single_col_array(sql: sql)
+        for item in result{
+            note_count += !
+        }
+        self.study_time_label.text = "当前学习总时长为：\(time_count)"
     }
 }

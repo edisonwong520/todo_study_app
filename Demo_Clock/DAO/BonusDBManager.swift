@@ -68,4 +68,29 @@ extension DBManager {
         }
         return 0
     }
+    
+    func get_single_col_array(sql: String) -> [String] {
+        var result:[String] = []
+        let cpath = plistFilePath.cString(using: String.Encoding.utf8)
+        if sqlite3_open(cpath!, &db) != SQLITE_OK {
+            NSLog("db open failed")
+            
+        } else {
+            let cSql = sql.cString(using: String.Encoding.utf8)
+            var statement: OpaquePointer?
+            // 预处理过程
+            NSLog("find_user_byid:\(sql)")
+            if sqlite3_prepare_v2(db, cSql!, -1, &statement, nil) == SQLITE_OK {
+                while sqlite3_step(statement) == SQLITE_ROW {
+                    if let str = getColumnValue(index: 0, stmt: statement!) {
+                        result.append(str)
+                    }
+                }
+            }
+            sqlite3_close(db)
+            sqlite3_finalize(statement)
+            return result
+        }
+        return result
+    }
 }
