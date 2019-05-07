@@ -111,7 +111,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
         todoNote.delegate = self
 
-        todoNote.text = " Please input note..."
+        todoNote.text = " 请输入详细内容..."
         todoNote.textColor = UIColor.lightGray
 
         let borderGray = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)

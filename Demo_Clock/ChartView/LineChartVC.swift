@@ -48,7 +48,7 @@ class LineChartVC: BaseVC {
             //            circleColors.append(ZHFColor.blue)
         }
         updataData(lineChartView: lineChartView, dataEntries1: firstdataEntries, positiveSuffix: "分", label: "成绩")
-        updataData(lineChartView: TimeChartView, dataEntries1: seconddataEntries, positiveSuffix: "时", label: "时长")
+        updataData(lineChartView: TimeChartView, dataEntries1: seconddataEntries, positiveSuffix: "小时", label: "时长")
 
         setBackgroundBorder()
         // 设置x轴的样式属性

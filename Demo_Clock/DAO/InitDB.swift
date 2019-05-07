@@ -80,6 +80,12 @@ extension DBManager {
 
         sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验3',73,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
+        
+        sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验4',96,1);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
+        
+        sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验5',86,1);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
 
         sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('第一条笔记','This is my fisrt note.','2019-05-04 15:28:13',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
@@ -99,10 +105,16 @@ extension DBManager {
         sql = "INSERT INTO CheckinDB (userid,checkindate) VALUES (1,'2019-05-05 10:30:00');"
         _ = DBManager.shareManager().execute_sql(sql: sql)
         
+        sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-01',2);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
+        
+        sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-02',4);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
+        
         sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-03',3);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
         
-        sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-04',4.5);"
+        sql = "INSERT INTO StudytimeDB (userid,date,studytime) VALUES (1,'2019-05-04',5);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
     }
 
