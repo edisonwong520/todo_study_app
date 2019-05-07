@@ -198,7 +198,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var strdate = dateFormatter.string(from: now)
+        let strdate = dateFormatter.string(from: now)
         let sql = "INSERT INTO CheckinDB(userid,checkindate)VALUES(\(current_user_id),'\(strdate)');"
         if DBManager.shareManager().execute_sql(sql: sql) {
             NSLog("insert checkindb success")
@@ -250,7 +250,10 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             score_list.append(Float(index)!)
         }
         let av: Float = score_sum / Float(test_count)
-        let avstr = String(format: "%.2f", av)
-        score_text.text = "当前测验\(test_count)次\n平均分为：\(avstr)\n最高分：\(score_list.max() ?? 0.0)分"
+        var avstr = String(format: "%.2f", av)
+        if test_count == 0{
+            avstr = "0"
+        }
+        score_text.text = "当前测验\(test_count)次\n平均分为：\(avstr)分\n最高分：\(score_list.max() ?? 0.0)分"
     }
 }

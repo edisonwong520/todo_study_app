@@ -712,7 +712,7 @@
         <scene sceneID="4ty-iq-Liq">
             <objects>
                 <navigationController title="Me" automaticallyAdjustsScrollViewInsets="NO" id="Lqq-9U-duN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="主页" image="home" id="kJm-Em-rkB"/>
+                    <tabBarItem key="tabBarItem" title="个人" image="home" id="kJm-Em-rkB"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="UUt-DG-JPb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Am7-k5-Ruy">
