@@ -12,6 +12,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var quitButton: UIButton!
     @IBOutlet var textfieldsCollection: [UITextField]!
     
     @IBOutlet weak var realName: UITextField! // as First Field that contain name in View
@@ -39,6 +40,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(false)
     }
     @IBAction func signupTapped(_ sender: UIButton) {
+        if !check_pwd(){
+            return
+        }
+        if !check_email(){
+            let alert = UIAlertView(title: "提醒", message: "邮箱格式不对" ,delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+            return
+        }
         let user = UserItem()
         user.name = userName.text!
         user.email = emailAddr.text!
@@ -49,7 +58,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func check_email()->Bool{
+        let email = emailAddr.text
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailTest:NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        
+        return emailTest.evaluate(with: email)
+    }
     
+    func check_pwd()->Bool{
+        if password.text != passwordConfirmation.text{
+            let alert = UIAlertView(title: "提醒", message: "两次密码不一样，请重新输入" ,delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+            return false
+        }
+        return true
+    }
+    
+    @IBAction func quitTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
     
     // Hide keyboard when user touches return key on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

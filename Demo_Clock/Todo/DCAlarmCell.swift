@@ -41,7 +41,9 @@ class DCAlarmCell: UITableViewCell {
             dateLabel.text = dateFormatter.string(from: date as Date)
         }
         let title = DBManager.shareManager().get_value_byid(find: "title", id: alarm.id)
-        descriptionLabel.text = title
+        let priority = DBManager.shareManager().get_value_byid(find: "priority", id: alarm.id)
+        let priority_text_dict = ["1":"最高","2":"重要","3":"一般","4":"不重要"]
+        descriptionLabel.text = title + "(\(priority_text_dict[priority] ?? ""))"
         alarmSwith.isOn = alarm.alarmOn
     }
 

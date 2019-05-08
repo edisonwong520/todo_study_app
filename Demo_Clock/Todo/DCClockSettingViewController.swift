@@ -84,7 +84,7 @@ class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate,
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = " Please input note..."
+            textView.text = " 请输入详细内容..."
             textView.textColor = UIColor.lightGray
         }
     }
