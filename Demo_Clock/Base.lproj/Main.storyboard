@@ -921,6 +921,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="找回密码"/>
                                         <connections>
+                                            <action selector="confirmTapped:" destination="KHR-qc-fTL" eventType="touchUpInside" id="jcS-sY-VY7"/>
                                             <action selector="signupTapped:" destination="uCW-is-nP8" eventType="touchUpInside" id="hUU-kl-Uui"/>
                                         </connections>
                                     </button>
@@ -933,10 +934,11 @@
                                         <state key="normal" title="退出"/>
                                         <connections>
                                             <action selector="quitTapped:" destination="uCW-is-nP8" eventType="touchUpInside" id="7IK-ur-aIg"/>
+                                            <action selector="quitTapped:" destination="KHR-qc-fTL" eventType="touchUpInside" id="cdG-CE-IHS"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="新密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MK8-CU-FgZ">
-                                        <rect key="frame" x="125" y="316" width="37" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MK8-CU-FgZ">
+                                        <rect key="frame" x="125" y="313" width="37" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LBj-5F-uRF"/>
                                         </constraints>
@@ -959,20 +961,20 @@
                                     <constraint firstItem="pI1-zY-Q7T" firstAttribute="centerX" secondItem="9qb-oK-USR" secondAttribute="centerX" id="Q5F-Tj-2t6"/>
                                     <constraint firstItem="mOf-zl-uUP" firstAttribute="leading" secondItem="NdF-vM-vzx" secondAttribute="leading" id="RKK-Qt-4L2"/>
                                     <constraint firstAttribute="trailing" secondItem="pI1-zY-Q7T" secondAttribute="trailing" id="V64-C9-v0M"/>
-                                    <constraint firstItem="MK8-CU-FgZ" firstAttribute="top" secondItem="mOf-zl-uUP" secondAttribute="bottom" constant="63" id="W7I-BQ-bPs"/>
+                                    <constraint firstItem="MK8-CU-FgZ" firstAttribute="top" secondItem="mOf-zl-uUP" secondAttribute="bottom" constant="50" id="W7I-BQ-bPs"/>
                                     <constraint firstItem="pI1-zY-Q7T" firstAttribute="centerX" secondItem="NdF-vM-vzx" secondAttribute="centerX" constant="-1" id="YE0-o8-xgI"/>
                                     <constraint firstAttribute="height" constant="450" id="YLO-Ej-pAB"/>
                                     <constraint firstItem="LD0-BK-mwf" firstAttribute="baseline" secondItem="EBk-Hm-Kgx" secondAttribute="baseline" id="Yui-Kv-47H"/>
                                     <constraint firstItem="mOf-zl-uUP" firstAttribute="top" secondItem="S1g-tT-zQF" secondAttribute="bottom" constant="4" id="f7A-Zq-Nh9"/>
                                     <constraint firstItem="pI1-zY-Q7T" firstAttribute="centerX" secondItem="S1g-tT-zQF" secondAttribute="centerX" id="hfn-z1-BKD"/>
-                                    <constraint firstItem="S1g-tT-zQF" firstAttribute="leading" secondItem="MK8-CU-FgZ" secondAttribute="leading" id="hzw-qv-jtv"/>
+                                    <constraint firstItem="S1g-tT-zQF" firstAttribute="leading" secondItem="MK8-CU-FgZ" secondAttribute="leading" constant="-1" id="hzw-qv-jtv"/>
                                     <constraint firstItem="EBk-Hm-Kgx" firstAttribute="leading" secondItem="p2p-JC-HrD" secondAttribute="leading" constant="58" id="oTm-si-P7Y"/>
                                     <constraint firstItem="DQX-dj-0RF" firstAttribute="leading" secondItem="p2p-JC-HrD" secondAttribute="leading" constant="52" id="obw-G6-iK3"/>
                                     <constraint firstItem="pI1-zY-Q7T" firstAttribute="centerX" secondItem="LD0-BK-mwf" secondAttribute="centerX" constant="-49.5" id="wG6-WM-QzS"/>
-                                    <constraint firstItem="NdF-vM-vzx" firstAttribute="top" secondItem="MK8-CU-FgZ" secondAttribute="bottom" constant="-8" id="wKD-Gr-m7P"/>
+                                    <constraint firstItem="NdF-vM-vzx" firstAttribute="top" secondItem="MK8-CU-FgZ" secondAttribute="bottom" constant="5" id="wKD-Gr-m7P"/>
                                     <constraint firstItem="DQX-dj-0RF" firstAttribute="top" secondItem="9qb-oK-USR" secondAttribute="bottom" constant="4" id="zD4-i6-yHt"/>
                                     <constraint firstItem="LD0-BK-mwf" firstAttribute="leading" secondItem="EBk-Hm-Kgx" secondAttribute="trailing" constant="29" id="zHd-RK-Zwq"/>
-                                    <constraint firstItem="pI1-zY-Q7T" firstAttribute="centerX" secondItem="MK8-CU-FgZ" secondAttribute="centerX" id="zk6-Z0-Fg0"/>
+                                    <constraint firstItem="pI1-zY-Q7T" firstAttribute="centerX" secondItem="MK8-CU-FgZ" secondAttribute="centerX" constant="-1" id="zk6-Z0-Fg0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -982,6 +984,12 @@
                             <constraint firstItem="p2p-JC-HrD" firstAttribute="centerX" secondItem="Npf-pH-3yn" secondAttribute="centerX" id="fF7-mh-W7i"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newpassword" destination="NdF-vM-vzx" id="R5H-NK-2tO"/>
+                        <outlet property="oldpassword" destination="mOf-zl-uUP" id="bTH-xP-b9Q"/>
+                        <outlet property="quitButton" destination="EBk-Hm-Kgx" id="D2e-oO-eIS"/>
+                        <outlet property="userName" destination="DQX-dj-0RF" id="oiV-yN-UU1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PgE-q8-0I9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
