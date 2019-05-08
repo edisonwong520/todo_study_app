@@ -81,7 +81,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 //
             })
         }
-        
+        let alert = UIAlertView(title: "提醒", message: "登陆成功！" ,delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        dismiss(animated: true)
         
     }
     

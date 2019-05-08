@@ -382,7 +382,8 @@ extension QAViewController {
 //
 //            }))
             present(alert, animated: true, completion: {
-                sleep(2)
+                sleep(1)
+                self.dismiss(animated: true)
             })
             return
         }

@@ -54,6 +54,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         user.realname = realName.text!
         user.password = (password.text?.md5())!
         DBManager.shareManager().insert_user_db(user: user)
+        let alert1 = UIAlertView(title: "提醒", message: "注册成功！" ,delegate: nil, cancelButtonTitle: "OK")
+        alert1.show()
         dismiss(animated: true)
         
     }
