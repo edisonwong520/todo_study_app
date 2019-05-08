@@ -37,7 +37,6 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
         super.viewDidLoad()
         notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         title = "笔记"
-
         // add search bar
         // 实例化UISearchController
         searchController = UISearchController(searchResultsController: nil)
@@ -102,30 +101,45 @@ extension NoteHomeViewController {
     func filterContentForSearchText(_ searchText: NSString, scope: Int) {
         if searchText.length == 0 {
             // 查询所有
-            filter_list = notes_list
+            NSLog("find all notes_list")
+            filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
+            tableView.reloadData()
             return
+            
         }
 
         var sql = ""
 
 //        filter_list =
         if scope == 0 {
+            NSLog("scope 0")
             sql = "SELECT id FROM NoteDB WHERE title LIKE '%\(searchText)%';"
+            NSLog("search keyword:\(sql)")
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
+            
+            
         } else if scope == 1 {
-            sql = "SELECT id FROM NoteDB WHERE note LIKE '%\(searchText)%';"
+            NSLog("scope 1")
+            sql = "SELECT id FROM NoteDB WHERE context LIKE '%\(searchText)%';"
+            NSLog("search keyword:\(sql)")
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
-
+            
+//            print(filter_list[0].context)
+        
         } else {
-            sql = "SELECT id FROM NoteDB WHERE note LIKE '%\(searchText)%' OR title LIKE '%\(searchText)%';"
+            sql = "SELECT id FROM NoteDB WHERE context LIKE '%\(searchText)%' OR title LIKE '%\(searchText)%';"
+            NSLog("search keyword:\(sql)")
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
+            
         }
+    
     }
 }
 
 extension NoteHomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
+//        filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
+        
         return filter_list.count
     }
 

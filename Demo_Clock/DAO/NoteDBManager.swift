@@ -113,6 +113,7 @@ extension DBManager {
                 while sqlite3_step(statement) == SQLITE_ROW {
                     if let strId = getColumnValue(index: 0, stmt: statement!) {
                         id_list.append(Int(strId)!)
+                        NSLog("keyword id is \(Int(strId)!)")
                     }
                 }
                 sqlite3_close(db)
