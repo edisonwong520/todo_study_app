@@ -12,7 +12,7 @@ import UIKit
 var notes_list: [NoteItem] = []
 // record search result list
 var filter_list: [NoteItem] = []
-
+var cell_flag = false
 class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
     var searchController: UISearchController!
 
@@ -33,7 +33,6 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
 //    var dataArray = [TDAlarm]()
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         title = "笔记"
@@ -53,7 +52,6 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
 
         setupTableView()
         setupNavigationBar()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +60,6 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
 
 //        dataArray = notes_list // swift的数组是struct，是值类型，写的时候要特别注意
@@ -105,7 +102,6 @@ extension NoteHomeViewController {
             filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
             tableView.reloadData()
             return
-            
         }
 
         var sql = ""
@@ -116,30 +112,33 @@ extension NoteHomeViewController {
             sql = "SELECT id FROM NoteDB WHERE title LIKE '%\(searchText)%';"
             NSLog("search keyword:\(sql)")
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
-            
-            
-        } else if scope == 1 {
+            cell_flag = true
+            tableView.reloadData()
+            return
+        }
+        if scope == 1 {
             NSLog("scope 1")
             sql = "SELECT id FROM NoteDB WHERE context LIKE '%\(searchText)%';"
             NSLog("search keyword:\(sql)")
             filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
-            
-//            print(filter_list[0].context)
-        
-        } else {
-            sql = "SELECT id FROM NoteDB WHERE context LIKE '%\(searchText)%' OR title LIKE '%\(searchText)%';"
-            NSLog("search keyword:\(sql)")
-            filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
-            
+            tableView.reloadData()
+            return
         }
-    
+//            print(filter_list[0].context)
+
+//        } else {
+//            sql = "SELECT id FROM NoteDB WHERE context LIKE '%\(searchText)%' OR title LIKE '%\(searchText)%';"
+//            NSLog("search keyword:\(sql)")
+//            filter_list = DBManager.shareManager().find_keyword(sql) as! [NoteItem]
+//
+//        }
     }
 }
 
 extension NoteHomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
 //        filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
-        
+//        NSLog("filter list count \(filter_list.count)")
         return filter_list.count
     }
 
@@ -147,7 +146,9 @@ extension NoteHomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteCellIdentifier) as! NoteCell
         let note = notes_list[indexPath.row]
         // set defualt config
-        cell.configWithNote(note, indexPath: indexPath)
+
+        cell.configWithNote(filter_list[indexPath.row], indexPath: indexPath)
+
         return cell
     }
 

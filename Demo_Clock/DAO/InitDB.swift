@@ -87,10 +87,13 @@ extension DBManager {
         sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验5',86,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('第一条笔记','This is my fisrt note.','2019-05-04 15:28:13',1);"
+        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('1','This is my fisrt note.','2019-05-04 15:28:13',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
         
-        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('今日看书有感','《百年孤独》，是哥伦比亚作家加西亚·马尔克斯创作的长篇小说，是其代表作，也是拉丁美洲魔幻现实主义文学的代表作，被誉为“再现拉丁美洲历史社会图景的鸿篇巨著”。','2019-05-04 15:28:22',1);"
+        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('2','《百年孤独》，是哥伦比亚作家加西亚·马尔克斯创作的长篇小说，是其代表作，也是拉丁美洲魔幻现实主义文学的代表作，被誉为“再现拉丁美洲历史社会图景的鸿篇巨著”。','2019-05-04 15:28:22',1);"
+        _ = DBManager.shareManager().execute_sql(sql: sql)
+        
+        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('3','《百年孤独》，是哥伦比亚作家加西亚·马尔克斯创作的长篇小说，是其代表作，也是拉丁美洲魔幻现实主义文学的代表作，被誉为“再现拉丁美洲历史社会图景的鸿篇巨著”。','2019-05-04 15:28:22',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
         sql = "INSERT INTO TodoDB (title,note,date,priority,repeatday,alarmOn) VALUES('练车','练车地点在吉林大学.','2019-05-04 15:29',1,'0000000',1);"
