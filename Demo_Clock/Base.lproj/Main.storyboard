@@ -865,7 +865,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2p-JC-HrD">
                                 <rect key="frame" x="45" y="181" width="285" height="450"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI1-zY-Q7T">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找回密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI1-zY-Q7T">
                                         <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
                                         <color key="backgroundColor" red="0.58266327780000005" green="0.87913477419999997" blue="0.4053925035" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
