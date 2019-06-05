@@ -33,6 +33,7 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
 //    var dataArray = [TDAlarm]()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         title = "笔记"
@@ -52,6 +53,7 @@ class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISear
 
         setupTableView()
         setupNavigationBar()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -146,7 +148,6 @@ extension NoteHomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteCellIdentifier) as! NoteCell
         let note = notes_list[indexPath.row]
         // set defualt config
-
         cell.configWithNote(filter_list[indexPath.row], indexPath: indexPath)
 
         return cell
@@ -158,6 +159,8 @@ extension NoteHomeViewController: UITableViewDataSource {
         let item = notes_list[indexPath.row]
         if let index = notes_list.index(of: item) {
             let id_get = notes_list[index].id
+            filter_list = notes_list
+            filter_list.remove(at: index)
             notes_list.remove(at: index)
 
             let sql = "DELETE FROM NoteDB WHERE id=\(id_get);"
@@ -169,9 +172,11 @@ extension NoteHomeViewController: UITableViewDataSource {
                 NSLog("delete from notedb failed, ")
             }
             tableView.deleteRows(at: [indexPath], with: .left)
+        
             tableView.reloadData()
 //            NoteManager.sharedInstance.save()
         }
+        
     }
 }
 
@@ -179,7 +184,10 @@ extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         current_selected_row = indexPath.row
         add_item_flag = false
+        modify_flag = true
         let note = notes_list[indexPath.row]
+        modify_note_id = note.id
+        NSLog("modify_note_id:\(modify_note_id)")
         let noteSettingViewController = NoteSettingViewController.loadFromStroyboardWithTargetAlarm(note)
         noteSettingViewController.hidesBottomBarWhenPushed = true
         navigationController?.present(noteSettingViewController, animated: true, completion: { () -> Void in
@@ -197,9 +205,9 @@ extension NoteHomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, canMoveRowAt _: IndexPath) -> Bool {
         return isEditing
     }
-
     func tableView(_: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let note = notes_list.remove(at: (sourceIndexPath as NSIndexPath).row)
         notes_list.insert(note, at: (destinationIndexPath as NSIndexPath).row)
+        filter_list = notes_list
     }
 }

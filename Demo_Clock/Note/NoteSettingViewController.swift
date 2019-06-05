@@ -8,7 +8,9 @@
 
 import RichEditorView
 import UIKit
+var modify_flag = false
 var pic_path = ""
+var modify_note_id = -1
 class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var notetitle: UITextField!
 
@@ -99,7 +101,30 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
     @IBAction func handleConfirmButtonTapped(_: UIButton) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
+        // modify an already existed note item------------------------
+        if modify_flag{
+            let note = NoteItem()
+            note.title = notetitle.text!
+            note.createDate = Date()
+            note.context = htmlcontext
+            note.userid = current_user_id
+            NSLog("modify an already existed note item :\(current_user_id)")
+            //add item
+            let sql = "update NoteDB set title='\(note.title)',context='\(note.context)' where id=\(modify_note_id)"
+            let flag = DBManager.shareManager().execute_sql(sql: sql)
+            NSLog("sql:\(sql)")
+            if flag{
+                
+                NSLog("modify an already existed note item from sqlite success")
+            }
+            
+            //        NoteManager.sharedInstance.noteArray.append(note)
+            filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
+            handleCancelButtonTapped(UIButton())
+            _ = navigationController?.popToRootViewController(animated: true)
+            modify_flag = false
+            return
+        }
         // add note item------------------------
         let note = NoteItem()
         note.title = notetitle.text!
@@ -108,9 +133,9 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
         note.userid = current_user_id
         NSLog("note.userid :\(current_user_id)")
         //add item
-        note.id = DBManager.shareManager().find_note_id(note: note)
-        DBManager.shareManager().insert(noteitem: note)
         
+        DBManager.shareManager().insert(noteitem: note)
+        note.id = DBManager.shareManager().find_note_id(note: note)
 //        NoteManager.sharedInstance.noteArray.append(note)
         notes_list.append(note)
         filter_list = notes_list
