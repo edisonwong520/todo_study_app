@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DBManager.shareManager().initDB()
         filter_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
+        notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             launchedShortcutItem = shortcutItem
         }

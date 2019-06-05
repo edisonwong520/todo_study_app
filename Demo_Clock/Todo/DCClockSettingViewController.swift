@@ -8,6 +8,7 @@
 
 import RichEditorView
 import UIKit
+var conflict_flag = true
 class DCClockSettingViewController: LXMBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     @IBOutlet var datePicker: UIDatePicker!
 
@@ -235,9 +236,10 @@ extension DCClockSettingViewController {
         let conflict_context = show_conflict(date: dateFormatter.string(from: datePicker.date))
 
         // find conlict and show
-        if conflict_context != "" {
-            let alert = UIAlertView(title: "提醒", message: "当前设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "OK")
+        if conflict_context != "" && conflict_flag{
+            let alert = UIAlertView(title: "提醒", message: "当前设定时间与之前的 " + conflict_context + " 时间冲突了", delegate: nil, cancelButtonTitle: "已明确")
             alert.show()
+            conflict_flag = false
             return
         }
 
@@ -296,6 +298,7 @@ extension DCClockSettingViewController {
         }
         handleCancelButtonTapped(UIButton())
         _ = navigationController?.popToRootViewController(animated: true)
+        conflict_flag = true
     }
 
     @IBAction func handleDayButtonTapped(_ sender: UIButton) {

@@ -154,6 +154,7 @@ extension NoteHomeViewController: UITableViewDataSource {
 
     // delete the cell
     func tableView(_ tableView: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        notes_list = DBManager.shareManager().find_all_notes() as! [NoteItem]
         let item = notes_list[indexPath.row]
         if let index = notes_list.index(of: item) {
             let id_get = notes_list[index].id
