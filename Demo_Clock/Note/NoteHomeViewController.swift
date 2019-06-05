@@ -11,6 +11,7 @@ import UIKit
 // notes_list record current list
 var notes_list: [NoteItem] = []
 // record search result list
+var modify_note = NoteItem()
 var filter_list: [NoteItem] = []
 var cell_flag = false
 class NoteHomeViewController: LXMBaseViewController, UISearchBarDelegate, UISearchResultsUpdating {
@@ -185,8 +186,11 @@ extension NoteHomeViewController: UITableViewDelegate {
         current_selected_row = indexPath.row
         add_item_flag = false
         modify_flag = true
+        notes_list = DBManager.shareManager().find_all_notes()as! [NoteItem]
         let note = notes_list[indexPath.row]
         modify_note_id = note.id
+        modify_note = note
+        
         NSLog("modify_note_id:\(modify_note_id)")
         let noteSettingViewController = NoteSettingViewController.loadFromStroyboardWithTargetAlarm(note)
         noteSettingViewController.hidesBottomBarWhenPushed = true

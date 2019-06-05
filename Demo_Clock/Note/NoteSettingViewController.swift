@@ -70,11 +70,16 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
     //present the old data
     func setupDefault() {
         
-        if add_item_flag == false {
-            notetitle.text = notes_list[current_selected_row].title
-//            todoNote.text = notes_list[current_selected_row].note
-            editorView.html = notes_list[current_selected_row].context
-            add_item_flag = true
+//        if add_item_flag == false {
+//            notetitle.text = notes_list[current_selected_row].title
+////            todoNote.text = notes_list[current_selected_row].note
+//            editorView.html = notes_list[current_selected_row].context
+//            add_item_flag = true
+//        }
+        if modify_flag{
+            notetitle.text = modify_note.title
+            NSLog("\(modify_note.context)")
+            toolbar.editor?.html = modify_note.context
         }
     }
 
@@ -103,14 +108,14 @@ class NoteSettingViewController: LXMBaseViewController, UITextViewDelegate,UIIma
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         // modify an already existed note item------------------------
         if modify_flag{
-            let note = NoteItem()
-            note.title = notetitle.text!
-            note.createDate = Date()
-            note.context = htmlcontext
-            note.userid = current_user_id
+//            let note = NoteItem()
+//            note.title = notetitle.text!
+//            note.createDate = Date()
+//            note.context = htmlcontext
+//            note.userid = current_user_id
             NSLog("modify an already existed note item :\(current_user_id)")
             //add item
-            let sql = "update NoteDB set title='\(note.title)',context='\(note.context)' where id=\(modify_note_id)"
+            let sql = "update NoteDB set title='\(notetitle.text!)',context='\(htmlcontext)' where id=\(modify_note_id)"
             let flag = DBManager.shareManager().execute_sql(sql: sql)
             NSLog("sql:\(sql)")
             if flag{
