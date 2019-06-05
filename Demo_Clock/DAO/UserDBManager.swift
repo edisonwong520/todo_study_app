@@ -77,7 +77,7 @@ extension DBManager {
                 sqlite3_finalize(statement)
             }
         }
-        return 0
+        return -1
     }
 
     func find_current_login_id() -> Int {

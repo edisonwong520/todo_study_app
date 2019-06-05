@@ -87,7 +87,7 @@ extension DBManager {
         sql = "INSERT INTO ScoreDB (title,score,userid) VALUES('测验5',86,1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('第一条笔记','This is my fisrt note.','2019-05-04 15:28:13',1);"
+        sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('一个人的朝圣笔记','This is my fisrt note.','2019-05-04 15:28:13',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
         
         sql = "INSERT INTO NoteDB (title,context,createdate,userid) VALUES('百年孤独笔记','《百年孤独》，是哥伦比亚作家加西亚·马尔克斯创作的长篇小说，是其代表作，也是拉丁美洲魔幻现实主义文学的代表作，被誉为“再现拉丁美洲历史社会图景的鸿篇巨著”。','2019-05-04 15:28:22',1);"
@@ -96,7 +96,7 @@ extension DBManager {
         sql = "INSERT INTO TodoDB (title,note,date,priority,repeatday,alarmOn) VALUES('练车','练车地点在吉林大学.','2019-05-04 15:29',1,'0000000',1);"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
-        sql = "INSERT OR REPLACE INTO UserDB (realname,name,password,email,picurl) VALUES ('user','user','c4ca4238a0b923820dcc509a6f75849b','user@qq.com','/Users/edison/Library/Developer/CoreSimulator/Devices/E3EEE923-7B86-4B03-A9F8-A75CFC9AE48E/data/Containers/Data/Application/FBBA3D7C-710A-485C-89BB-DC588DE6605A/Documents4585EFF2-1E47-478A-B66D-054EE37D45D9.jpeg');"
+        sql = "INSERT OR REPLACE INTO UserDB (realname,name,password,email,picurl) VALUES ('root','root','e10adc3949ba59abbe56e057f20f883e','root@qq.com','/Users/edison/Library/Developer/CoreSimulator/Devices/E3EEE923-7B86-4B03-A9F8-A75CFC9AE48E/data/Containers/Data/Application/FBBA3D7C-710A-485C-89BB-DC588DE6605A/Documents4585EFF2-1E47-478A-B66D-054EE37D45D9.jpeg');"
         _ = DBManager.shareManager().execute_sql(sql: sql)
 
         sql = "INSERT OR REPLACE INTO LoginDB (flag,userid) VALUES (1,1);"

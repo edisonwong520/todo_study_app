@@ -181,6 +181,11 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
 
     override func viewWillAppear(_: Bool) {
+        if current_user_id != 0{
+            let current_user = DBManager.shareManager().find_user_byid(id: current_user_id)
+            nameLabel.text = "用户名：" + current_user.name
+            realnameLabel.text = "邮箱：" + current_user.email
+        }
         get_all_score()
         get_all_note_count()
         get_all_study_time()
