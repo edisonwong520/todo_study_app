@@ -7,7 +7,7 @@
 
 
 ## 已实现的功能
-- 功能1:Todo事项增加、管理、提醒
+- 功能1:Todo事项增加、管理、提醒、可设置重复提醒日期
 - 功能2:笔记增加、管理、搜索
 - 功能3:在线测验
 - 功能4:学习曲线生成
@@ -19,17 +19,17 @@
 
 ## 截图
 - 底部tab bar 截图  
-![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%875.png?raw=true)  
+![image](https://raw.githubusercontent.com/edisonwong520/todo_study_app/master/Screenshots/%E5%9B%BE%E7%89%875.png)  
 
 - 提醒添加截图  
-![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%876.png?raw=true)
+![image](https://raw.githubusercontent.com/edisonwong520/todo_study_app/master/Screenshots/%E5%9B%BE%E7%89%876.png)
 
 - 在线测验截图  
-![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%873.png?raw=true)
+![image](https://raw.githubusercontent.com/edisonwong520/todo_study_app/master/Screenshots/%E5%9B%BE%E7%89%873.png)
 
 
 - Todo截图  
-![image](https://github.com/edisonwong520/todo_study_app/blob/master/Screenshots/%E5%9B%BE%E7%89%871.png?raw=true)
+![image](https://raw.githubusercontent.com/edisonwong520/todo_study_app/master/Screenshots/%E5%9B%BE%E7%89%871.png)
 
 - 3D Touch 截图  
-![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%874.png?raw=true) 
+![image](https://raw.githubusercontent.com/edisonwong520/todo_study_app/master/Screenshots/%E5%9B%BE%E7%89%874.png) 
