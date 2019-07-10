@@ -1,5 +1,5 @@
 ## 简介
-一款基于iOS的学习规划/时间安排/笔记管理/在线测验/学习辅助App  
+一款基于iOS的学习规划/时间安排/笔记管理/在线测验/学习辅助记录App  
 开发语言：Swift 4  
 第三方管理：Carthage
 
@@ -27,6 +27,8 @@
 ![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%873.png?raw=true)
 
 
+- Todo截图  
+![image](https://github.com/edisonwong520/todo_study_app/blob/master/Screenshots/%E5%9B%BE%E7%89%871.png?raw=true)
 
 - 3D Touch 截图  
-![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%874.png?raw=true)
+![image](https://github.com/edisonwong520/paper_code/blob/master/Screenshots/%E5%9B%BE%E7%89%874.png?raw=true) 
